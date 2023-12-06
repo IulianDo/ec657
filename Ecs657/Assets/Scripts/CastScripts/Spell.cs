@@ -10,6 +10,7 @@ public class Spell : MonoBehaviour
     public ScriptableSpell spellType;
     PlayerStats playerStats;
     GameObject player;
+    GameObject camera;
     public Sprite icon;
     public ScriptableSpell [] combination;
     public string spellName;
@@ -20,7 +21,7 @@ public class Spell : MonoBehaviour
 
     public void InitialiseSpell()
     {
-        GameObject camera =GameObject.FindGameObjectWithTag("MainCamera");
+        camera =GameObject.FindGameObjectWithTag("MainCamera");
         player = GameObject.FindGameObjectWithTag("Player");
         playerStats = player.GetComponent<PlayerStats>();
         combination = spellType.combinations;
@@ -57,7 +58,7 @@ public class Spell : MonoBehaviour
         int dmg = Mathf.RoundToInt(spellType.damage * dmgMul);
         //for example, here Fire creates a new fireball from the prefab in fireProj, then adds forward force to it, and initialise its stats
         GameObject currentprojectile = Instantiate(spellType.projectile, player.transform.position + player.transform.forward, Quaternion.identity).gameObject;
-        currentprojectile.GetComponent<Rigidbody>().AddForce(player.transform.forward * spellType.projSpeed, ForceMode.Impulse);
+        currentprojectile.GetComponent<Rigidbody>().AddForce(camera.transform.forward * spellType.projSpeed, ForceMode.Impulse);
         currentprojectile.GetComponent<GenericProjectile>().setData(dmg, spellType.duration, spellType.interval);
     }
     private void Particles()

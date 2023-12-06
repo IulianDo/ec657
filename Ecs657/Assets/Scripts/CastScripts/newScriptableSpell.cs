@@ -21,7 +21,7 @@ public class NewScriptableSpell : ScriptableObject
         [SerializeField] public int duration = 0;
         [SerializeField] public int interval = 0;
         [SerializeField] public Sprite image;
-        [SerializeField] public ScriptableSpell[] combinations = new ScriptableSpell[0];
+        [SerializeField] public NewScriptableSpell[] combinations = new NewScriptableSpell[0];
     }
 
     [System.Serializable]
