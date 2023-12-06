@@ -5896,6 +5896,26 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6896812002048515042, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
+      propertyPath: 'spellList.Array.data[0]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896812002048515042, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
+      propertyPath: 'spellList.Array.data[1]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896812002048515042, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
+      propertyPath: 'spellList.Array.data[2]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896812002048515042, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
+      propertyPath: 'hotbarList.Array.data[0]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896812002048515042, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
+      propertyPath: 'hotbarList.Array.data[1]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896812002048515042, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
       propertyPath: scriptableSpellList.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -5978,6 +5998,10 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 6385838616891012295, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
     - {fileID: 8282736406930089152, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
+    - {fileID: 126720949416318864, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
+    - {fileID: 8218415011865513135, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
+    - {fileID: 2059007615015954471, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
+    - {fileID: 6641706611126717667, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
     m_RemovedGameObjects:
     - {fileID: 5055040446595026906, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
     m_AddedGameObjects: []

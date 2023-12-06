@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec16fc632608d846859a90339546908, type: 3}
   m_Name: Steam Ball
   m_EditorClassIdentifier: 
-  projectile: {fileID: 6461537977559515917, guid: 31776161f7a82a8449613a79d3c7450f, type: 3}
+  projectile: {fileID: 5568284564195301289, guid: 31776161f7a82a8449613a79d3c7450f, type: 3}
+  particleSystem: {fileID: 0}
+  spellClass: 0
   component: 
   description: Shoots ball of steam. Damages and pushes enemy away.
   projSpeed: 500

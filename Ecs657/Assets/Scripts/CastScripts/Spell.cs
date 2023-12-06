@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ public class Spell : MonoBehaviour
     public Sprite icon;
     public ScriptableSpell [] combination;
     public string spellName;
+    private bool canDamage = true;
 
     //interval only functions for repeating effects (e.g. chip damage), so then total duration is duration*interval
     //for one-time effects, (e.g. slowdown), interval is useless so duration is the total time for the effect
@@ -31,52 +33,88 @@ public class Spell : MonoBehaviour
     {
         float dmgMul = playerStats.dmgMul;
         int dmg = Mathf.RoundToInt(spellType.damage*dmgMul);
-        
+
         //for example, here Fire creates a new fireball from the prefab in fireProj, then adds forward force to it, and initialise its stats
-        GameObject currentprojectile = Instantiate(spellType.projectile, player.transform.position + player.transform.forward, Quaternion.identity);
-        currentprojectile.GetComponent<Rigidbody>().AddForce(player.transform.forward * spellType.projSpeed, ForceMode.Impulse);
-        currentprojectile.GetComponent<GenericProjectile>().setData(dmg,spellType.duration,spellType.interval);
+        switch (spellType.spellClass)
+        {
+            case ScriptableSpell.spellClasses.Projectile:
+                Projectile();
+                break;
+            case ScriptableSpell.spellClasses.Particles:
+                Particles();
+                break;
+            case ScriptableSpell.spellClasses.Secret_Third_Option:
+                Debug.Log("test");
+                break;
+            default:
+                break;
+        }
     }
 
-    //check combination just gets the spell stack, compares it to it's combination recipe,
-    ///and returns the index of the first matching spell for substitution
-    public int checkCombination(Spell[] spells)
+    private void Projectile()
     {
-        bool match = true;
-        if(spellType.combinations.Length > 0)
+        float dmgMul = playerStats.dmgMul;
+        int dmg = Mathf.RoundToInt(spellType.damage * dmgMul);
+        //for example, here Fire creates a new fireball from the prefab in fireProj, then adds forward force to it, and initialise its stats
+        GameObject currentprojectile = Instantiate(spellType.projectile, player.transform.position + player.transform.forward, Quaternion.identity).gameObject;
+        currentprojectile.GetComponent<Rigidbody>().AddForce(player.transform.forward * spellType.projSpeed, ForceMode.Impulse);
+        currentprojectile.GetComponent<GenericProjectile>().setData(dmg, spellType.duration, spellType.interval);
+    }
+    private void Particles()
+    {
+        StartCoroutine(StartFlamethrower(spellType.duration));
+    }
+    IEnumerator StartFlamethrower(int time)
+    {
+        //note: currently set to turn off automatically, will later add a check to turn off when player lets go
+        spellType.particleSystem.Play();
+        yield return new WaitForSeconds(time);
+        spellType.particleSystem.Stop();
+    }
+
+
+    void OnParticleCollision(GameObject other)
+    {
+        if (canDamage)
         {
-            for (int i = 0; i < (spells.Length - spellType.combinations.Length); i++)
+            int dmg = Mathf.RoundToInt(spellType.damage);
+            // Check if the collided object has an "Enemy" component
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (enemy != null)
             {
-                try
-                {
-                    //make sure the slot isn't blank && the spell matches the 1st spell in the combination array
-                    if (spells[i].spellName != null && spells[i].spellType == spellType.combinations[0])
-                    {
-                        match = true;
-                        //after checking a match for the first spell of the combination,
-                        //checks if the following spells match the rest of the combination
-                        for (int j = 1; j < spellType.combinations.Length; j++)
-                        {
-                            if (spellType.combinations[j] != spells[i + j].spellType)
-                            {
-                                match = false;
-                                break;
-                            }
-                        }
-                        //if everything matches, and not just the first spell
-                        if (match)
-                        {
-                            return i;
-                        }
-                    }
-                }
-                catch (System.Exception)
-                {
-                    continue;
-                    throw;
-                }
+                // Apply damage to the enemy
+                enemy.TakeDamage(dmg);
+                // Start the damage cooldown coroutine
+                StartCoroutine(DamageCooldown());
             }
         }
-        return -1;
+    }
+    IEnumerator DamageCooldown()
+    {
+        canDamage = false;
+        yield return new WaitForSeconds(spellType.interval);
+        canDamage = true;
+    }
+
+    //check combination checks if the spell stack contains every element of combination
+    //returns indices if it does, null if it doesn't
+    public int[] checkCombination(List<Spell> spells)
+    {
+        if (combination.Length < 2)
+        {
+            return null;
+        }
+        List<ScriptableSpell> list = spells.Select(spell => spell.spellType).ToList();
+        if (combination.All(spell => list.Contains(spell)))
+        {
+            int[] indices = combination.Select(spell => list.IndexOf(spell)).ToArray();
+            Array.Sort(indices);
+            Array.Reverse(indices);
+            return indices;
+        }
+        else
+        {
+            return null;
+        }
     }
 }

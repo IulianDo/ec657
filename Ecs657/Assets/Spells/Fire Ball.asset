@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec16fc632608d846859a90339546908, type: 3}
   m_Name: Fire Ball
   m_EditorClassIdentifier: 
-  projectile: {fileID: 6689170274625472767, guid: 2f39d646be71e0c48853db002e3d1742, type: 3}
+  projectile: {fileID: 5204418640394329179, guid: 2f39d646be71e0c48853db002e3d1742, type: 3}
+  particleSystem: {fileID: 0}
+  spellClass: 0
   component: 
   description: Shoots fireball. Damages and burns enemy.
   projSpeed: 500

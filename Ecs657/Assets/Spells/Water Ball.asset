@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec16fc632608d846859a90339546908, type: 3}
   m_Name: Water Ball
   m_EditorClassIdentifier: 
-  projectile: {fileID: 6318832171547529715, guid: 169922a0e0821334c8f6b558a602cc1f, type: 3}
+  projectile: {fileID: 4853890428918941015, guid: 169922a0e0821334c8f6b558a602cc1f, type: 3}
+  particleSystem: {fileID: 0}
+  spellClass: 0
   component: 
   description: Shoots ball of water. Damages and slows enemy.
   projSpeed: 500

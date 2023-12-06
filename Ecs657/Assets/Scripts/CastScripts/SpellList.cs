@@ -26,12 +26,11 @@ public class SpellList : MonoBehaviour
         
         for (int i = 0; i < scriptableSpellList.Length; i++)
         {
-            spellList[i] = new Spell();
+            spellList[i] = gameObject.AddComponent<Spell>();
             spellList[i].spellType = scriptableSpellList[i];
             spellList[i].InitialiseSpell();
             if (spellList[i].spellType == scriptableHotbarList[counter])
             {
-                hotbarList[counter] = new Spell();
                 hotbarList[counter] = spellList[i];
                 counter ++;
             }

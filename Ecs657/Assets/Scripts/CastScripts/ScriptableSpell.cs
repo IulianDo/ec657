@@ -7,8 +7,13 @@ using UnityEngine;
 public class ScriptableSpell : ScriptableObject
 {
     //projectile game object
-    public GameObject projectile;
-    
+    public Transform projectile;
+    //particle game object
+    public ParticleSystem particleSystem;
+
+    public enum spellClasses { Projectile, Particles, Secret_Third_Option };
+    public spellClasses spellClass;
+
     //the spell description
     public string component;
     //the spell description

@@ -14,7 +14,8 @@ public class SpellStack : MonoBehaviour
     [SerializeField] private Spell[] spellList;
     [SerializeField] private GameObject spellListObj;
 
-    public Stack<Spell> XspellStack;
+    [SerializeField] public List<Spell> XspellStack;
+    [SerializeField] public List<GameObject> XstackSlots;
 
     // Start is called before the first frame update
     public void WhenToStart()
@@ -28,10 +29,10 @@ public class SpellStack : MonoBehaviour
         if (!checkDuplicates(spell))
         {
             //otherwise, its added to the stack
-            stackSpells[stackIndex] = spell;
-            stackSlots[stackIndex] = Instantiate(slotFab, grid.transform).gameObject;
-            stackSlots[stackIndex].GetComponent<SlotController>().SetSpellInit(spell);
-            stackIndex++;
+            XspellStack.Add(spell);
+            XstackSlots.Add(Instantiate(slotFab, grid.transform).gameObject);
+            XstackSlots[XstackSlots.Count - 1].GetComponent<SlotController>().SetSpellInit(spell);
+            Debug.Log(XspellStack[XspellStack.Count-1].spellName);
         }
         //check if any new combos are possible
         checkCombos();
@@ -43,101 +44,54 @@ public class SpellStack : MonoBehaviour
         foreach (Spell newSpell in spellList)
         {
             //if match found, remove each spell in stack and add the new spell
-            int index = newSpell.checkCombination(stackSpells);
-            if (index >= 0)
+            int[] indices = newSpell.checkCombination(XspellStack);
+            if (indices != null)
             {
-                for (int i = 0; i < newSpell.combination.Length; i++)
+                foreach (int index in indices)
                 {
                     removeSpell(index);
                 }
                 addSpell(newSpell);
             }
         }
-        //this should mean that whenever a new spell is added, or a duplicate is removed, it'll check for combos
-        //this can lead to compound spells through stacking combination
-        //e.g. add fire, earth, water, remove earth, fire and water combine to make steam
-        //and when steam is added, it can possible combine with other already present elements
-        //e.g. fire,fire,earth,water, remove earth for fire,fire,water, fire and water make steam, fire and steam make Flame Spray
     }
 
     bool checkDuplicates(Spell spell)
     {
-        int index = -1;
-        //checks the spellstack for a matching spell
-        for (int i = 0; i < stackSpells.Length; i++)
+        if (XspellStack.Contains(spell))
         {
-            try
-            {
-                if (stackSpells[i].spellName  != null)
-                {
-                    if (stackSpells[i].spellName == spell.spellName)
-                    {
-                        //match found, store index
-                        index = i;
-                        break;
-                    }
-                }
-            }
-            catch (System.Exception)
-            {
-                break;
-                throw;
-            }
-        }
-
-        if(index >= 0)
-        {
-            //if found, remove matching spell
-            removeSpell(index);
+            removeSpell(spell);
             return true;
         }
-
-        return false;
+        else
+        {
+            return false;
+        }
     }
 
     // Removes a spell from the stack at the specified index.
     void removeSpell(int index)
     {
-        if (index < stackSpells.Length - 1 && index>=0)
-        {
-            //removes spell by destroying slot instance and resetting reference in stackSlots and stackSpells
-            Destroy(stackSlots[index]);
-            stackSlots[index] = null;
-            stackSpells[index] = null;
-            //moves all spells after removed spell down by one
-            for (int i = index; i < stackSpells.Length - 1; i++)
-            {
-                stackSlots[i] = stackSlots[i + 1];
-                stackSpells[i] = stackSpells[i + 1];
-                try
-                {
-                    if (stackSpells[i].spellName == null)
-                    {
-                        break;
-                    }
-                }
-                catch (System.Exception)
-                {
-                    break;
-                    throw;
-                }
-                
-            }
-            //resizes stack
-            stackIndex--;
-        }
+        XspellStack.RemoveAt(index);
+        Destroy(XstackSlots[index]);
+        XstackSlots.RemoveAt(index);
     }
-
+    void removeSpell(Spell spell)
+    {
+        Destroy(XstackSlots[XspellStack.IndexOf(spell)]);
+        XstackSlots.RemoveAt(XspellStack.IndexOf(spell));
+        XspellStack.Remove(spell);
+    }
     //cast all spells in stack and removes them
     public void castStack()
     {
-        for (int i = 0; i < stackSpells.Length; i++)
+        for (int i = 0; i < XspellStack.Count; i++)
         {
             try
             {
-                if (stackSpells[0].spellName != null)
+                if (XspellStack[0].spellName != null)
                 {
-                    stackSpells[0].Cast();
+                    XspellStack[0].Cast();
                     removeSpell(0);
                 }
                 else
@@ -150,7 +104,7 @@ public class SpellStack : MonoBehaviour
                 break;
                 throw;
             }
-            
+
         }
     }
 }
