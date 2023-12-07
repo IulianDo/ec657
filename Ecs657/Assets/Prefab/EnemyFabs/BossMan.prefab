@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 1497514740213990739}
   - component: {fileID: 1963894993827585322}
   - component: {fileID: 3328734100171466191}
+  - component: {fileID: 8608807703294589391}
   m_Layer: 7
   m_Name: BossMan
   m_TagString: Enemy
@@ -264,7 +265,7 @@ MonoBehaviour:
   attackTiming: 0.2
   baseDamage: 5
   healthbar: {fileID: 5092992979310116630}
-  baseMaxHp: 200
+  baseMaxHp: 0
   isDead: 0
   isBoss: 0
   menus: {fileID: 0}
@@ -273,6 +274,42 @@ MonoBehaviour:
   bigProjectile: {fileID: 4843699212583041674, guid: e1d6b8a764c37b84cbd633cb0ffdf333, type: 3}
   bigProjSpeed: 100
   bigProjectileTiming: 5
+--- !u!114 &8608807703294589391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5758312535172263517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bdf30bfd3a438742807e69c0808b2cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 1963894993827585322}
+  player: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  timer: {fileID: 0}
+  waitAtPoint: 10
+  walkRange: 100
+  attackRange: 70
+  sightRange: 100
+  projectile: {fileID: 6286544650548570055, guid: c597dc62d8e5923468dc27a52e1d259d, type: 3}
+  baseProjSpeed: 500
+  attackTiming: 0.1
+  baseDamage: 5
+  healthbar: {fileID: 5092992979310116630}
+  baseMaxHp: 200
+  isDead: 0
+  isBoss: 0
+  menus: {fileID: 0}
+  xpValue: 10000
+  EXP: {fileID: 6017612084703524904, guid: 7b624846e73c0fb44ba5d561e5d49897, type: 3}
 --- !u!1001 &3738477625587041530
 PrefabInstance:
   m_ObjectHideFlags: 0

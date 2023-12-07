@@ -1086,7 +1086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossPrefab: {fileID: 5758312535172263517, guid: dcbf64f06a0037047a0c3c10c78add37, type: 3}
-  bossSpawnTime: 120
+  bossSpawnTime: 60
   timer: {fileID: 630820159}
   spawnPoint: {fileID: 1095532945}
   bossSpawned: 0

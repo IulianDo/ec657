@@ -190,8 +190,8 @@ public class Boss1 : MonoBehaviour
     //reduce current hp by x
     public void TakeDamage(int amount)
     {
-        healthbar.setHealth(currentHP);
         currentHP -= amount;
+        healthbar.setHealth(currentHP);
         if (currentHP <= 0 && !isDead)
         {
             isDead = true;
