@@ -11,14 +11,17 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timeValue = 0;
-        label.text = "00:00";
+        DisplayTime(timeValue);
     }
 
 	// Update is called once per frame
 	void Update()
     {
-        timeValue += Time.deltaTime;
+        if(timeValue < 0)
+		{
+            return;
+		}
+        timeValue -= Time.deltaTime;
         DisplayTime(timeValue);
     }
 
@@ -27,6 +30,11 @@ public class Timer : MonoBehaviour
 	{
         float minutes = Mathf.FloorToInt(displayTime / 60);
         float seconds = Mathf.FloorToInt(displayTime % 60);
+        if(minutes < 0)
+		{
+            minutes = 0;
+            seconds = 0;
+		}
         label.text = string.Format("{0:00}:{1:00}", minutes, seconds);
 	}
 }

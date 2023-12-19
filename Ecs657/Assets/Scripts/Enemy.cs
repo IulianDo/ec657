@@ -158,6 +158,7 @@ public class Enemy : MonoBehaviour
     {
         healthbar.setHealth(currentHP);
         currentHP -= amount;
+        DamagePopupGenerator.current.CreatePopUp(transform.position, amount.ToString());
         if (currentHP <= 0 && !isDead)
         {
             isDead = true;

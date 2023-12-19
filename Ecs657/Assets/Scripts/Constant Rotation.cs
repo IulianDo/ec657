@@ -6,8 +6,9 @@ public class XpRotation : MonoBehaviour
 {
     // Update is called once per frame
     //rotates gameobject
+    [SerializeField] private Vector3 rotation;
     void Update()
     {
-        transform.Rotate(new Vector3(15, 30, 45) * Time.deltaTime);
+        transform.Rotate(rotation * Time.deltaTime);
     }
 }

@@ -9,7 +9,6 @@ public class MainSpawner : MonoBehaviour
     [SerializeField] private float maxRadius;
     [SerializeField] private float minRadius;
     [SerializeField] private float offsetY;
-    [SerializeField] private Timer timer;
     private LayerMask ground;
 
 	#region UnityFunctions
@@ -83,13 +82,15 @@ public class MainSpawner : MonoBehaviour
 
 
         //Make enemy look at player upon spawning
-        float dx = offset.x - transform.position.x;
-        float dy = offset.z - transform.position.z;
-        float directionangle = Mathf.Atan2(dy, dx); // in radians
-        float degrees = directionangle * 180 / Mathf.PI;
-        rotation = Quaternion.Euler(0, degrees, 0);
+        //float dx = offset.x - transform.position.x;
+        //float dy = offset.z - transform.position.z;
+        //float directionangle = Mathf.Atan2(dy, dx); // in radians
+        //float degrees = directionangle * 180 / Mathf.PI;
+        //rotation = Quaternion.Euler(0, degrees, 0);
 
-        Instantiate(currentEnemy.enemyPrefab, offset, rotation);
+        GameObject spawnedEnemey = Instantiate(currentEnemy.enemyPrefab, offset, rotation);
+        spawnedEnemey.transform.LookAt(transform.position);
+        
     }
 	#endregion
 
