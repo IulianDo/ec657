@@ -6100,7 +6100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityList:
-  - enemyPrefab: {fileID: 7488566857388697443, guid: aca80fe3a9288d14fbdefdf03828a4e1, type: 3}
+  - enemyPrefab: {fileID: 515251138606854836, guid: 2ad5b82c2a05132499d92679e0d31eb2, type: 3}
     numberPerSpawn: 1
     timeBetweenSpawns: 5
     currentTimer: 0

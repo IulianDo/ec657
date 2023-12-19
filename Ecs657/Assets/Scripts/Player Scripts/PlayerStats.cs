@@ -8,9 +8,9 @@ public class PlayerStats : MonoBehaviour
 
     [SerializeField] private Menus menus;
     #region hpVariables
-    [SerializeField] private  int maxHitPoints;
+    [SerializeField] private int maxHitPoints;
     [SerializeField] private int hitPoints;
-    [SerializeField] private  int hpIncreasePerLevel;
+    [SerializeField] private int hpIncreasePerLevel;
     #endregion
 
     #region playerMultipliers

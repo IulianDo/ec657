@@ -80,16 +80,9 @@ public class MainSpawner : MonoBehaviour
             offset += new Vector3(0, -hit.distance, 0);
         } while (hit.distance == 0 && repeats < 100); // repeat check for failSafe precaution
 
-
-        //Make enemy look at player upon spawning
-        //float dx = offset.x - transform.position.x;
-        //float dy = offset.z - transform.position.z;
-        //float directionangle = Mathf.Atan2(dy, dx); // in radians
-        //float degrees = directionangle * 180 / Mathf.PI;
-        //rotation = Quaternion.Euler(0, degrees, 0);
-
         GameObject spawnedEnemey = Instantiate(currentEnemy.enemyPrefab, offset, rotation);
-        spawnedEnemey.transform.LookAt(transform.position);
+        Vector3 removeY = new Vector3(0, transform.position.y, 0);
+        spawnedEnemey.transform.LookAt(transform.position - removeY);
         
     }
 	#endregion
