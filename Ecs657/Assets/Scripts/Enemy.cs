@@ -37,9 +37,6 @@ public class Enemy : MonoBehaviour
     //Boss decleration variable
     [SerializeField] bool isBoss;
     //_________________________________________________________//
-    //will be used for win screen
-    [SerializeField] private Menus menus;
-    //_________________________________________________________//
     //xpVariables 
     [SerializeField] private float xpValue;
     [SerializeField] private GameObject EXP;
@@ -169,13 +166,6 @@ public class Enemy : MonoBehaviour
     //functions needed when dying
     private void Die()
     {
-        //cheaks if the enemy is the final boss
-        if (isBoss)
-        {
-            menus.Win();
-            Destroy(gameObject);
-            return;
-        }
         DropXP(xpValue);
         Destroy(gameObject);
     }
@@ -189,8 +179,11 @@ public class Enemy : MonoBehaviour
             float randomRangeX = Random.Range(0.5f,-0.5f);
             float randomRangeY = Random.Range(0.5f, -0.5f);
             float randomRangeZ = Random.Range(0.5f, -0.5f);
-            Vector3 randomPosition = new Vector3(transform.position.x + randomRangeX, 
-                                                 transform.position.y + randomRangeY, 
+            RaycastHit hit;
+			Physics.Raycast(transform.position, Vector3.down, out hit, 10f, groundLayer);
+
+			Vector3 randomPosition = new Vector3(transform.position.x + randomRangeX, 
+                                                 transform.position.y - hit.distance + 1f + randomRangeY, // makes sure players can grab xp from tall enemies
                                                  transform.position.z + randomRangeZ);
 
             GameObject XPDrop = Instantiate(EXP, randomPosition, Quaternion.identity);

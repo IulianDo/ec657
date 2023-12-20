@@ -12,8 +12,12 @@ public class HealthPack : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerStats>().Heal(healFor);
-            Destroy(self);
+            PlayerStats player = other.GetComponent<PlayerStats>();
+            if(!player.AtMaxHP())
+			{
+                player.Heal(healFor);
+                Destroy(self);
+            }
         }
     }
 }

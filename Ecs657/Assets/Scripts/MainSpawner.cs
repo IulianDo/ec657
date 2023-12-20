@@ -15,11 +15,6 @@ public class MainSpawner : MonoBehaviour
 	void Start()
     {
         ground = LayerMask.GetMask("Ground");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         SpawnAllEnemies();
     }
 
@@ -41,49 +36,56 @@ public class MainSpawner : MonoBehaviour
 	{
         foreach (EntityToSpawn currentEnemy in EntityList)
 		{
-            currentEnemy.currentTimer += Time.deltaTime;
-            if (currentEnemy.currentTimer < currentEnemy.timeBetweenSpawns)
-			{
-                continue;
-			}
-                
-            currentEnemy.currentTimer -= currentEnemy.timeBetweenSpawns;
-            for(int i = 0; i < currentEnemy.numberPerSpawn; i++)
-			{
-                SpawnEnemy(currentEnemy);
-			}
+            Coroutine spawnEnemy = StartCoroutine(SpawnEnemy(currentEnemy));
+            StartCoroutine(StopSpawning(currentEnemy, spawnEnemy));
         }
 	}
 
-    private void SpawnEnemy(EntityToSpawn currentEnemy)
+    IEnumerator StopSpawning(EntityToSpawn currentEnemy, Coroutine spawnEnemy)
 	{
-        Quaternion rotation = new Quaternion();
-        //get random point within the ranges of 2 circles
-        RaycastHit hit;
-        Vector3 offset = new Vector3(0, 0, 0);
-        int repeats = 0;
-        do
-        {
-            repeats++;
-            float boundingRadius = Random.Range(minRadius, maxRadius);
-            offset = Random.insideUnitCircle.normalized * boundingRadius;
-            offset = new Vector3(offset.x + transform.position.x,
-                                 transform.position.y - offsetY,
-                                 offset.y + transform.position.z);
+        yield return new WaitForSeconds(currentEnemy.whenToStopSpawning);
+        StopCoroutine(spawnEnemy);
+	}
 
-            //find distance from terrain to spawn entity at correct Y coordinates
-            Physics.Raycast(offset, Vector3.down, out hit, 100f, ground);
+    IEnumerator SpawnEnemy(EntityToSpawn currentEnemy)
+	{
+        yield return new WaitForSeconds(currentEnemy.whenToStartSpawning);
+        while (currentEnemy.canSpawn)
+		{
+            for (int i = 0; i < currentEnemy.numberPerSpawn; i++)
+            {
+                Quaternion rotation = new Quaternion();
+                //get random point within the ranges of 2 circles
+                RaycastHit hit;
+                Vector3 offset = new Vector3(0, 0, 0);
+                int repeats = 0;
+                do
+                {
+                    repeats++;
+                    float boundingRadius = Random.Range(minRadius, maxRadius);
+                    offset = Random.insideUnitCircle.normalized * boundingRadius;
+                    offset = new Vector3(offset.x + transform.position.x,
+                                         transform.position.y - offsetY,
+                                         offset.y + transform.position.z);
 
-            //for debugging
-            Debug.DrawRay(offset, Vector3.down * 100f);
+                    //find distance from terrain to spawn entity at correct Y coordinates
+                    Physics.Raycast(offset, Vector3.down, out hit, 100f, ground);
 
-            offset += new Vector3(0, -hit.distance, 0);
-        } while (hit.distance == 0 && repeats < 100); // repeat check for failSafe precaution
+                    //for debugging
+                    Debug.DrawRay(offset, Vector3.down * 100f);
 
-        GameObject spawnedEnemey = Instantiate(currentEnemy.enemyPrefab, offset, rotation);
-        Vector3 removeY = new Vector3(0, transform.position.y, 0);
-        spawnedEnemey.transform.LookAt(transform.position - removeY);
-        
+                    offset += new Vector3(0, -hit.distance, 0);
+                } while (hit.distance == 0 && repeats < 100); // repeat check for failSafe precaution
+
+                GameObject spawnedEnemy = Instantiate(currentEnemy.enemyPrefab, offset + currentEnemy.offset, rotation);
+                Vector3 LookPosition = new Vector3(transform.position.x,
+                                                    spawnedEnemy.transform.position.y,
+                                                    transform.position.z);
+
+                spawnedEnemy.transform.LookAt(LookPosition);
+            }
+            yield return new WaitForSeconds(currentEnemy.timeBetweenSpawns);
+        }
     }
 	#endregion
 
@@ -94,14 +96,20 @@ public class MainSpawner : MonoBehaviour
         public GameObject enemyPrefab;
         public int numberPerSpawn;
         public float timeBetweenSpawns;
-        public float currentTimer;
+        public float whenToStartSpawning;
+        public float whenToStopSpawning;
+        public Vector3 offset;
+        public bool canSpawn;
 
-        public EntityToSpawn(GameObject enemyPrefab, int numberPerSpawn, float timeBetweenSpawns)
+        public EntityToSpawn(GameObject enemyPrefab, int numberPerSpawn, float timeBetweenSpawns, float whenToStartSpawning, float whenToStopSpawning, Vector3 offset)
 		{
             this.enemyPrefab = enemyPrefab;
             this.numberPerSpawn = numberPerSpawn;
             this.timeBetweenSpawns = timeBetweenSpawns;
-            currentTimer = 0;
+            this.whenToStartSpawning = whenToStartSpawning;
+            this.whenToStopSpawning = whenToStopSpawning;
+            this.offset = offset;
+            canSpawn = true;
 		}
 	}
 }

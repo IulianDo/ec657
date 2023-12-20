@@ -47,20 +47,26 @@ public class PlayerStats : MonoBehaviour
         if (hitPoints <= 0)
         {
             menus.GameOver();
-        }   
+		}
+	}
+
+	// Increase hp by x amount 
+	public void Heal(int amount)
+	{
+		hitPoints += amount;
+		//if healed over max hp, clamp to max hp
+		if (hitPoints >= maxHitPoints)
+		{
+			hitPoints = maxHitPoints;
+		}
+		healthbar.setHealth(hitPoints);
+	}
+
+    public bool AtMaxHP()
+    {
+        return maxHitPoints == hitPoints;
     }
 
-    // Increase hp by x amount 
-    public void Heal(int amount)
-    {
-        hitPoints += amount;
-        //if healed over max hp, clamp to max hp
-        if (hitPoints >= maxHitPoints)
-        {
-            hitPoints = maxHitPoints;
-        }
-        healthbar.setHealth(hitPoints);
-    }
     #endregion;
     //------------------------------------------------------------------//
     #region xpCode
