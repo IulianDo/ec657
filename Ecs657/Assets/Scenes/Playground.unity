@@ -1131,7 +1131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossPrefab: {fileID: 5758312535172263517, guid: dcbf64f06a0037047a0c3c10c78add37, type: 3}
-  bossSpawnTime: 0
+  bossSpawnTime: 120
   timer: {fileID: 630820159}
   spawnPoint: {fileID: 1095532945}
   bossSpawned: 0
@@ -3501,6 +3501,10 @@ PrefabInstance:
     - target: {fileID: 7694806976863755868, guid: aca80fe3a9288d14fbdefdf03828a4e1, type: 3}
       propertyPath: xpValue
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694806976863755868, guid: aca80fe3a9288d14fbdefdf03828a4e1, type: 3}
+      propertyPath: nextLevel
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

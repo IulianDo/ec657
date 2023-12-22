@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class Boss1 : MonoBehaviour
 {
@@ -212,6 +213,8 @@ public class Boss1 : MonoBehaviour
         TempEnemy();
         DropXP(xpValue);
         Destroy(gameObject);
+        Debug.Log("This is a simple log message.");
+        SceneManager.LoadScene("level2");
     }
     //Drops x number of orbs which gives you xpValue worth of xp in total
     //orbs drop randomly when enemy dies within a certain range
