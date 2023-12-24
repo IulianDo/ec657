@@ -6033,6 +6033,10 @@ PrefabInstance:
       propertyPath: m_HorizontalAlignment
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6858254932321820282, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
+      propertyPath: m_RenderingPath
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6896812002048515042, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
       propertyPath: hotbar
       value: 
@@ -6185,23 +6189,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityList:
-  - enemyPrefab: {fileID: 7488566857388697443, guid: aca80fe3a9288d14fbdefdf03828a4e1, type: 3}
+  - enemyPrefab: {fileID: 0}
     numberPerSpawn: 1
     timeBetweenSpawns: 5
     whenToStartSpawning: 4
     whenToStopSpawning: 125
     offset: {x: 0, y: 0, z: 0}
     canSpawn: 1
+    waveSpawn: 0
   - enemyPrefab: {fileID: 515251138606854836, guid: 2ad5b82c2a05132499d92679e0d31eb2, type: 3}
     numberPerSpawn: 1
     timeBetweenSpawns: 60
     whenToStartSpawning: 59
-    whenToStopSpawning: 100000
-    offset: {x: 0, y: 0.75, z: 0}
+    whenToStopSpawning: 10000
+    offset: {x: 0, y: 0, z: 0}
     canSpawn: 1
-  maxRadius: 50
+    waveSpawn: 0
+  - enemyPrefab: {fileID: 4843699212583041674, guid: e1d6b8a764c37b84cbd633cb0ffdf333, type: 3}
+    numberPerSpawn: 100
+    timeBetweenSpawns: 5
+    whenToStartSpawning: 4
+    whenToStopSpawning: 10000
+    offset: {x: 0, y: 0, z: 0}
+    canSpawn: 1
+    waveSpawn: 1
+  maxRadius: 50.2
   minRadius: 40
   offsetY: -25
+  waveMinRadius: 0
+  waveMaxRadius: 5
 --- !u!1001 &6858071375371738443
 PrefabInstance:
   m_ObjectHideFlags: 0
