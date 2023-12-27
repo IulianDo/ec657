@@ -10,16 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be17019af34760c44a61dec2d33574b8, type: 3}
-  m_Name: Steam Ball New
+  m_Name: New Steam Ball
   m_EditorClassIdentifier: 
   spellClass: 0
   data:
-    rid: 1570625023937871872
+    rid: 1570625496106663977
+  subdata:
+    rid: 1570625496106663978
   references:
     version: 2
     RefIds:
-    - rid: 1570625023937871872
-      type: {class: NewScriptableSpell/ProjectileItem, ns: , asm: Assembly-CSharp}
+    - rid: 1570625496106663977
+      type: {class: NewScriptableSpell/Item, ns: , asm: Assembly-CSharp}
       data:
         component: 
         description: Shoots ball of steam. Damages and pushes enemy away.
@@ -27,9 +29,13 @@ MonoBehaviour:
         damage: 10
         duration: 10
         interval: 1
+        ammo: 5
         image: {fileID: 21300000, guid: 239d0a7599956cc46913d0d119fad243, type: 3}
         combinations:
-        - {fileID: 11400000, guid: 81694e68ffe0991438849e5d4dfa7c09, type: 2}
-        - {fileID: 11400000, guid: 9a254920d75e4dc4c81b45bc6da9e711, type: 2}
+        - {fileID: 11400000, guid: 770a4ed557f4e9743aa2a64cb3497f43, type: 2}
+        - {fileID: 11400000, guid: aded143d0bbdb6d4087281f0d55890c7, type: 2}
+    - rid: 1570625496106663978
+      type: {class: NewScriptableSpell/ProjectileItem, ns: , asm: Assembly-CSharp}
+      data:
         projectile: {fileID: 5568284564195301289, guid: 31776161f7a82a8449613a79d3c7450f, type: 3}
         projSpeed: 500

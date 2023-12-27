@@ -134,3 +134,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iconPrefab: {fileID: 3473331960437618560, guid: 06043da35b9db21458e24d5e04564b04, type: 3}
+  ammoPrefab: {fileID: 6749279222798584239, guid: cb62d7809abd5104f91371f6563f5a1d, type: 3}

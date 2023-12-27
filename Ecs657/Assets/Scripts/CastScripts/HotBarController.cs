@@ -23,7 +23,8 @@ public class HotBarController : MonoBehaviour
             if (spells[i].spellName != null)
             {
                 slots[i] = Instantiate(slotFab, grid.transform).GetComponent<SlotController>(); //if the slot has a spell, create a SpellSlot
-                slots[i].SetSpellInit(spells[i]); //assign the new slot its corresponding spell
+                slots[i].SetSpellInit(spells[i],0); //assign the new slot its corresponding spell
+                slots[i].HotBarSlot();
             }
         }
     }

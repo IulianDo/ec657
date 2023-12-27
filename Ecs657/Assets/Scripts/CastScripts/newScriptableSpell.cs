@@ -9,6 +9,7 @@ public class NewScriptableSpell : ScriptableObject
     [System.Serializable] public enum spellClasses { Projectile, Particles, Secret_Third_Option };
     public spellClasses spellClass;
     [SerializeReference] public Item data = new Item();
+    [SerializeReference] public SubItem subdata = null;
 
     #region data classes
     [System.Serializable]
@@ -20,19 +21,30 @@ public class NewScriptableSpell : ScriptableObject
         [SerializeField] public int damage;
         [SerializeField] public int duration = 0;
         [SerializeField] public int interval = 0;
+        [SerializeField] public int ammo = 0;
         [SerializeField] public Sprite image;
         [SerializeField] public NewScriptableSpell[] combinations = new NewScriptableSpell[0];
     }
 
+    #endregion
+
+    #region subdata classes
+
     [System.Serializable]
-    public class ProjectileItem : Item
+    public class SubItem
+    {
+
+    }
+
+    [System.Serializable]
+    public class ProjectileItem : SubItem
     {
         [SerializeField] public Transform projectile;
         [SerializeField] public float projSpeed;
         public ProjectileItem() { }
     }
 
-    public class ParticleItem : Item
+    public class ParticleItem : SubItem
     {
         [SerializeField] public ParticleSystem particles;
         [SerializeField] public float dmgInterval;
@@ -48,15 +60,15 @@ public class NewScriptableSpell : ScriptableObject
         switch (spellClass)
         {
             case spellClasses.Projectile:
-                if (data == null || data.GetType() != typeof(ProjectileItem))
+                if (subdata == null || subdata.GetType() != typeof(ProjectileItem))
                 {
-                    data = new ProjectileItem();
+                    subdata = new ProjectileItem();
                 }
                 break;
             case spellClasses.Particles:
-                if (data == null || data.GetType() != typeof(ParticleItem))
+                if (subdata == null || subdata.GetType() != typeof(ParticleItem))
                 {
-                    data = new ParticleItem();
+                    subdata = new ParticleItem();
                 }
                 break;
             default:

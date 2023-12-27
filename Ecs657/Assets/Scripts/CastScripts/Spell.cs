@@ -7,16 +7,16 @@ using UnityEngine.UIElements;
 
 public class Spell : MonoBehaviour
 {
-    public ScriptableSpell spellType;
+    public NewScriptableSpell spellType;
     PlayerStats playerStats;
     GameObject player;
     GameObject camera;
     public Sprite icon;
-    public ScriptableSpell [] combination;
+    public NewScriptableSpell [] combination;
     public string spellName;
     private bool canDamage = true;
-    private int maxAmo;
-    private int amo;
+    private int maxAmmo;
+    private int ammo;
 
     //interval only functions for repeating effects (e.g. chip damage), so then total duration is duration*interval
     //for one-time effects, (e.g. slowdown), interval is useless so duration is the total time for the effect
@@ -26,62 +26,69 @@ public class Spell : MonoBehaviour
         camera =GameObject.FindGameObjectWithTag("MainCamera");
         player = GameObject.FindGameObjectWithTag("Player");
         playerStats = player.GetComponent<PlayerStats>();
-        combination = spellType.combinations;
-        icon = spellType.image;
+        combination = spellType.data.combinations;
+        icon = spellType.data.image;
         spellName = spellType.name;
-        maxAmo = spellType.amo;
-        amo = maxAmo;
+        maxAmmo = spellType.data.ammo;
+        ammo = maxAmmo;
+    }
+
+    public int GetMaxAmmo()
+    {
+        return maxAmmo; 
     }
 
     //resets the amonition to maximum
     public void Reload()
     {
-        amo = maxAmo;
+        ammo = maxAmmo;
     }
 
     //overrides the abstract cast method in spell for this specific spell's behaviour
     public int Cast()
     {
         float dmgMul = playerStats.dmgMul;
-        int dmg = Mathf.RoundToInt(spellType.damage*dmgMul);
-        amo --;
+        int dmg = Mathf.RoundToInt(spellType.data.damage*dmgMul);
+        ammo --;
         //for example, here Fire creates a new fireball from the prefab in fireProj, then adds forward force to it, and initialise its stats
         switch (spellType.spellClass)
         {
-            case ScriptableSpell.spellClasses.Projectile:
+            case NewScriptableSpell.spellClasses.Projectile:
                 Projectile();
                 break;
-            case ScriptableSpell.spellClasses.Particles:
+            case NewScriptableSpell.spellClasses.Particles:
                 Particles();
                 break;
-            case ScriptableSpell.spellClasses.Secret_Third_Option:
+            case NewScriptableSpell.spellClasses.Secret_Third_Option:
                 Debug.Log("test");
                 break;
             default:
                 break;
         }
-        return amo;
+        return ammo;
     }
 
     private void Projectile()
     {
+        NewScriptableSpell.ProjectileItem projData = (NewScriptableSpell.ProjectileItem) spellType.subdata;
         float dmgMul = playerStats.dmgMul;
-        int dmg = Mathf.RoundToInt(spellType.damage * dmgMul);
+        int dmg = Mathf.RoundToInt(spellType.data.damage * dmgMul);
         //for example, here Fire creates a new fireball from the prefab in fireProj, then adds forward force to it, and initialise its stats
-        GameObject currentprojectile = Instantiate(spellType.projectile, player.transform.position + player.transform.forward, Quaternion.identity).gameObject;
-        currentprojectile.GetComponent<Rigidbody>().AddForce(camera.transform.forward * spellType.projSpeed, ForceMode.Impulse);
-        currentprojectile.GetComponent<GenericProjectile>().setData(dmg, spellType.duration, spellType.interval);
+        GameObject currentprojectile = Instantiate(projData.projectile, player.transform.position + player.transform.forward, Quaternion.identity).gameObject;
+        currentprojectile.GetComponent<Rigidbody>().AddForce(camera.transform.forward * projData.projSpeed, ForceMode.Impulse);
+        currentprojectile.GetComponent<GenericProjectile>().setData(dmg, spellType.data.duration, spellType.data.interval);
     }
     private void Particles()
     {
-        StartCoroutine(StartFlamethrower(spellType.duration));
+        StartCoroutine(StartFlamethrower(spellType.data.duration));
     }
     IEnumerator StartFlamethrower(int time)
     {
+        NewScriptableSpell.ParticleItem partData = (NewScriptableSpell.ParticleItem) spellType.subdata;
         //note: currently set to turn off automatically, will later add a check to turn off when player lets go
-        spellType.particleSystem.Play();
+        partData.particles.Play();
         yield return new WaitForSeconds(time);
-        spellType.particleSystem.Stop();
+        partData.particles.Stop();
     }
 
 
@@ -89,7 +96,7 @@ public class Spell : MonoBehaviour
     {
         if (canDamage)
         {
-            int dmg = Mathf.RoundToInt(spellType.damage);
+            int dmg = Mathf.RoundToInt(spellType.data.damage);
             // Check if the collided object has an "Enemy" component
             Enemy enemy = other.GetComponent<Enemy>();
             if (enemy != null)
@@ -104,7 +111,7 @@ public class Spell : MonoBehaviour
     IEnumerator DamageCooldown()
     {
         canDamage = false;
-        yield return new WaitForSeconds(spellType.interval);
+        yield return new WaitForSeconds(spellType.data.interval);
         canDamage = true;
     }
 
@@ -116,7 +123,7 @@ public class Spell : MonoBehaviour
         {
             return null;
         }
-        List<ScriptableSpell> list = spells.Select(spell => spell.spellType).ToList();
+        List<NewScriptableSpell> list = spells.Select(spell => spell.spellType).ToList();
         if (combination.All(spell => list.Contains(spell)))
         {
             int[] indices = combination.Select(spell => list.IndexOf(spell)).ToArray();

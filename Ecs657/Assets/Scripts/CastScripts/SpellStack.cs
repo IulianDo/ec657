@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SpellStack : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class SpellStack : MonoBehaviour
             //otherwise, its added to the stack
             XspellStack.Add(spell);
             XstackSlots.Add(Instantiate(slotFab, grid.transform).gameObject);
-            XstackSlots[XstackSlots.Count - 1].GetComponent<SlotController>().SetSpellInit(spell);
+            XstackSlots[XstackSlots.Count - 1].GetComponent<SlotController>().SetSpellInit(spell,spell.GetMaxAmmo());
             Debug.Log(XspellStack[XspellStack.Count-1].spellName);
         }
         //check if any new combos are possible
@@ -87,29 +88,24 @@ public class SpellStack : MonoBehaviour
     //cast all spells in stack and removes them
     public void castStack()
     {
-        for (int i = 0; i < XspellStack.Count; i++)
+        try
         {
-            try
+            if (XspellStack.Count>0)
             {
-                if (XspellStack[0].spellName != null)
+                //checks to see if there is any ammunition left
+                if (XspellStack[0].Cast() <= 0)
                 {
-                    //cheaks to see if there is any amonition left
-                    if( XspellStack[0].Cast() <= 0)
-                    {
                         removeSpell(0);
-                    }
                 }
-                else
+                else //consumes ammo for slot
                 {
-                    break;
+                    XstackSlots[0].GetComponent<SlotController>().Cast();
                 }
             }
-            catch (System.Exception)
-            {
-                break;
-                throw;
-            }
-
+        }
+        catch (System.Exception)
+        {
+            throw;
         }
     }
 }

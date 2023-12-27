@@ -495,7 +495,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh30296
+  m_Name: pb_Mesh26806
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -6080,23 +6080,23 @@ PrefabInstance:
     - target: {fileID: 6896812002048515042, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
       propertyPath: 'scriptableSpellList.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: 72afcd3c54b672c40a3a738ec3353bde, type: 2}
+      objectReference: {fileID: 11400000, guid: 770a4ed557f4e9743aa2a64cb3497f43, type: 2}
     - target: {fileID: 6896812002048515042, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
       propertyPath: 'scriptableSpellList.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: d29b9d3ca92078b40aeee6af32ddfc4f, type: 2}
+      objectReference: {fileID: 11400000, guid: aded143d0bbdb6d4087281f0d55890c7, type: 2}
     - target: {fileID: 6896812002048515042, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
       propertyPath: 'scriptableSpellList.Array.data[2]'
       value: 
-      objectReference: {fileID: 11400000, guid: 914ca69e769706343acc6d9fc40d6616, type: 2}
+      objectReference: {fileID: 11400000, guid: 197681ec4d5359248926bb19396cbf31, type: 2}
     - target: {fileID: 6896812002048515042, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
       propertyPath: 'scriptableHotbarList.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: 72afcd3c54b672c40a3a738ec3353bde, type: 2}
+      objectReference: {fileID: 11400000, guid: 770a4ed557f4e9743aa2a64cb3497f43, type: 2}
     - target: {fileID: 6896812002048515042, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
       propertyPath: 'scriptableHotbarList.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: 914ca69e769706343acc6d9fc40d6616, type: 2}
+      objectReference: {fileID: 11400000, guid: aded143d0bbdb6d4087281f0d55890c7, type: 2}
     - target: {fileID: 7731616652672688884, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
       propertyPath: m_Name
       value: Player for eecs

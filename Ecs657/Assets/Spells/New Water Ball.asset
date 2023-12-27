@@ -10,24 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be17019af34760c44a61dec2d33574b8, type: 3}
-  m_Name: Water Ball New
+  m_Name: New Water Ball
   m_EditorClassIdentifier: 
   spellClass: 0
   data:
-    rid: 1570625023269404681
+    rid: 1570625496106663971
+  subdata:
+    rid: 1570625496106663973
   references:
     version: 2
     RefIds:
-    - rid: 1570625023269404681
-      type: {class: NewScriptableSpell/ProjectileItem, ns: , asm: Assembly-CSharp}
+    - rid: 1570625496106663971
+      type: {class: NewScriptableSpell/Item, ns: , asm: Assembly-CSharp}
       data:
         component: 
-        description: Shoots ball of water. Damages and slows enemy.
+        description: Shoots ball of water. Damages and slows enemy
         cooldown: 1
         damage: 9
         duration: 10
         interval: 1
+        ammo: 10
         image: {fileID: 21300000, guid: 6d71abcca205f5e4a80fd03a4205d7d0, type: 3}
         combinations: []
+    - rid: 1570625496106663973
+      type: {class: NewScriptableSpell/ProjectileItem, ns: , asm: Assembly-CSharp}
+      data:
         projectile: {fileID: 4853890428918941015, guid: 169922a0e0821334c8f6b558a602cc1f, type: 3}
         projSpeed: 500

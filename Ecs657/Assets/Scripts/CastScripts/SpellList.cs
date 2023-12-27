@@ -9,9 +9,9 @@ public class SpellList : MonoBehaviour
      * The SpellList object houses instances of the spells as components, and those are stored in this components to be retrieved by the other objects
      * It also means spells for the hotbar and for combinations are possible here
      */
-    public ScriptableSpell[] scriptableSpellList;
+    public NewScriptableSpell[] scriptableSpellList;
     public Spell[] spellList;
-    public ScriptableSpell[] scriptableHotbarList;
+    public NewScriptableSpell[] scriptableHotbarList;
     public Spell[] hotbarList;
     [SerializeField] HotBarController hotbar;
     [SerializeField] SpellStack spellStack;
@@ -29,10 +29,13 @@ public class SpellList : MonoBehaviour
             spellList[i] = gameObject.AddComponent<Spell>();
             spellList[i].spellType = scriptableSpellList[i];
             spellList[i].InitialiseSpell();
-            if (spellList[i].spellType == scriptableHotbarList[counter])
+            if (counter < scriptableHotbarList.Length)
             {
-                hotbarList[counter] = spellList[i];
-                counter ++;
+                if (spellList[i].spellType == scriptableHotbarList[counter])
+                {
+                    hotbarList[counter] = spellList[i];
+                    counter++;
+                }
             }
         }
         spellStack.WhenToStart();
