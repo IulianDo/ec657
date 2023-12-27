@@ -15,6 +15,8 @@ public class Spell : MonoBehaviour
     public ScriptableSpell [] combination;
     public string spellName;
     private bool canDamage = true;
+    private int maxAmo;
+    private int amo;
 
     //interval only functions for repeating effects (e.g. chip damage), so then total duration is duration*interval
     //for one-time effects, (e.g. slowdown), interval is useless so duration is the total time for the effect
@@ -27,14 +29,22 @@ public class Spell : MonoBehaviour
         combination = spellType.combinations;
         icon = spellType.image;
         spellName = spellType.name;
+        maxAmo = spellType.amo;
+        amo = maxAmo;
+    }
+
+    //resets the amonition to maximum
+    public void Reload()
+    {
+        amo = maxAmo;
     }
 
     //overrides the abstract cast method in spell for this specific spell's behaviour
-    public void Cast()
+    public int Cast()
     {
         float dmgMul = playerStats.dmgMul;
         int dmg = Mathf.RoundToInt(spellType.damage*dmgMul);
-
+        amo --;
         //for example, here Fire creates a new fireball from the prefab in fireProj, then adds forward force to it, and initialise its stats
         switch (spellType.spellClass)
         {
@@ -50,6 +60,7 @@ public class Spell : MonoBehaviour
             default:
                 break;
         }
+        return amo;
     }
 
     private void Projectile()

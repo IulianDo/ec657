@@ -28,6 +28,8 @@ public class SpellStack : MonoBehaviour
         //if spell is added twice, it'll cancel out
         if (!checkDuplicates(spell))
         {
+            //reloads the spell, making it have maximum amunition
+            spell.Reload();
             //otherwise, its added to the stack
             XspellStack.Add(spell);
             XstackSlots.Add(Instantiate(slotFab, grid.transform).gameObject);
@@ -91,8 +93,11 @@ public class SpellStack : MonoBehaviour
             {
                 if (XspellStack[0].spellName != null)
                 {
-                    XspellStack[0].Cast();
-                    removeSpell(0);
+                    //cheaks to see if there is any amonition left
+                    if( XspellStack[0].Cast() <= 0)
+                    {
+                        removeSpell(0);
+                    }
                 }
                 else
                 {

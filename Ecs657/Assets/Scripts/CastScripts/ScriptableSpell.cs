@@ -32,6 +32,7 @@ public class ScriptableSpell : ScriptableObject
     public int duration = 0;
 
     //how often the effect of a spell should apply
+    public int amo = 1; 
     public int interval = 0;
 
     //the image that represents the spell
