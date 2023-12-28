@@ -53,20 +53,20 @@ public class MainSpawner : MonoBehaviour
 	{
         yield return new WaitForSeconds(currentEnemy.whenToStartSpawning);
 
-        //change spawning settings depending if wave spawn is on or not
-        Vector3 position = transform.position;
-        float changedMinRadius = minRadius;
-        float changedMaxRadius = maxRadius;
-
-        if (currentEnemy.waveSpawn)
-        {
-            position = GetOffset(transform.position, minRadius, maxRadius);
-            changedMinRadius = waveMinRadius;
-            changedMaxRadius = waveMaxRadius;
-        }
-
         while (currentEnemy.canSpawn)
 		{
+            //change spawning settings depending if wave spawn is on or not
+            Vector3 position = transform.position;
+            float changedMinRadius = minRadius;
+            float changedMaxRadius = maxRadius;
+
+            if (currentEnemy.waveSpawn)
+            {
+                position = GetOffset(transform.position, minRadius, maxRadius);
+                changedMinRadius = waveMinRadius;
+                changedMaxRadius = waveMaxRadius;
+            }
+
             for (int i = 0; i < currentEnemy.numberPerSpawn; i++)
             {
                 Vector3 offset = GetOffset(position, changedMinRadius, changedMaxRadius);

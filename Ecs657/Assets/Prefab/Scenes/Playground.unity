@@ -6189,7 +6189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityList:
-  - enemyPrefab: {fileID: 0}
+  - enemyPrefab: {fileID: 7488566857388697443, guid: aca80fe3a9288d14fbdefdf03828a4e1, type: 3}
     numberPerSpawn: 1
     timeBetweenSpawns: 5
     whenToStartSpawning: 4
@@ -6202,18 +6202,10 @@ MonoBehaviour:
     timeBetweenSpawns: 60
     whenToStartSpawning: 59
     whenToStopSpawning: 10000
-    offset: {x: 0, y: 0, z: 0}
+    offset: {x: 0, y: 0.5, z: 0}
     canSpawn: 1
     waveSpawn: 0
-  - enemyPrefab: {fileID: 4843699212583041674, guid: e1d6b8a764c37b84cbd633cb0ffdf333, type: 3}
-    numberPerSpawn: 100
-    timeBetweenSpawns: 5
-    whenToStartSpawning: 4
-    whenToStopSpawning: 10000
-    offset: {x: 0, y: 0, z: 0}
-    canSpawn: 1
-    waveSpawn: 1
-  maxRadius: 50.2
+  maxRadius: 50
   minRadius: 40
   offsetY: -25
   waveMinRadius: 0
