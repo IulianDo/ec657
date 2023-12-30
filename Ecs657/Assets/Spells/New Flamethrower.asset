@@ -16,7 +16,7 @@ MonoBehaviour:
   data:
     rid: 1570625496106663980
   subdata:
-    rid: 1570625496106663981
+    rid: 1570625569891287048
   references:
     version: 2
     RefIds:
@@ -25,18 +25,18 @@ MonoBehaviour:
       data:
         component: 
         description: Shoots jet of flame. Continuously burns enemy.
-        cooldown: 1
+        cooldown: 5
         damage: 10
         duration: 4
-        interval: 1
+        interval: 5
         ammo: 2
         image: {fileID: 21300000, guid: 1011f580bff3d994bad1a557782ece52, type: 3}
         combinations:
         - {fileID: 11400000, guid: 197681ec4d5359248926bb19396cbf31, type: 2}
         - {fileID: 11400000, guid: 770a4ed557f4e9743aa2a64cb3497f43, type: 2}
-    - rid: 1570625496106663981
+    - rid: 1570625569891287048
       type: {class: NewScriptableSpell/ParticleItem, ns: , asm: Assembly-CSharp}
       data:
-        particles: {fileID: 0}
-        dmgInterval: 0
+        gameObj: {fileID: 2492024331035563818, guid: aaaa001154003544db599c83e3904f27, type: 3}
+        dmgInterval: 0.2
         canDamage: 1

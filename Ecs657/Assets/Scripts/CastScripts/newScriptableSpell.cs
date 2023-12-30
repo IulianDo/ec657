@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static ScriptableSpell;
 
@@ -46,7 +47,7 @@ public class NewScriptableSpell : ScriptableObject
 
     public class ParticleItem : SubItem
     {
-        [SerializeField] public ParticleSystem particles;
+        [SerializeField] public Transform gameObj;
         [SerializeField] public float dmgInterval;
         [SerializeField] public bool canDamage = true;
         public ParticleItem() { }

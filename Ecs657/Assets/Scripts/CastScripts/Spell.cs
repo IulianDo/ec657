@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -80,39 +81,15 @@ public class Spell : MonoBehaviour
     }
     private void Particles()
     {
-        StartCoroutine(StartFlamethrower(spellType.data.duration));
-    }
-    IEnumerator StartFlamethrower(int time)
-    {
         NewScriptableSpell.ParticleItem partData = (NewScriptableSpell.ParticleItem) spellType.subdata;
-        //note: currently set to turn off automatically, will later add a check to turn off when player lets go
-        partData.particles.Play();
-        yield return new WaitForSeconds(time);
-        partData.particles.Stop();
-    }
-
-
-    void OnParticleCollision(GameObject other)
-    {
-        if (canDamage)
-        {
-            int dmg = Mathf.RoundToInt(spellType.data.damage);
-            // Check if the collided object has an "Enemy" component
-            Enemy enemy = other.GetComponent<Enemy>();
-            if (enemy != null)
-            {
-                // Apply damage to the enemy
-                enemy.TakeDamage(dmg);
-                // Start the damage cooldown coroutine
-                StartCoroutine(DamageCooldown());
-            }
-        }
-    }
-    IEnumerator DamageCooldown()
-    {
-        canDamage = false;
-        yield return new WaitForSeconds(spellType.data.interval);
-        canDamage = true;
+        GameObject flameObj = Instantiate(partData.gameObj, camera.transform).gameObject;
+        flameObj.transform.localPosition = new Vector3(0.1f,-0.3f,0f);
+        FlamethrowerController particles = flameObj.GetComponent<FlamethrowerController>();
+        int time = spellType.data.duration;
+        int dmg = Mathf.RoundToInt(spellType.data.damage);
+        int intv = spellType.data.interval;
+        particles.init(dmg, time,intv);
+        StartCoroutine(particles.StartFlamethrower());
     }
 
     //check combination checks if the spell stack contains every element of combination

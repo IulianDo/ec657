@@ -3,16 +3,32 @@ using System.Collections;
 
 public class FlamethrowerController : MonoBehaviour
 {
-    public ParticleSystem flameParticles;
-    public int damage = 4;
-    public float damageInterval = 0.2f; // The time interval for damage in seconds
+    private ParticleSystem flameParticles;
+    private int damage = 4;
+    private float damageInterval = 0.2f; // The time interval for damage in seconds
+    private int time;
 
     private bool canDamage = true;
 
-    void Update()
+    void Start()
     {
-        flameParticles.Stop();
+    }
 
+    public void init(int dmg, int time, int intv)
+    {
+        damage = dmg;
+        this.time = time;
+        damageInterval = intv;
+        flameParticles = GetComponent<ParticleSystem>();
+        flameParticles.Stop();
+    }
+
+    public IEnumerator StartFlamethrower()
+    {
+        //note: currently set to turn off automatically, will later add a check to turn off when player lets go
+        flameParticles.Play();
+        yield return new WaitForSeconds(time);
+        flameParticles.Stop();
     }
 
     private void OnParticleCollision(GameObject other)
