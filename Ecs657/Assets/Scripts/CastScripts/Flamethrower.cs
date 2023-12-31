@@ -14,15 +14,6 @@ public class FlamethrowerController : MonoBehaviour
     {
     }
 
-    public void init(int dmg, int time, int intv)
-    {
-        damage = dmg;
-        this.time = time;
-        damageInterval = intv;
-        flameParticles = GetComponent<ParticleSystem>();
-        flameParticles.Stop();
-    }
-
     public IEnumerator StartFlamethrower()
     {
         //note: currently set to turn off automatically, will later add a check to turn off when player lets go

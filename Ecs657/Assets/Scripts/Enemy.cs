@@ -42,6 +42,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject EXP;
     //_________________________________________________________//
     [SerializeField] private string nextLevel;
+    //_________________________________________________________//
+    //Status Effects
+    public enum status {Normal,Stunned};
+    private status effect = status.Normal;
 
     void Awake()
 {
@@ -53,6 +57,17 @@ public class Enemy : MonoBehaviour
 // Update is called once per frame
 void Update()
 {
+    // Checking status effects for behaviour changes
+    switch (effect)
+    {
+        case status.Normal:
+            break;
+        case status.Stunned:
+            return;
+        default:
+            break;
+
+    }
     // Checks to see if the object can see or attack the player
     canSeePlayer = Physics.CheckSphere(transform.position, sightRange, playerLayer);
     canAttackPlayer = Physics.CheckSphere(transform.position, attackRange, playerLayer);
@@ -201,6 +216,11 @@ private void SetStats()
     DamageIncrementer = (int)Mathf.Clamp(DamageIncrementer, 0f, 5f);
     damage = baseDamage + DamageIncrementer;
 }
+//For status effects
+public void SetEffect(status effect)
+{
+    this.effect = effect;
+}
 //for debugging
 void OnDrawGizmosSelected()
 {
@@ -212,5 +232,5 @@ void OnDrawGizmosSelected()
     Gizmos.DrawWireSphere(transform.position, attackRange);
 }
     #endregion
-    //--------------------------------------------------------//
+//--------------------------------------------------------//
 }

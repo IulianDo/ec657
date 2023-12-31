@@ -7,7 +7,7 @@ using static ScriptableSpell;
 [CreateAssetMenu(fileName = "New Test Spell", menuName = "Test Spell")]
 public class NewScriptableSpell : ScriptableObject
 {
-    [System.Serializable] public enum spellClasses { Projectile, Particles, Secret_Third_Option };
+    [System.Serializable] public enum spellClasses { Projectile, Particles, AoE, Self, Secret_Third_Option };
     public spellClasses spellClass;
     [SerializeReference] public Item data = new Item();
     [SerializeReference] public SubItem subdata = null;
@@ -21,7 +21,7 @@ public class NewScriptableSpell : ScriptableObject
         [SerializeField] public float cooldown = 0;
         [SerializeField] public int damage;
         [SerializeField] public int duration = 0;
-        [SerializeField] public int interval = 0;
+        [SerializeField] public float interval = 0;
         [SerializeField] public int ammo = 0;
         [SerializeField] public Sprite image;
         [SerializeField] public NewScriptableSpell[] combinations = new NewScriptableSpell[0];
@@ -53,6 +53,16 @@ public class NewScriptableSpell : ScriptableObject
         public ParticleItem() { }
     }
 
+    public class AOEItem : SubItem
+    {
+        [SerializeField] public float radius;
+        [SerializeField] public Transform fieldObj;
+    }
+
+    public class SelfItem : SubItem
+    {
+        [SerializeField] public Transform selfObj;
+    }
     #endregion
 
 
@@ -70,6 +80,18 @@ public class NewScriptableSpell : ScriptableObject
                 if (subdata == null || subdata.GetType() != typeof(ParticleItem))
                 {
                     subdata = new ParticleItem();
+                }
+                break;
+            case spellClasses.AoE:
+                if (subdata == null || subdata.GetType() != typeof(ParticleItem))
+                {
+                    subdata = new AOEItem();
+                }
+                break;
+            case spellClasses.Self:
+                if (subdata == null || subdata.GetType() != typeof(ParticleItem))
+                {
+                    subdata = new SelfItem();
                 }
                 break;
             default:

@@ -6,12 +6,12 @@ public abstract class GenericProjectile : MonoBehaviour
 {
     private int damage;
     protected int duration;
-    protected int interval;
+    protected float interval;
     protected Enemy enemy;
     protected GameObject enemyObj;
     protected bool hit=false;
 
-    public void setData(int damage, int duration, int interval)
+    public void setData(int damage, int duration, float interval)
     {
         this.damage = damage;
         this.duration = duration;

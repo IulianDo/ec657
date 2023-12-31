@@ -28,7 +28,7 @@ MonoBehaviour:
         cooldown: 5
         damage: 10
         duration: 4
-        interval: 5
+        interval: 2
         ammo: 2
         image: {fileID: 21300000, guid: 1011f580bff3d994bad1a557782ece52, type: 3}
         combinations:

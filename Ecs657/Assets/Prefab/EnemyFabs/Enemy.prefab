@@ -165,9 +165,9 @@ MonoBehaviour:
   baseMaxHp: 20
   isDead: 0
   isBoss: 0
-  menus: {fileID: 0}
   xpValue: 10
   EXP: {fileID: 6017612084703524904, guid: 7b624846e73c0fb44ba5d561e5d49897, type: 3}
+  nextLevel: 
 --- !u!1 &8144816204290158243
 GameObject:
   m_ObjectHideFlags: 0
