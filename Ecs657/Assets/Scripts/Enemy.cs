@@ -165,8 +165,8 @@ public void AddForce(Vector3 direction, int force)
 //reduce current hp by x
 public void TakeDamage(int amount)
 {
-    healthbar.setHealth(currentHP);
     currentHP -= amount;
+    healthbar.setHealth(currentHP);
     DamagePopupGenerator.current.CreatePopUp(transform.position, amount.ToString());
     if (currentHP <= 0 && !isDead)
     {

@@ -5,17 +5,20 @@ using UnityEngine.InputSystem;
 public abstract class GenericProjectile : MonoBehaviour
 {
     private int damage;
-    protected int duration;
+    protected float duration;
     protected float interval;
+    protected float dmgMul;
     protected Enemy enemy;
     protected GameObject enemyObj;
     protected bool hit=false;
+    protected bool effectEnd=false;
 
-    public void setData(int damage, int duration, float interval)
+    public void setData(int damage, int duration, float interval, float dmgMul)
     {
         this.damage = damage;
         this.duration = duration;
         this.interval = interval;
+        this.dmgMul = dmgMul;
         Invoke("cleanup", 5);
     }
 
@@ -47,7 +50,7 @@ public abstract class GenericProjectile : MonoBehaviour
     // Allows for damage over time
     void Update()
     {
-        if ((duration <= 0 || enemyObj == null) && hit)
+        if ((effectEnd || enemyObj == null) && hit)
         {
             StopCoroutine(projEffect());
             Destroy(gameObject);

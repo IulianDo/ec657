@@ -62,6 +62,7 @@ public class NewScriptableSpell : ScriptableObject
     public class SelfItem : SubItem
     {
         [SerializeField] public Transform selfObj;
+        [SerializeField] public SelfEffects effects;
     }
     #endregion
 

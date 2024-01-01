@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private PlayerInput playerControls;
     private PlayerInput.PlayerActions actions;
     [SerializeField] private CharacterController characterController;
-    [SerializeField] private float speed = 12f;
+    [SerializeField] public float speed = 12f;
     [SerializeField] private float gravity = -9.8f;
     [SerializeField] private float jumpHeigth = 2f;
     [SerializeField] private Transform groundCheck;

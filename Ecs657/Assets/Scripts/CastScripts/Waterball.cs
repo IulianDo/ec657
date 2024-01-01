@@ -10,10 +10,11 @@ public class Waterball : GenericProjectile
     // Slows down enemies affected by projectile
     protected override IEnumerator projEffect()
     {
-        enemyObj.GetComponent<NavMeshAgent>().speed /= 2;
+        //enemyObj.GetComponent<NavMeshAgent>().speed /= 2;
         yield return new WaitForSeconds(duration);
-        enemyObj.GetComponent<NavMeshAgent>().speed *= 2;
-        duration = 0;
+        effectEnd = true;
+        //enemyObj.GetComponent<NavMeshAgent>().speed *= 2;
+        //duration = 0;
     }
     
 }

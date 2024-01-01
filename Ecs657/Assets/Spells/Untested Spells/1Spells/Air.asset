@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be17019af34760c44a61dec2d33574b8, type: 3}
+  m_Name: Air
+  m_EditorClassIdentifier: 
+  spellClass: 0
+  data:
+    rid: 1570625590882467847
+  subdata:
+    rid: 1570625590882467855
+  references:
+    version: 2
+    RefIds:
+    - rid: 1570625590882467847
+      type: {class: NewScriptableSpell/Item, ns: , asm: Assembly-CSharp}
+      data:
+        component: 
+        description: Shoot balls of air. Weak but fast.
+        cooldown: 0.5
+        damage: 5
+        duration: 1
+        interval: 1
+        ammo: 20
+        image: {fileID: 21300000, guid: 6fc214d6a5c8b2a46a171cb427d8f0b4, type: 3}
+        combinations: []
+    - rid: 1570625590882467855
+      type: {class: NewScriptableSpell/ProjectileItem, ns: , asm: Assembly-CSharp}
+      data:
+        projectile: {fileID: 4070215075384607444, guid: f58ed4bbeb59cd7418fe59cb15f069c3, type: 3}
+        projSpeed: 1000

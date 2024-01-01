@@ -29,7 +29,7 @@ public class tempSpell : MonoBehaviour
         //for example, here Fire creates a new fireball from the prefab in fireProj, then adds forward force to it, and initialise its stats
         GameObject currentprojectile = Instantiate(spellType.projectile, player.transform.position + player.transform.forward, Quaternion.identity).gameObject;
         currentprojectile.GetComponent<Rigidbody>().AddForce(player.transform.forward * spellType.projSpeed, ForceMode.Impulse);
-        currentprojectile.GetComponent<Fireball>().setData(dmg,spellType.duration,spellType.interval);
+        currentprojectile.GetComponent<Fireball>().setData(dmg,spellType.duration,spellType.interval,playerStats.dmgMul);
     }
 
     //check combination just gets the spell stack, compares it to it's combination recipe,

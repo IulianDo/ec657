@@ -172,6 +172,17 @@
                     "action": "Hotbar",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7d602ebf-031c-4c92-92fd-e1cef062c68f",
+                    "path": "<Keyboard>/4",
+                    "interactions": "Press",
+                    "processors": "Scale(factor=4)",
+                    "groups": "",
+                    "action": "Hotbar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

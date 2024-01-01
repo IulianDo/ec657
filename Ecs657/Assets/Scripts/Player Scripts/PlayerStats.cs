@@ -15,6 +15,7 @@ public class PlayerStats : MonoBehaviour
 
     #region playerMultipliers
     public float dmgMul=1;
+    public float defMul=1;
     #endregion
 
     //_______________________________________________________//
@@ -42,7 +43,7 @@ public class PlayerStats : MonoBehaviour
 	// Allows the player to take damage as an int
 	public void TakeDamage(int amount)
     {
-        hitPoints -= amount;
+        hitPoints -= Mathf.RoundToInt((float)amount*defMul);
         healthbar.setHealth(hitPoints);
         if (hitPoints <= 0)
         {

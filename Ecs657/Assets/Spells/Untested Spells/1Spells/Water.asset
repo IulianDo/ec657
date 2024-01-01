@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be17019af34760c44a61dec2d33574b8, type: 3}
+  m_Name: Water
+  m_EditorClassIdentifier: 
+  spellClass: 0
+  data:
+    rid: 1570625590882467849
+  subdata:
+    rid: 1570625590882467853
+  references:
+    version: 2
+    RefIds:
+    - rid: 1570625590882467849
+      type: {class: NewScriptableSpell/Item, ns: , asm: Assembly-CSharp}
+      data:
+        component: 
+        description: Shoot balls of water. Wets enemies.
+        cooldown: 0.8
+        damage: 10
+        duration: 1
+        interval: 1
+        ammo: 10
+        image: {fileID: 21300000, guid: 6d71abcca205f5e4a80fd03a4205d7d0, type: 3}
+        combinations: []
+    - rid: 1570625590882467853
+      type: {class: NewScriptableSpell/ProjectileItem, ns: , asm: Assembly-CSharp}
+      data:
+        projectile: {fileID: 4853890428918941015, guid: 169922a0e0821334c8f6b558a602cc1f, type: 3}
+        projSpeed: 500

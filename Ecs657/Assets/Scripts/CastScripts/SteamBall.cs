@@ -11,5 +11,6 @@ public class SteamBall : GenericProjectile
         enemy.AddForce(transform.forward, 100);
         yield return new WaitForSeconds(duration);
         enemy.SetEffect(Enemy.status.Normal);
+        effectEnd = true;
     }
 }
