@@ -8,6 +8,7 @@ public class SteamBall : GenericProjectile
     protected override IEnumerator projEffect()
     {
         enemy.SetEffect(Enemy.status.Stunned);
+        enemy.AddForce(transform.forward, 100);
         yield return new WaitForSeconds(duration);
         enemy.SetEffect(Enemy.status.Normal);
     }

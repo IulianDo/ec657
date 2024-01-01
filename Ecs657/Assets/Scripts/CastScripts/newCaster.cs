@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Analytics;
+using UnityEngine.Rendering;
 
 public class newCaster : MonoBehaviour
 {
@@ -27,6 +30,12 @@ public class newCaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //checks if the game is paused
+        if (Time.timeScale == 0)
+        {
+            return;
+        }
+
         //firing code
         if (actions.Shoot.IsPressed()) {
             if (Time.time - lastShot > cooldown)

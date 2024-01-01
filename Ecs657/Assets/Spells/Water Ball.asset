@@ -21,6 +21,7 @@ MonoBehaviour:
   cooldown: 1
   damage: 9
   duration: 10
+  amo: 10
   interval: 1
   image: {fileID: 21300000, guid: 6d71abcca205f5e4a80fd03a4205d7d0, type: 3}
   combinations: []

@@ -95,7 +95,7 @@ public class SpellStack : MonoBehaviour
                 //checks to see if there is any ammunition left
                 if (XspellStack[0].Cast() <= 0)
                 {
-                        removeSpell(0);
+                    removeSpell(0);
                 }
                 else //consumes ammo for slot
                 {

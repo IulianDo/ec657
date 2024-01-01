@@ -151,6 +151,15 @@ private void SetWalkingPoint()
     }
 }
 #endregion
+
+public void AddForce(Vector3 direction, int force)
+{
+    direction = direction.normalized;
+    this.transform.position = this.transform.position + direction * force * Time.deltaTime;
+    isWalkPointSet = false;
+    enemy.SetDestination(this.transform.position);
+}
+
 //--------------------------------------------------------//
 #region takeDamage code
 //reduce current hp by x
