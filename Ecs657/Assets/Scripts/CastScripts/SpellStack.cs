@@ -86,12 +86,13 @@ public class SpellStack : MonoBehaviour
         XspellStack.Remove(spell);
     }
     //cast all spells in stack and removes them
-    public void castStack()
+    public float castStack()
     {
         try
         {
             if (XspellStack.Count>0)
             {
+                float cooldown = XspellStack[0].spellType.data.cooldown;
                 //checks to see if there is any ammunition left
                 if (XspellStack[0].Cast() <= 0)
                 {
@@ -101,7 +102,9 @@ public class SpellStack : MonoBehaviour
                 {
                     XstackSlots[0].GetComponent<SlotController>().Cast();
                 }
+                return cooldown;
             }
+            return 0f;
         }
         catch (System.Exception)
         {
