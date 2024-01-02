@@ -89,6 +89,7 @@ public class Spell : MonoBehaviour
         GameObject flameObj = Instantiate(partData.gameObj, camera.transform).gameObject;
         flameObj.transform.localPosition = new Vector3(0.1f,-0.3f,0f);
         FlamethrowerController particles = flameObj.GetComponent<FlamethrowerController>();
+        particles.init(spellType.data.duration,partData.dmgInterval);
         StartCoroutine(particles.StartFlamethrower()); 
     }
 
