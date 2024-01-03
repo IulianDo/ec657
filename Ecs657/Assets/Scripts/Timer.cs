@@ -6,6 +6,7 @@ public class Timer : MonoBehaviour
 {
 
     public float timeValue;
+    public float totalTimePassed;
     [SerializeField] TextMeshProUGUI label;
 
     // Start is called before the first frame update
@@ -17,8 +18,9 @@ public class Timer : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-        if(timeValue < 0)
-		{
+        totalTimePassed += Time.deltaTime;
+        if (timeValue < 0)
+		{   
             return;
 		}
         timeValue -= Time.deltaTime;

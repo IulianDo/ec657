@@ -44,202 +44,198 @@ public class Enemy : MonoBehaviour
     [SerializeField] private string nextLevel;
     //_________________________________________________________//
     //Status Effects
-    public enum status {Normal,Stunned};
+    public enum status {Normal, Stunned};
     private status effect = status.Normal;
+    //_________________________________________________________//
 
     void Awake()
-{
-    player = GameObject.FindGameObjectWithTag("Player").transform;
-    timer = GameObject.Find("Timer").GetComponent<Timer>();
-    isDead = false;
-    SetStats();
-}
-// Update is called once per frame
-void Update()
-{
-    // Checking status effects for behaviour changes
-    switch (effect)
     {
-        case status.Normal:
-            break;
-        case status.Stunned:
-            return;
-        default:
-            break;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        timer = GameObject.Find("Timer").GetComponent<Timer>();
+        isDead = false;
+
+        maxHP = (int)(baseMaxHp * SetStat(15f, 0.1f, 0f, 2f));
+        currentHP = maxHP;
+        healthbar.setMaxHealth(maxHP);
+
+        projSpeed = (int)(baseProjSpeed * SetStat(60f, 0.1f, 0f, 0.3f));
+        damage = (int)(baseDamage * SetStat(30f, 1f, 0f, 5f));
 
     }
-    // Checks to see if the object can see or attack the player
-    canSeePlayer = Physics.CheckSphere(transform.position, sightRange, playerLayer);
-    canAttackPlayer = Physics.CheckSphere(transform.position, attackRange, playerLayer);
-    if (canSeePlayer)
+
+    // Update is called once per frame
+    void Update()
     {
-        if (canAttackPlayer)
+        // Checking status effects for behaviour changes
+        switch (effect)
         {
-            AttackPlayer();
+            case status.Normal:
+                break;
+            case status.Stunned:
+                return;
+            default:
+                break;
+        }
+
+        // Checks to see if the object can see or attack the player
+        canSeePlayer = Physics.CheckSphere(transform.position, sightRange, playerLayer);
+        canAttackPlayer = Physics.CheckSphere(transform.position, attackRange, playerLayer);
+        if (canSeePlayer)
+        {
+            if (canAttackPlayer)
+            {
+                AttackPlayer();
+            }
+            else
+            {
+                ChasePlayer();
+            }
         }
         else
         {
-            ChasePlayer();
+            Wonder();
         }
     }
-    else
+    //--------------------------------------------------------//
+    #region attacking code
+    //fire projectile towards player
+    private void AttackPlayer()
     {
-        Wonder();
-    }
-}
-//--------------------------------------------------------//
-#region attacking code
-//fire projectile towards player
-private void AttackPlayer()
-{
-    enemy.SetDestination(transform.position);
-    transform.LookAt(player.position);
-    if (!hasAttacked)
-    {
-        Attack();
-        hasAttacked = true;
-        Invoke(nameof(ResetAttack), attackTiming);
-    }
-}
-private void ResetAttack()
-{
-    hasAttacked = false;
-}
-// Creates a projectile to send towards the player
-private void Attack()
-{
-    GameObject currentprojectile = Instantiate(projectile, transform.position + transform.forward, Quaternion.identity);
-    currentprojectile.GetComponent<Rigidbody>().AddForce(transform.forward * projSpeed, ForceMode.Impulse);
-    currentprojectile.GetComponent<Projectile>().SetDamage(damage);
-}
-#endregion
-//--------------------------------------------------------//
-#region movement code
-//go towards player
-private void ChasePlayer()
-{
-    enemy.SetDestination(player.position);
-}
-// Controls enemy movement by setting and guiding them to walk points.
-private void Wonder()
-{
-    if (isWalkPointSet)
-    {
-        enemy.SetDestination(walkPoint);
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
-        if (distanceToWalkPoint.magnitude < 1f)
+        enemy.SetDestination(transform.position);
+        transform.LookAt(player.position);
+        if (!hasAttacked)
         {
-            isWalkPointSet = false;
+            Attack();
+            hasAttacked = true;
+            Invoke(nameof(ResetAttack), attackTiming);
         }
     }
-    else
+    private void ResetAttack()
     {
-        Invoke(nameof(SetWalkingPoint), Random.Range(0f, waitAtPoint));
+        hasAttacked = false;
     }
-}
-// Sets location to head to
-private void SetWalkingPoint()
-{
-    float randomZ = Random.Range(-walkRange, walkRange);
-    float randomX = Random.Range(-walkRange, walkRange);
-    walkPoint = new Vector3(transform.position.x + randomX,
-                            transform.position.y,
-                            transform.position.z + randomZ);
-    if (Physics.Raycast(walkPoint, -transform.up, 2f, groundLayer))
+    // Creates a projectile to send towards the player
+    private void Attack()
     {
-        isWalkPointSet = true;
+        GameObject currentprojectile = Instantiate(projectile, transform.position + transform.forward, Quaternion.identity);
+        currentprojectile.GetComponent<Rigidbody>().AddForce(transform.forward * projSpeed, ForceMode.Impulse);
+        currentprojectile.GetComponent<Projectile>().SetDamage(damage);
     }
-}
-#endregion
+    #endregion
+    //--------------------------------------------------------//
+    #region movement code
+    //go towards player
+    private void ChasePlayer()
+    {
+        enemy.SetDestination(player.position);
+    }
+    // Controls enemy movement by setting and guiding them to walk points.
+    private void Wonder()
+    {
+        if (isWalkPointSet)
+        {
+            enemy.SetDestination(walkPoint);
+            Vector3 distanceToWalkPoint = transform.position - walkPoint;
+            if (distanceToWalkPoint.magnitude < 1f)
+            {
+                isWalkPointSet = false;
+            }
+        }
+        else
+        {
+            Invoke(nameof(SetWalkingPoint), Random.Range(0f, waitAtPoint));
+        }
+    }
+    // Sets location to head to
+    private void SetWalkingPoint()
+    {
+        float randomZ = Random.Range(-walkRange, walkRange);
+        float randomX = Random.Range(-walkRange, walkRange);
+        walkPoint = new Vector3(transform.position.x + randomX,
+                                transform.position.y,
+                                transform.position.z + randomZ);
+        if (Physics.Raycast(walkPoint, -transform.up, 2f, groundLayer))
+        {
+            isWalkPointSet = true;
+        }
+    }
+    #endregion
+    //--------------------------------------------------------//
+    #region takeDamage code
+    //reduce current hp by x
+    public void TakeDamage(int amount)
+    {
+        healthbar.setHealth(currentHP);
+        currentHP -= amount;
+        DamagePopupGenerator.current.CreatePopUp(transform.position, amount.ToString());
+        if (currentHP <= 0 && !isDead)
+        {
+            isDead = true;
+            Die();
+        }
+    }
+    //functions needed when dying
+    private void Die()
+    {
+        DropXP(xpValue);
+        Destroy(gameObject);
+        Debug.Log("This is a simple log message.");
+        SceneManager.LoadScene(nextLevel);
+    }
+    //Drops x number of orbs which gives you xpValue worth of xp in total
+    //orbs drop randomly when enemy dies within a certain range
+    private void DropXP(float value)
+    {
+        int numberOfXP = Random.Range(1, 5);
+        for (int i = 0; i < numberOfXP; i++)
+        {
+            float randomRangeX = Random.Range(0.5f, -0.5f);
+            float randomRangeY = Random.Range(0.5f, -0.5f);
+            float randomRangeZ = Random.Range(0.5f, -0.5f);
+            RaycastHit hit;
+            Physics.Raycast(transform.position, Vector3.down, out hit, 10f, groundLayer);
+            Vector3 randomPosition = new Vector3(transform.position.x + randomRangeX,
+                                                 transform.position.y - hit.distance + 1f + randomRangeY, // makes sure players can grab xp from tall enemies
+                                                 transform.position.z + randomRangeZ);
+            GameObject XPDrop = Instantiate(EXP, randomPosition, Quaternion.identity);
+            XPDrop.GetComponent<ExperienceController>().SetXp(value / numberOfXP);
+		}
+	}
+	#endregion
+	//--------------------------------------------------------//
+	#region StatusEffects
+	public void SetEffect(status effect)
+	{
+		this.effect = effect;
+	}
+	#endregion
+	//--------------------------------------------------------//
+	#region misc code
 
-public void AddForce(Vector3 direction, int force)
-{
-    direction = direction.normalized;
-    this.transform.position = this.transform.position + direction * force * Time.deltaTime;
-    isWalkPointSet = false;
-    enemy.SetDestination(this.transform.position);
-}
+	private float SetStat(float increaseEvery, float changeBy, float min, float max)
+	{
+		float multiplier = Mathf.FloorToInt(timer.totalTimePassed / increaseEvery);
+		float percentageIncrease = Mathf.Clamp(multiplier * changeBy, min, max);
+		return 1 + percentageIncrease;
+	}
+    public void AddForce(Vector3 direction, int force)
+    {
+        direction = direction.normalized;
+        this.transform.position = this.transform.position + direction * force * Time.deltaTime;
+        isWalkPointSet = false;
+        enemy.SetDestination(this.transform.position);
+    }
 
-//--------------------------------------------------------//
-#region takeDamage code
-//reduce current hp by x
-public void TakeDamage(int amount)
-{
-    currentHP -= amount;
-    healthbar.setHealth(currentHP);
-    DamagePopupGenerator.current.CreatePopUp(transform.position, amount.ToString());
-    if (currentHP <= 0 && !isDead)
+    //for debugging
+    void OnDrawGizmosSelected()
     {
-        isDead = true;
-        Die();
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, walkRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, sightRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
-}
-//functions needed when dying
-private void Die()
-{
-    DropXP(xpValue);
-    Destroy(gameObject);
-    Debug.Log("This is a simple log message.");
-    SceneManager.LoadScene(nextLevel);
-    }
-//Drops x number of orbs which gives you xpValue worth of xp in total
-//orbs drop randomly when enemy dies within a certain range
-private void DropXP(float value)
-{
-    int numberOfXP = Random.Range(1, 5);
-    for (int i = 0; i < numberOfXP; i++)
-    {
-        float randomRangeX = Random.Range(0.5f, -0.5f);
-        float randomRangeY = Random.Range(0.5f, -0.5f);
-        float randomRangeZ = Random.Range(0.5f, -0.5f);
-        RaycastHit hit;
-        Physics.Raycast(transform.position, Vector3.down, out hit, 10f, groundLayer);
-        Vector3 randomPosition = new Vector3(transform.position.x + randomRangeX,
-                                             transform.position.y - hit.distance + 1f + randomRangeY, // makes sure players can grab xp from tall enemies
-                                             transform.position.z + randomRangeZ);
-        GameObject XPDrop = Instantiate(EXP, randomPosition, Quaternion.identity);
-        XPDrop.GetComponent<ExperienceController>().SetXp(value / numberOfXP);
-    }
-}
-#endregion
-//--------------------------------------------------------//
-#region misc code
-//For ramping the difficulty of the enemy over time
-private void SetStats()
-{
-    float currentTime = timer.timeValue;
-    //increase hp every 15 seconds by 10% up to 200% original hp, linear
-    float HPIncrementer = Mathf.FloorToInt(currentTime / 15);
-    HPIncrementer = HPIncrementer / 10;
-    float HPMultiplier = Mathf.Clamp(HPIncrementer, 0f, 2f);
-    maxHP = baseMaxHp + Mathf.CeilToInt(baseMaxHp * HPMultiplier);
-    currentHP = maxHP;
-    healthbar.setMaxHealth(maxHP);
-    //increase projectile speed ever 60 seconds by 10% up to 30% increase, linear
-    float projectileSpeedIncrementer = Mathf.FloorToInt(currentTime / 60);
-    projectileSpeedIncrementer = projectileSpeedIncrementer / 10;
-    float projectileSpeedMultiplier = Mathf.Clamp(projectileSpeedIncrementer, 0f, 0.3f);
-    projSpeed = baseProjSpeed + Mathf.CeilToInt(baseProjSpeed * projectileSpeedMultiplier);
-    //increase damage by 1 every 30 seconds up to 5, linear
-    int DamageIncrementer = Mathf.FloorToInt(currentTime / 30);
-    DamageIncrementer = (int)Mathf.Clamp(DamageIncrementer, 0f, 5f);
-    damage = baseDamage + DamageIncrementer;
-}
-//For status effects
-public void SetEffect(status effect)
-{
-    this.effect = effect;
-}
-//for debugging
-void OnDrawGizmosSelected()
-{
-    Gizmos.color = Color.green;
-    Gizmos.DrawWireSphere(transform.position, walkRange);
-    Gizmos.color = Color.yellow;
-    Gizmos.DrawWireSphere(transform.position, sightRange);
-    Gizmos.color = Color.red;
-    Gizmos.DrawWireSphere(transform.position, attackRange);
-}
     #endregion
 //--------------------------------------------------------//
 }
