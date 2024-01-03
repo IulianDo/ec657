@@ -49,6 +49,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Pop Spell",
+                    "type": "Button",
+                    "id": "7b051d71-1425-4628-9c24-5a084b4c5839",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Clear Queue",
+                    "type": "Button",
+                    "id": "4ddeeb04-9b55-4ad1-962b-7feb7d882e53",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -181,6 +199,28 @@
                     "processors": "Scale(factor=4)",
                     "groups": "",
                     "action": "Hotbar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d393ed67-bf83-4c58-818f-24d348dcee4c",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pop Spell",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "06679f0d-0d45-4f2a-8d38-22d40310318c",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Clear Queue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

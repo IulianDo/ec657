@@ -25,7 +25,7 @@ MonoBehaviour:
       data:
         component: 
         description: Shoot balls of fire. Burns enemies.
-        cooldown: 1
+        cooldown: 0.7
         damage: 7
         duration: 8
         interval: 1

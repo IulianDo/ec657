@@ -19,6 +19,9 @@ public class PlayerStats : MonoBehaviour
     public float hpMul = 1;
     public float dmgMul = 1;
     public float defMul = 1;
+    public float spdMul = 1;
+    public float pSpdMul = 1;
+    public float cdMul = 1;
     #endregion
     //_______________________________________________________//
     // XP variables

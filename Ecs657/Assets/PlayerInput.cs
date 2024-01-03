@@ -71,6 +71,24 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pop Spell"",
+                    ""type"": ""Button"",
+                    ""id"": ""7b051d71-1425-4628-9c24-5a084b4c5839"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Clear Queue"",
+                    ""type"": ""Button"",
+                    ""id"": ""4ddeeb04-9b55-4ad1-962b-7feb7d882e53"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -205,6 +223,28 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Hotbar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d393ed67-bf83-4c58-818f-24d348dcee4c"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pop Spell"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""06679f0d-0d45-4f2a-8d38-22d40310318c"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Clear Queue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -218,6 +258,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_Hotbar = m_Player.FindAction("Hotbar", throwIfNotFound: true);
+        m_Player_PopSpell = m_Player.FindAction("Pop Spell", throwIfNotFound: true);
+        m_Player_ClearQueue = m_Player.FindAction("Clear Queue", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -284,6 +326,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_Hotbar;
+    private readonly InputAction m_Player_PopSpell;
+    private readonly InputAction m_Player_ClearQueue;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -293,6 +337,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @Hotbar => m_Wrapper.m_Player_Hotbar;
+        public InputAction @PopSpell => m_Wrapper.m_Player_PopSpell;
+        public InputAction @ClearQueue => m_Wrapper.m_Player_ClearQueue;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -317,6 +363,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Hotbar.started += instance.OnHotbar;
             @Hotbar.performed += instance.OnHotbar;
             @Hotbar.canceled += instance.OnHotbar;
+            @PopSpell.started += instance.OnPopSpell;
+            @PopSpell.performed += instance.OnPopSpell;
+            @PopSpell.canceled += instance.OnPopSpell;
+            @ClearQueue.started += instance.OnClearQueue;
+            @ClearQueue.performed += instance.OnClearQueue;
+            @ClearQueue.canceled += instance.OnClearQueue;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -336,6 +388,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Hotbar.started -= instance.OnHotbar;
             @Hotbar.performed -= instance.OnHotbar;
             @Hotbar.canceled -= instance.OnHotbar;
+            @PopSpell.started -= instance.OnPopSpell;
+            @PopSpell.performed -= instance.OnPopSpell;
+            @PopSpell.canceled -= instance.OnPopSpell;
+            @ClearQueue.started -= instance.OnClearQueue;
+            @ClearQueue.performed -= instance.OnClearQueue;
+            @ClearQueue.canceled -= instance.OnClearQueue;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -360,5 +418,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnShoot(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnHotbar(InputAction.CallbackContext context);
+        void OnPopSpell(InputAction.CallbackContext context);
+        void OnClearQueue(InputAction.CallbackContext context);
     }
 }

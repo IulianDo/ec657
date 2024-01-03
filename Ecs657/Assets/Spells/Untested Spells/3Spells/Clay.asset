@@ -16,7 +16,7 @@ MonoBehaviour:
   data:
     rid: 1570625590882467887
   subdata:
-    rid: 1570625590882467985
+    rid: 4769459423357960197
   references:
     version: 2
     RefIds:
@@ -30,11 +30,11 @@ MonoBehaviour:
         duration: 0
         interval: 0
         ammo: 0
-        image: {fileID: 0}
+        image: {fileID: 21300000, guid: e49289b52fb878448bd3c6b667228c09, type: 3}
         combinations:
         - {fileID: 11400000, guid: 668098d6c669e794189dae03502370df, type: 2}
         - {fileID: 11400000, guid: ffaf8ba0650ab114d84c54a3bc5a6efd, type: 2}
-    - rid: 1570625590882467985
+    - rid: 4769459423357960197
       type: {class: NewScriptableSpell/AOEItem, ns: , asm: Assembly-CSharp}
       data:
         radius: 0

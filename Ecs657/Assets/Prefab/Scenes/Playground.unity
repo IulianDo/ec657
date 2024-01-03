@@ -4301,6 +4301,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 254404197}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2089351185 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1027979671246204725, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
+  m_PrefabInstance: {fileID: 4250900171998500304}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4250900171998500305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f8cb07d25037745bc583e18bb59450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2102653658
 GameObject:
   m_ObjectHideFlags: 0
@@ -4434,6 +4445,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 855447370994263795, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
+      propertyPath: playerStats
+      value: 
+      objectReference: {fileID: 2089351185}
     - target: {fileID: 1027979671246204725, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
       propertyPath: hpMul
       value: 1.1
@@ -4590,6 +4605,10 @@ PrefabInstance:
       propertyPath: 'scriptableHotbarList.Array.data[3]'
       value: 
       objectReference: {fileID: 11400000, guid: 8458fb32120d75a42b0a891fa473476f, type: 2}
+    - target: {fileID: 7492341796230940099, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
+      propertyPath: playerStats
+      value: 
+      objectReference: {fileID: 2089351185}
     - target: {fileID: 7731616652672688884, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
       propertyPath: m_Name
       value: Player for eecs

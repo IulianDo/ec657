@@ -76,12 +76,10 @@ public class Spell : MonoBehaviour
     private void Projectile()
     {
         NewScriptableSpell.ProjectileItem projData = (NewScriptableSpell.ProjectileItem) spellType.subdata;
-        float dmgMul = playerStats.dmgMul;
-        int dmg = Mathf.RoundToInt(spellType.data.damage * dmgMul);
         //for example, here Fire creates a new fireball from the prefab in fireProj, then adds forward force to it, and initialise its stats
         GameObject currentprojectile = Instantiate(projData.projectile, player.transform.position + player.transform.forward, camera.transform.rotation).gameObject;
-        currentprojectile.GetComponent<Rigidbody>().AddForce(camera.transform.forward * projData.projSpeed, ForceMode.Impulse);
-        currentprojectile.GetComponent<GenericProjectile>().setData(dmg, spellType.data.duration, spellType.data.interval, playerStats.dmgMul);
+        currentprojectile.GetComponent<Rigidbody>().AddForce(camera.transform.forward * (projData.projSpeed*playerStats.pSpdMul), ForceMode.Impulse);
+        currentprojectile.GetComponent<GenericProjectile>().setData(spellType.data.damage, spellType.data.duration, spellType.data.interval, playerStats.dmgMul);
     }
     private void Particles()
     {

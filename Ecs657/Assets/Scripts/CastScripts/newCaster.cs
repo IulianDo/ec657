@@ -9,6 +9,7 @@ public class newCaster : MonoBehaviour
 {
     public PlayerInput playerControls;
     private PlayerInput.PlayerActions actions;
+    [SerializeField] PlayerStats playerStats;
     [SerializeField] float cooldown;
     private float lastShot;
 
@@ -40,7 +41,7 @@ public class newCaster : MonoBehaviour
         if (actions.Shoot.IsPressed()) {
             if (Time.time - lastShot > cooldown)
             {
-                cooldown = spellStack.castStack();
+                cooldown = spellStack.castStack() * playerStats.cdMul;
                 lastShot = Time.time;
             }
         }
@@ -49,6 +50,16 @@ public class newCaster : MonoBehaviour
         {
             int slot = (int) actions.Hotbar.ReadValue<float>();
             hotBarController.AddSpell(slot-1);
+        }
+
+        if(actions.PopSpell.WasPressedThisFrame())
+        {
+            if(spellStack.XspellStack.Count > 0) spellStack.removeSpell(0);
+        }
+
+        if(actions.ClearQueue.WasPressedThisFrame())
+        {
+            spellStack.ClearQueue();
         }
     }
 }

@@ -25,7 +25,7 @@ MonoBehaviour:
       data:
         component: 
         description: Shoot balls of earth. Slow but powerful.
-        cooldown: 2
+        cooldown: 1
         damage: 20
         duration: 1
         interval: 1

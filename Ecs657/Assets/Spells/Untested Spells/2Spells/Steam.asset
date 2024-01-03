@@ -30,7 +30,7 @@ MonoBehaviour:
         duration: 5
         interval: 1
         ammo: 2
-        image: {fileID: 0}
+        image: {fileID: 21300000, guid: 239d0a7599956cc46913d0d119fad243, type: 3}
         combinations:
         - {fileID: 11400000, guid: ffaf8ba0650ab114d84c54a3bc5a6efd, type: 2}
         - {fileID: 11400000, guid: 3e4ee099a67686e458cf585136499048, type: 2}

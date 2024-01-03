@@ -9,6 +9,7 @@ public class SlotController : MonoBehaviour
 {
     //Slot is purely visual, the actual spells are stored in the hotbar
     private Image icon;
+    private Image slot;
     private TextMeshProUGUI ammo;
     private int ammoval;
     private bool hotbar;
@@ -20,12 +21,14 @@ public class SlotController : MonoBehaviour
     void Start()
     {
         icon = Instantiate(iconPrefab, transform).gameObject.GetComponent<Image>();
+        slot = GetComponent<Image>();
         ammo = Instantiate(ammoPrefab, transform).gameObject.GetComponent<TextMeshProUGUI>();
         SetSpell(slotSpell);
         if(hotbar)
         {
             ammo.enabled = false;
         }
+        
     }
 
 
@@ -41,6 +44,7 @@ public class SlotController : MonoBehaviour
     {
         ammoval--;
         ammo.text = ammoval.ToString();
+        CoolDown(slotSpell.spellType.data.cooldown);
     }
 
     public void HotBarSlot()
@@ -58,9 +62,28 @@ public class SlotController : MonoBehaviour
         slotSpell = spell;
     }
 
-    public void clearSlot()
+    public void ClearSlot()
     {
         icon.sprite=null;
         icon.enabled = false;
     }
+
+    public void CoolDown(float time)
+    {
+        slot.fillAmount = 0;
+        StartCoroutine(CDFill(time));
+    }
+
+    private IEnumerator CDFill(float time)
+    {
+        float factor = (1.0f / time) * Time.deltaTime;
+        while(slot.fillAmount < 1)
+        {
+            slot.fillAmount += factor;
+            yield return new WaitForEndOfFrame();
+        }
+        yield return null;
+    }
+
+
 }

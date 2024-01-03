@@ -8,6 +8,7 @@ public abstract class GenericProjectile : MonoBehaviour
     protected float duration;
     protected float interval;
     protected float dmgMul;
+    protected float spdMul;
     protected Enemy enemy;
     protected GameObject enemyObj;
     protected bool hit=false;
@@ -36,7 +37,7 @@ public abstract class GenericProjectile : MonoBehaviour
         {
             CancelInvoke("cleanup");
             enemy = other.gameObject.GetComponent<Enemy>();
-            enemy.TakeDamage(damage);
+            enemy.TakeDamage(Mathf.RoundToInt(damage*dmgMul));
             GetComponent<MeshRenderer>().enabled = false;
             GetComponent<SphereCollider>().enabled = false;
             StartCoroutine(projEffect());

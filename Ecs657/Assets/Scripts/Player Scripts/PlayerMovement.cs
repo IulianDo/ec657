@@ -9,6 +9,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private PlayerInput playerControls;
+    [SerializeField] private PlayerStats playerStats;
     private PlayerInput.PlayerActions actions;
     [SerializeField] private CharacterController characterController;
     [SerializeField] public float speed = 12f;
@@ -63,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = transform.right * direction.x + transform.forward * direction.y;
         // Check if Shift key is held down for sprinting
         float currentSpeed = actions.Sprint.IsPressed() ? sprintSpeed : speed;
-        characterController.Move(move * currentSpeed * Time.deltaTime);
+        characterController.Move(move * currentSpeed * playerStats.spdMul * Time.deltaTime);
 
 
     }

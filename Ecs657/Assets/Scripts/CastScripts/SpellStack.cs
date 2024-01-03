@@ -7,8 +7,6 @@ using UnityEngine.UIElements;
 public class SpellStack : MonoBehaviour
 {
     //If possible later, replace the arrays for stackSpells and stackSlots with Lists
-    [SerializeField] private Spell[] stackSpells = new Spell[5];
-    [SerializeField] private GameObject[] stackSlots = new GameObject[5];
     [SerializeField] private Transform slotFab;
     [SerializeField] private GameObject grid;
     [SerializeField] private Spell[] spellList;
@@ -72,19 +70,31 @@ public class SpellStack : MonoBehaviour
     }
 
     // Removes a spell from the stack at the specified index.
-    void removeSpell(int index)
+    public void removeSpell(int index)
     {
         XspellStack.RemoveAt(index);
         Destroy(XstackSlots[index]);
         XstackSlots.RemoveAt(index);
     }
+
     void removeSpell(Spell spell)
     {
         Destroy(XstackSlots[XspellStack.IndexOf(spell)]);
         XstackSlots.RemoveAt(XspellStack.IndexOf(spell));
         XspellStack.Remove(spell);
     }
-    //cast all spells in stack and removes them
+
+    public void ClearQueue()
+    {
+        XspellStack.Clear();
+        for(int i = 0; i < XstackSlots.Count; i++)
+        {
+            Destroy(XstackSlots[i]);
+        }
+        XstackSlots.Clear();
+    }
+
+    //cast first spell in queue and consume ammo
     public float castStack()
     {
         try
