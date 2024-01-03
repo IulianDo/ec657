@@ -7,25 +7,29 @@ public class PlayerStats : MonoBehaviour
 {
 
     [SerializeField] private Menus menus;
+    //_______________________________________________________//
     #region hpVariables
+    [Header("Health Settings")]
     [SerializeField] private int maxHitPoints;
     [SerializeField] private int hitPoints;
-    [SerializeField] private int hpIncreasePerLevel;
     #endregion
-
+    //_______________________________________________________//
     #region playerMultipliers
-    public float dmgMul=1;
-    public float defMul=1;
+    [Header("Player Multipliers")]
+    public float hpMul = 1;
+    public float dmgMul = 1;
+    public float defMul = 1;
     #endregion
-
     //_______________________________________________________//
     // XP variables
+    [Header("XP Variables")]
     [SerializeField] private float experienceTillNextLevel;
     [SerializeField] private float experienceNeededMultiplier;
     [SerializeField] private float currentExperience;
     [SerializeField] private int level;
     //_______________________________________________________//
     // UI variables
+    [Header("UI Variables")]
     [SerializeField] private TMP_Text LevelUI;
     [SerializeField] private HealthBar healthbar;
     //_______________________________________________________//
@@ -76,7 +80,7 @@ public class PlayerStats : MonoBehaviour
         currentExperience += value;
         while(currentExperience >= experienceTillNextLevel)
 		{
-            maxHitPoints += hpIncreasePerLevel;
+            maxHitPoints = (int) (maxHitPoints * hpMul);
             //increase hp by x amount and full heal
             healthbar.setMaxHealth(maxHitPoints);
             Heal(maxHitPoints);

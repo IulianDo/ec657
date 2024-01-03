@@ -11,7 +11,6 @@ public class SpellStack : MonoBehaviour
     [SerializeField] private GameObject[] stackSlots = new GameObject[5];
     [SerializeField] private Transform slotFab;
     [SerializeField] private GameObject grid;
-    private int stackIndex = 0;
     [SerializeField] private Spell[] spellList;
     [SerializeField] private GameObject spellListObj;
 

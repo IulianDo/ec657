@@ -16,7 +16,6 @@ public class DamagePopupGenerator : MonoBehaviour
     public void CreatePopUp(Vector3 position, string text)
 	{
         Vector3 offset = new Vector3(Random.Range(-1f,1f), Random.Range(-1f, 1f));
-        print(offset);
         var popup = Instantiate(prefab, position + offset, Quaternion.identity);
         var temp = popup.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         temp.text = text;

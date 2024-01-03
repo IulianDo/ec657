@@ -8,9 +8,9 @@ public class MainSpawner : MonoBehaviour
     [SerializeField] private List<EntityToSpawn> EntityList;
     [SerializeField] private float maxRadius;
     [SerializeField] private float minRadius;
-    [SerializeField] private float offsetY;
-    [SerializeField] private float waveMinRadius;
+	[SerializeField] private float offsetY;
     [SerializeField] private float waveMaxRadius;
+    [SerializeField] private float waveMinRadius;
 
     private LayerMask ground;
 

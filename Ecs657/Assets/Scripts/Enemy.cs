@@ -5,18 +5,22 @@ using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 public class Enemy : MonoBehaviour
 {
+    //External Variables
+    [Header("External Variables")]
     [SerializeField] private NavMeshAgent enemy;
     [SerializeField] private Transform player;
     [SerializeField] private LayerMask groundLayer, playerLayer;
     [SerializeField] private Timer timer;
     //_________________________________________________________//
     //Movement variables
+    [Header("Movement Variables")]
     [SerializeField] private float waitAtPoint;
     [SerializeField] private float walkRange, attackRange, sightRange;
     bool isWalkPointSet = false;
     Vector3 walkPoint;
     //_________________________________________________________//
     //Attack variables
+    [Header("Attack Variables")]
     [SerializeField] private GameObject projectile;
     [SerializeField] private int baseProjSpeed;
     [SerializeField] private float attackTiming;
@@ -28,23 +32,24 @@ public class Enemy : MonoBehaviour
     private bool canAttackPlayer = false;
     //_________________________________________________________//
     //HP variables
+    [Header("HP Variables")]
     [SerializeField] private HealthBar healthbar;
     [SerializeField] private int baseMaxHp;
     [SerializeField] private bool isDead;
     private int maxHP;
     private int currentHP;
     //_________________________________________________________//
-    //Boss decleration variable
-    [SerializeField] bool isBoss;
-    //_________________________________________________________//
-    //xpVariables 
+    //XP Variables 
+    [Header("XP Variables")]
     [SerializeField] private float xpValue;
     [SerializeField] private GameObject EXP;
-    //_________________________________________________________//
-    [SerializeField] private string nextLevel;
-    //_________________________________________________________//
-    //Status Effects
-    public enum status {Normal, Stunned};
+	//_________________________________________________________//
+	[Header("Misc Variables")]
+	[SerializeField] private string nextLevel;
+    [SerializeField] bool isBoss;
+	//_________________________________________________________//
+	//Status Effects
+	public enum status {Normal, Stunned};
     private status effect = status.Normal;
     //_________________________________________________________//
 
