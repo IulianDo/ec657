@@ -269,7 +269,7 @@ MonoBehaviour:
   isDead: 0
   isBoss: 0
   menus: {fileID: 0}
-  xpValue: 10000
+  xpValue: 1000
   EXP: {fileID: 6017612084703524904, guid: 7b624846e73c0fb44ba5d561e5d49897, type: 3}
   bigProjectile: {fileID: 4843699212583041674, guid: e1d6b8a764c37b84cbd633cb0ffdf333, type: 3}
   bigProjSpeed: 100
@@ -306,10 +306,10 @@ MonoBehaviour:
   healthbar: {fileID: 5092992979310116630}
   baseMaxHp: 200
   isDead: 0
-  isBoss: 0
   xpValue: 10000
   EXP: {fileID: 6017612084703524904, guid: 7b624846e73c0fb44ba5d561e5d49897, type: 3}
   nextLevel: level2
+  isBoss: 0
 --- !u!1001 &3738477625587041530
 PrefabInstance:
   m_ObjectHideFlags: 0
