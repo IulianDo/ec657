@@ -1,14 +1,15 @@
-using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class FlamethrowerController : MonoBehaviour
+public abstract class GenericParticles : MonoBehaviour
 {
-    [SerializeField]private ParticleSystem flameParticles;
-    private int damage = 4;
-    private float damageInterval = 0.2f; // The time interval for damage in seconds
-    private float time;
+    [SerializeField] protected ParticleSystem particles;
+    protected int damage = 4;
+    protected float damageInterval = 0.2f; // The time interval for damage in seconds
+    protected float time;
 
-    private bool canDamage = true;
+    protected bool canDamage = true;
 
     void Start()
     {
@@ -21,13 +22,13 @@ public class FlamethrowerController : MonoBehaviour
 
     }
 
-    public IEnumerator StartFlamethrower()
+    public IEnumerator StartParticles()
     {
         //note: currently set to turn off automatically, will later add a check to turn off when player lets go
-        flameParticles = GetComponent<ParticleSystem>();
-        flameParticles.Play();
+        particles = GetComponent<ParticleSystem>();
+        particles.Play();
         yield return new WaitForSeconds(time);
-        flameParticles.Stop();
+        particles.Stop();
     }
 
     private void OnParticleCollision(GameObject other)
@@ -41,12 +42,14 @@ public class FlamethrowerController : MonoBehaviour
             {
                 // Apply damage to the enemy
                 enemy.TakeDamage(damage);
-
+                ParticleEffect(enemy);
                 // Start the damage cooldown coroutine
                 StartCoroutine(DamageCooldown());
             }
         }
     }
+
+    protected abstract void ParticleEffect(Enemy enemy);
 
     private IEnumerator DamageCooldown()
     {
@@ -54,4 +57,5 @@ public class FlamethrowerController : MonoBehaviour
         yield return new WaitForSeconds(damageInterval);
         canDamage = true;
     }
+
 }

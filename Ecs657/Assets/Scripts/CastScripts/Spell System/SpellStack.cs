@@ -101,7 +101,7 @@ public class SpellStack : MonoBehaviour
         {
             if (XspellStack.Count>0)
             {
-                float cooldown = XspellStack[0].spellType.data.cooldown;
+                float cooldown = XspellStack[0].GetCooldown();
                 //checks to see if there is any ammunition left
                 if (XspellStack[0].Cast() <= 0)
                 {

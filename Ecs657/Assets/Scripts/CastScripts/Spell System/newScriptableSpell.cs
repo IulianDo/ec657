@@ -49,6 +49,7 @@ public class NewScriptableSpell : ScriptableObject
     {
         [SerializeField] public Transform gameObj;
         [SerializeField] public float dmgInterval;
+        [SerializeField] public int chipDmg;
         [SerializeField] public bool canDamage = true;
         public ParticleItem() { }
     }
@@ -61,8 +62,7 @@ public class NewScriptableSpell : ScriptableObject
 
     public class SelfItem : SubItem
     {
-        [SerializeField] public Transform selfObj;
-        [SerializeField] public SelfEffects effects;
+        [SerializeField] public float effectFactor;
     }
     #endregion
 

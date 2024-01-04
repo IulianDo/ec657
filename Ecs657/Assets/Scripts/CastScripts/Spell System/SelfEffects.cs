@@ -13,12 +13,19 @@ public class SelfEffects : MonoBehaviour
         
     }
 
+    public void Init(GameObject player, GameObject camera, PlayerStats stats)
+    {
+        this.player = player;
+        this.camera = camera;
+        this.stats = stats;
+    }
+
     public void startEffect(float duration, string effect, float factor)
     {
         switch(effect)
         {
-            case "Heal":
-                Heal(duration, factor);
+            case "Focus":
+                Focus(duration, factor);
                 break;
             case "Blaze":
                 Blaze(duration, factor);
@@ -31,10 +38,11 @@ public class SelfEffects : MonoBehaviour
         }
     }
 
-    IEnumerator Heal(float duration, float factor)
+    IEnumerator Focus(float duration, float factor)
     {
-        stats.Heal((int)factor);
-        yield return new WaitForEndOfFrame();
+        stats.cdMul /= factor;
+        yield return new WaitForSeconds(duration);
+        stats.cdMul *= factor;
     }
 
     IEnumerator Blaze(float duration, float factor)

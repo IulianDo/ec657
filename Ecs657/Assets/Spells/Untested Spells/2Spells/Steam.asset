@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be17019af34760c44a61dec2d33574b8, type: 3}
   m_Name: Steam
   m_EditorClassIdentifier: 
-  spellClass: 0
+  spellClass: 1
   data:
     rid: 1570625590882467857
   subdata:
-    rid: 4769459377123622952
+    rid: 4769459444527923225
   references:
     version: 2
     RefIds:
@@ -34,8 +34,10 @@ MonoBehaviour:
         combinations:
         - {fileID: 11400000, guid: ffaf8ba0650ab114d84c54a3bc5a6efd, type: 2}
         - {fileID: 11400000, guid: 3e4ee099a67686e458cf585136499048, type: 2}
-    - rid: 4769459377123622952
-      type: {class: NewScriptableSpell/ProjectileItem, ns: , asm: Assembly-CSharp}
+    - rid: 4769459444527923225
+      type: {class: NewScriptableSpell/ParticleItem, ns: , asm: Assembly-CSharp}
       data:
-        projectile: {fileID: 5568284564195301289, guid: 31776161f7a82a8449613a79d3c7450f, type: 3}
-        projSpeed: 500
+        gameObj: {fileID: 2492024331035563818, guid: 8840c0118363a784ca59302456aed3d5, type: 3}
+        dmgInterval: 0.2
+        chipDmg: 0
+        canDamage: 1

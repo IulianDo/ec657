@@ -41,7 +41,7 @@ public class newCaster : MonoBehaviour
         if (actions.Shoot.IsPressed()) {
             if (Time.time - lastShot > cooldown)
             {
-                cooldown = spellStack.castStack() * playerStats.cdMul;
+                cooldown = spellStack.castStack();
                 lastShot = Time.time;
             }
         }

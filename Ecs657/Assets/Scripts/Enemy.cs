@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 public class Enemy : MonoBehaviour
 {
@@ -51,6 +52,7 @@ public class Enemy : MonoBehaviour
 	//Status Effects
 	public enum status {Normal, Stunned};
     private status effect = status.Normal;
+    private bool affected = false;
     //_________________________________________________________//
 
     void Awake()
@@ -213,6 +215,49 @@ public class Enemy : MonoBehaviour
 	{
 		this.effect = effect;
 	}
+
+    private IEnumerator BurnTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        StopCoroutine("Burn");
+        affected = false;
+    }
+
+    private IEnumerator Burn(float dmg, float time, float interval)
+    {
+        StartCoroutine(BurnTime(time));
+        while (true)
+        {
+            TakeDamage(Mathf.RoundToInt(dmg));
+            yield return new WaitForSeconds(interval);
+        }
+    }
+
+    public void ApplyEffect(string effect, float factor, float duration, float interval)
+    {
+        if (affected)
+        {
+            return;
+        }
+        affected = true;
+        switch (effect)
+        {
+            case "Burn":
+                StartCoroutine(Burn(factor,duration,interval));
+                break;
+            case "Slow":
+                break;
+            case "Stun":
+                break;
+            default:
+                break;
+        }
+    }
+
+
+
+
+
 	#endregion
 	//--------------------------------------------------------//
 	#region misc code

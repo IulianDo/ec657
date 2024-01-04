@@ -9,6 +9,7 @@ using UnityEngine.UIElements;
 public class Spell : MonoBehaviour
 {
     public NewScriptableSpell spellType;
+    private SelfEffects selfEffects;
     PlayerStats playerStats;
     GameObject player;
     GameObject camera;
@@ -32,11 +33,17 @@ public class Spell : MonoBehaviour
         spellName = spellType.name;
         maxAmmo = spellType.data.ammo;
         ammo = maxAmmo;
+        selfEffects = gameObject.AddComponent<SelfEffects>();
     }
 
     public int GetMaxAmmo()
     {
         return maxAmmo; 
+    }
+
+    public float GetCooldown()
+    {
+        return spellType.data.cooldown * playerStats.cdMul;
     }
 
     //resets the amonition to maximum
@@ -66,6 +73,7 @@ public class Spell : MonoBehaviour
             case NewScriptableSpell.spellClasses.AoE:
                 break;
             case NewScriptableSpell.spellClasses.Self:
+                Self();
                 break;
             default:
                 break;
@@ -88,7 +96,7 @@ public class Spell : MonoBehaviour
         flameObj.transform.localPosition = new Vector3(0.1f,-0.3f,0f);
         FlamethrowerController particles = flameObj.GetComponent<FlamethrowerController>();
         particles.init(spellType.data.duration,partData.dmgInterval);
-        StartCoroutine(particles.StartFlamethrower()); 
+        StartCoroutine(particles.StartParticles()); 
     }
 
     private void AoE()
@@ -97,6 +105,12 @@ public class Spell : MonoBehaviour
         GameObject aoeObj = Instantiate(aoeData.fieldObj,camera.transform).gameObject;
         //AoE controller = aoeObj.GetComponent<AoE>();
         //StartCoroutine(controller.AoEStart());
+    }
+
+    private void Self()
+    {
+        NewScriptableSpell.SelfItem selfData = (NewScriptableSpell.SelfItem) spellType.subdata;
+        selfEffects.startEffect(spellType.data.duration, spellName, selfData.effectFactor);
     }
 
     //check combination checks if the spell stack contains every element of combination
