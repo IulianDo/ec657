@@ -50,7 +50,10 @@ public class Boss2 : MonoBehaviour
     [SerializeField] private int bigProjSpeed;
     [SerializeField] private float bigProjectileTiming = 5f; // Adjust the interval as needed
     private bool specialAttack = false;
-
+    [SerializeField] private GameObject shieldPrefab;
+    private GameObject shield;
+    private bool isShieldActive = false;
+    [SerializeField] private float shieldTiming = 10f; // Adjust the interval as needed
 
 
 
@@ -76,6 +79,10 @@ public class Boss2 : MonoBehaviour
             {
                 SpecialAttackPlayer();
                 AttackPlayer();
+                if (!isShieldActive)
+                {
+                    ActivateShield();
+                }
             }
             else
             {
@@ -131,17 +138,94 @@ public class Boss2 : MonoBehaviour
     // Creates a projectile to send towards the player
     private void Attack()
     {
-        GameObject currentprojectile = Instantiate(projectile, transform.position + transform.forward, Quaternion.identity);
-        currentprojectile.GetComponent<Rigidbody>().AddForce(transform.forward * projSpeed, ForceMode.Impulse);
+        Vector3 attackDirection = (player.position - transform.position).normalized;
+
+        // Calculate the rotation with a 90-degree offset along the x-axis
+        Quaternion projectileRotation = Quaternion.LookRotation(attackDirection) * Quaternion.Euler(90f, 0f, 0f);
+
+        // Offset the position from where the projectile is instantiated
+        Vector3 projectileOffset = new Vector3(0f, 1f, 0f); // Adjust the offset values as needed
+
+        GameObject currentprojectile = Instantiate(projectile, transform.position + projectileOffset, projectileRotation);
+        currentprojectile.GetComponent<Rigidbody>().AddForce(attackDirection * projSpeed, ForceMode.Impulse);
         currentprojectile.GetComponent<Projectile>().SetDamage(damage);
     }
     private void BigAttack()
     {
-        GameObject currentprojectile = Instantiate(bigProjectile, transform.position + transform.forward, Quaternion.identity);
-        currentprojectile.GetComponent<Rigidbody>().AddForce(transform.forward * projSpeed, ForceMode.Impulse);
-        currentprojectile.GetComponent<Projectile>().SetDamage(baseDamage * 3);
+        Vector3 attackDirection = (player.position - transform.position).normalized;
+    
+        // Calculate the rotation with a 90-degree offset along the x-axis
+        Quaternion bigProjectileRotation = Quaternion.LookRotation(attackDirection) * Quaternion.Euler(90f, 0f, 0f);
 
+        // Offset the position from where the projectile is instantiated
+        Vector3 projectileOffset = new Vector3(0f, 1f, 0f); // Adjust the offset values as needed
+
+
+        GameObject currentBigProjectile = Instantiate(bigProjectile, transform.position + projectileOffset, bigProjectileRotation);
+        currentBigProjectile.GetComponent<Rigidbody>().AddForce(attackDirection * bigProjSpeed, ForceMode.Impulse);
+        currentBigProjectile.GetComponent<Projectile>().SetDamage(baseDamage * 3);
     }
+
+    private void ActivateShield()
+    {
+        // Calculate a position around the boss for the shield to spawn
+        Vector3 shieldSpawnPosition = transform.position + transform.forward * 3f + Vector3.up * 3f; 
+
+        shield = Instantiate(shieldPrefab, shieldSpawnPosition, Quaternion.identity);
+        StartCoroutine(SpinShield());
+        isShieldActive = true;
+    }
+
+    private IEnumerator SpinShield()
+    {
+        float elapsedTime = 0f;
+        float orbitDuration = 5f;  // Adjust the orbit duration as needed
+        float orbitSpeed = 360f / orbitDuration;
+        float orbitRadius = 3.5f;  // Adjust the orbit radius as needed
+        float orbitHeight = 3f;  // Adjust the orbit height as needed
+
+        while (elapsedTime < orbitDuration)
+        {
+            // Calculate the new position of the shield in a circular orbit around the boss
+            float orbitAngle = elapsedTime * orbitSpeed;
+            Vector3 orbitPosition = transform.position + new Vector3(Mathf.Cos(Mathf.Deg2Rad * orbitAngle), 0f, Mathf.Sin(Mathf.Deg2Rad * orbitAngle)) * orbitRadius;
+
+            // Adjust the orbit height
+            orbitPosition.y = transform.position.y + orbitHeight;
+
+            shield.transform.position = orbitPosition;
+
+            // Calculate the direction from the shield to the boss
+            Vector3 lookAtDirection = transform.position - shield.transform.position;
+
+            // Rotate the shield to face away from the boss, then add a 90-degree rotation
+            Quaternion lookRotation = Quaternion.LookRotation(-lookAtDirection, Vector3.up) * Quaternion.Euler(180f, 90f, -35f);
+            shield.transform.rotation = lookRotation;
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        DeactivateShield();
+    }
+
+    private void DeactivateShield()
+    {
+        if (isShieldActive && shield != null)
+        {
+            Destroy(shield);
+            isShieldActive = false;
+
+            // Start the cooldown coroutine
+            Invoke(nameof(ResetShield), shieldTiming);
+        }
+    }
+
+    private void ResetShield()
+    {
+        isShieldActive = false;
+    }
+
     #endregion
     //--------------------------------------------------------//
     #region movement code
