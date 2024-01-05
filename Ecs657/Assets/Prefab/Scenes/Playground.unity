@@ -5049,7 +5049,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6896812002048515042, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
       propertyPath: scriptableSpellList.Array.size
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6896812002048515042, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
       propertyPath: scriptableHotbarList.Array.size
@@ -5131,6 +5131,10 @@ PrefabInstance:
       propertyPath: 'scriptableSpellList.Array.data[14]'
       value: 
       objectReference: {fileID: 11400000, guid: 091e4c9ffa4690b4b8913416658ba29c, type: 2}
+    - target: {fileID: 6896812002048515042, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
+      propertyPath: 'scriptableSpellList.Array.data[15]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ed327b9877579914686a45e792e80b9e, type: 2}
     - target: {fileID: 7492341796230940099, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
       propertyPath: playerStats
       value: 
@@ -10065,6 +10069,24 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &4250900171998500312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4250900171998500307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa2cbb025ef7ad24da11d41e981e049d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 2089351185}
+  player: {fileID: 4250900171998500305}
+  camera: {fileID: 1318704288}
+  shield: {fileID: 2704872479946401842, guid: 19ce35daf120b374ca6241494ffe47e8, type: 3}
+  fShield: {fileID: 6096503087494882613, guid: 7abd6af77d414b54489d95597784d067, type: 3}
+  wShield: {fileID: 2737641043303382748, guid: a4734b2cf587708489bd28db12f30cb1, type: 3}
 --- !u!1001 &6502264723551665200
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10281,7 +10303,5 @@ SceneRoots:
   - {fileID: 1824482225}
   - {fileID: 1493621499}
   - {fileID: 159567617}
-  - {fileID: 1186023203}
-  - {fileID: 1144980418}
   - {fileID: 1574084805}
   - {fileID: 1700109947773892306}
