@@ -306,7 +306,7 @@ MonoBehaviour:
   healthbar: {fileID: 5092992979310116630}
   baseMaxHp: 200
   isDead: 0
-  xpValue: 10000
+  xpValue: 0
   EXP: {fileID: 6017612084703524904, guid: 7b624846e73c0fb44ba5d561e5d49897, type: 3}
   nextLevel: level2
   isBoss: 0

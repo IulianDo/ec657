@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
 public class PlayerStats : MonoBehaviour
 {
 
@@ -16,37 +15,54 @@ public class PlayerStats : MonoBehaviour
     //_______________________________________________________//
     #region playerMultipliers
     [Header("Player Multipliers")]
-    public float hpMul = 1;
+    public float hpMul = 1.1f;
     public float dmgMul = 1;
     public float defMul = 1;
     public float spdMul = 1;
     public float pSpdMul = 1;
     public float cdMul = 1;
-    #endregion
-    //_______________________________________________________//
-    // XP variables
-    [Header("XP Variables")]
+    public UpgradeList upgradeList;
+    public GameObject upgradeChoices;
+	#endregion
+	//_______________________________________________________//
+	#region XP variables
+	// XP variables
+	[Header("XP Variables")]
     [SerializeField] private float experienceTillNextLevel;
     [SerializeField] private float experienceNeededMultiplier;
     [SerializeField] private float currentExperience;
     [SerializeField] private int level;
-    //_______________________________________________________//
-    // UI variables
-    [Header("UI Variables")]
+	#endregion
+	//_______________________________________________________//
+	#region UI variables
+	// UI variables
+	[Header("UI Variables")]
     [SerializeField] private TMP_Text LevelUI;
     [SerializeField] private HealthBar healthbar;
-    //_______________________________________________________//
-    // Start is called before the first frame update
-    void Start()
+	#endregion
+	//_______________________________________________________//
+	// Start is called before the first frame update
+	void Start()
     {
         hitPoints = maxHitPoints;
         level = 0;
         healthbar.setMaxHealth(maxHitPoints);
         LevelUI.text = "Level " + level + ": (" + Mathf.Round(currentExperience) + "/" + Mathf.Round(experienceTillNextLevel) + ")";
+
+        //List of Upgrade Variables with weighted values for getting a random one
+        List<UpgradeableVariable> list = new List<UpgradeableVariable>();
+        list.Add(new UpgradeableVariable("HP per level", ref hpMul, 2, 0.1f, 10));
+        list.Add(new UpgradeableVariable("Damage", ref dmgMul, 2, 0.1f, 10));
+        list.Add(new UpgradeableVariable("Defence", ref defMul, 2, 0.1f, 10));
+        list.Add(new UpgradeableVariable("Movement Speed", ref spdMul, 2, 0.1f, 10));
+        list.Add(new UpgradeableVariable("Projectile Speed", ref spdMul, 2, 0.1f, 10));
+        list.Add(new UpgradeableVariable("Total Cooldown", ref cdMul, 0.1f, -0.1f, 100));
+        upgradeList = new UpgradeList(list);
+
+        print(upgradeList);
     }
     //------------------------------------------------------------------//
 	#region hpCode
-	// Update is called once per frame
 	// Allows the player to take damage as an int
 	public void TakeDamage(int amount)
     {
@@ -87,7 +103,7 @@ public class PlayerStats : MonoBehaviour
             //increase hp by x amount and full heal
             healthbar.setMaxHealth(maxHitPoints);
             Heal(maxHitPoints);
-            dmgMul += 0.1f;
+            upgradeChoices.SetActive(true);
 
             currentExperience -= experienceTillNextLevel;
             experienceTillNextLevel *= experienceNeededMultiplier;
@@ -96,6 +112,15 @@ public class PlayerStats : MonoBehaviour
         LevelUI.text = "Level " + level + ": (" + Mathf.Round(currentExperience) + "/" + Mathf.Round(experienceTillNextLevel) + ")"; 
 	}
 
+    private void ShowChoices()
+	{
+
+	}
+
+    public void upgradeVariable(float Value)
+	{
+
+	}
 	#endregion
 	//------------------------------------------------------------------//
 }
