@@ -32,6 +32,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private float experienceNeededMultiplier;
     [SerializeField] private float currentExperience;
     [SerializeField] private int level;
+    private int levelsToAdd = 0;
 	#endregion
 	//_______________________________________________________//
 	#region UI variables
@@ -60,6 +61,14 @@ public class PlayerStats : MonoBehaviour
         upgradeList = new UpgradeList(list);
 
         print(upgradeList);
+    }
+
+    void Update()
+    {
+        if(levelsToAdd > 0 && Time.timeScale != 0)
+        {
+            ShowChoices();
+        }
     }
     //------------------------------------------------------------------//
 	#region hpCode
@@ -103,18 +112,20 @@ public class PlayerStats : MonoBehaviour
             //increase hp by x amount and full heal
             healthbar.setMaxHealth(maxHitPoints);
             Heal(maxHitPoints);
-            upgradeChoices.SetActive(true);
-
             currentExperience -= experienceTillNextLevel;
             experienceTillNextLevel *= experienceNeededMultiplier;
             level++;
+            levelsToAdd ++;
 		}
         LevelUI.text = "Level " + level + ": (" + Mathf.Round(currentExperience) + "/" + Mathf.Round(experienceTillNextLevel) + ")"; 
 	}
 
     private void ShowChoices()
 	{
-
+        Time.timeScale = 0f;
+        levelsToAdd --;
+        upgradeChoices.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
 	}
 
     public void upgradeVariable(float Value)

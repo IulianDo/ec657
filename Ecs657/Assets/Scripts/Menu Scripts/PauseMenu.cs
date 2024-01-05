@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
 
     private bool gameIsPaused = false;
+    private bool upgrading = false;
     public GameObject pauseMenuUI;
     public GameObject crosshair;
 
@@ -28,10 +29,18 @@ public class PauseMenu : MonoBehaviour
     //freezes time, activates pauseMenu and deactivates crosshair 
     void Pause()
     {
-        Cursor.lockState = CursorLockMode.None;
+        if (Time.timeScale == 0f)
+        {
+            upgrading = true;
+        }
+        else
+        {
+            upgrading = false;
+            crosshair.SetActive(false);
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
+        }
         pauseMenuUI.SetActive(true);
-        crosshair.SetActive(false);
-        Time.timeScale = 0f;
         gameIsPaused = true;
     }
 
@@ -49,12 +58,15 @@ public class PauseMenu : MonoBehaviour
     //Resumes time, dactivates pauseMenu and activates crosshair 
     public void Resume()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        if(!upgrading)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            crosshair.SetActive(true);
+            Time.timeScale = 1f;
+        }
+        
         pauseMenuUI.SetActive(false);
-        crosshair.SetActive(true);
-        Time.timeScale = 1f;
         gameIsPaused = false;
-
     }
     
     public void Save()
