@@ -33,7 +33,7 @@ public class Spell : MonoBehaviour
         spellName = spellType.name;
         maxAmmo = spellType.data.ammo;
         ammo = maxAmmo;
-        selfEffects = gameObject.AddComponent<SelfEffects>();
+        selfEffects = gameObject.GetComponent<SelfEffects>();
     }
 
     public int GetMaxAmmo()
@@ -94,7 +94,7 @@ public class Spell : MonoBehaviour
         NewScriptableSpell.ParticleItem partData = (NewScriptableSpell.ParticleItem) spellType.subdata;
         GameObject flameObj = Instantiate(partData.gameObj, camera.transform).gameObject;
         flameObj.transform.localPosition = new Vector3(0.1f,-0.3f,0f);
-        FlamethrowerController particles = flameObj.GetComponent<FlamethrowerController>();
+        GenericParticles particles = flameObj.GetComponent<GenericParticles>();
         particles.init(spellType.data.duration,partData.dmgInterval);
         StartCoroutine(particles.StartParticles()); 
     }
@@ -110,7 +110,7 @@ public class Spell : MonoBehaviour
     private void Self()
     {
         NewScriptableSpell.SelfItem selfData = (NewScriptableSpell.SelfItem) spellType.subdata;
-        selfEffects.startEffect(spellType.data.duration, spellName, selfData.effectFactor);
+        selfEffects.startEffect(spellType.data.duration, spellName, selfData.effectFactor, spellType.data.interval);
     }
 
     //check combination checks if the spell stack contains every element of combination

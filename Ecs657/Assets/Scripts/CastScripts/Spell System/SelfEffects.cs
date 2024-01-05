@@ -4,34 +4,39 @@ using UnityEngine;
 
 public class SelfEffects : MonoBehaviour
 {
-    PlayerStats stats;
-    GameObject player;
-    GameObject camera;
+    [SerializeField] private PlayerStats stats;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject camera;
+    [SerializeField] private Transform shield;
+    [SerializeField] private Transform fShield;
+    [SerializeField] private Transform wShield; 
     // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    public void Init(GameObject player, GameObject camera, PlayerStats stats)
-    {
-        this.player = player;
-        this.camera = camera;
-        this.stats = stats;
-    }
-
-    public void startEffect(float duration, string effect, float factor)
+    public void startEffect(float duration, string effect, float factor, float interval)
     {
         switch(effect)
         {
             case "Focus":
-                Focus(duration, factor);
+                StartCoroutine(Focus(duration, factor));
                 break;
             case "Blaze":
-                Blaze(duration, factor);
+                StartCoroutine(Blaze(duration, factor));
                 break;
             case "Shield":
-                Shield(duration, factor);
+                Shield(duration, factor, interval);
+                break;
+            case "Flame Shield":
+                FlameShield(duration, factor, interval);
+                break;
+            case "Water Shield":
+                WaterShield(duration, factor, interval);
+                break;
+            case "Earth Armor":
+                StartCoroutine(EarthArmor(duration, factor));
                 break;
             default:
                 break;
@@ -53,11 +58,33 @@ public class SelfEffects : MonoBehaviour
         playerMovement.speed /= factor;
     }
 
-    IEnumerator Shield(float duration, float factor)
+    IEnumerator EarthArmor(float duration, float factor)
     {
-        stats.defMul*=factor;
+        PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
+        playerMovement.speed /= 2;
+        stats.defMul/= factor;
         yield return new WaitForSeconds(duration);
-        stats.defMul/=factor;
+        playerMovement.speed *= 2;
+        stats.defMul*= factor;
+
+    }
+
+    void Shield(float duration, float factor, float interval)
+    {
+        ShieldController shieldController = Instantiate(shield, player.transform).gameObject.GetComponent<ShieldController>();
+        shieldController.Init(Mathf.RoundToInt(15 * stats.hpMul), duration, interval, factor, stats.dmgMul);
+    }
+
+    void FlameShield(float duration, float factor, float interval)
+    {
+        ShieldController shieldController = Instantiate(fShield, player.transform).gameObject.GetComponent<ShieldController>();
+        shieldController.Init(Mathf.RoundToInt(15 * stats.hpMul), duration, interval, factor, stats.dmgMul);
+    }
+
+    void WaterShield(float duration, float factor, float interval)
+    {
+        ShieldController shieldController = Instantiate(wShield, player.transform).gameObject.GetComponent<ShieldController>();
+        shieldController.Init(Mathf.RoundToInt(30 * stats.hpMul), duration, interval, factor, stats.dmgMul);
     }
 
     // Update is called once per frame

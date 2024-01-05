@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public abstract class GenericProjectile : MonoBehaviour
 {
-    private int damage;
+    protected int damage;
     protected float duration;
     protected float interval;
     protected float dmgMul;

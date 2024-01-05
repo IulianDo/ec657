@@ -53,6 +53,7 @@ public class Enemy : MonoBehaviour
 	public enum status {Normal, Stunned};
     private status effect = status.Normal;
     private bool affected = false;
+    public bool wet = false;
     //_________________________________________________________//
 
     void Awake()
@@ -172,8 +173,8 @@ public class Enemy : MonoBehaviour
     //reduce current hp by x
     public void TakeDamage(int amount)
     {
-        healthbar.setHealth(currentHP);
         currentHP -= amount;
+        healthbar.setHealth(currentHP);
         DamagePopupGenerator.current.CreatePopUp(transform.position, amount.ToString());
         if (currentHP <= 0 && !isDead)
         {
@@ -233,6 +234,21 @@ public class Enemy : MonoBehaviour
         }
     }
 
+
+    private IEnumerator Wet(float time)
+    {
+        wet = true;
+        yield return new WaitForSeconds((int)time);
+        wet = false;
+    }
+
+    private IEnumerator Slow(float factor, float time)
+    {
+        GetComponent<NavMeshAgent>().speed /= factor;
+        yield return new WaitForSeconds(time);
+        GetComponent<NavMeshAgent>().speed *= factor;
+    }
+
     public void ApplyEffect(string effect, float factor, float duration, float interval)
     {
         if (affected)
@@ -246,8 +262,12 @@ public class Enemy : MonoBehaviour
                 StartCoroutine(Burn(factor,duration,interval));
                 break;
             case "Slow":
+                StartCoroutine((Slow(factor,duration)));
                 break;
             case "Stun":
+                break;
+            case "Wet":
+                StartCoroutine(Wet(duration));
                 break;
             default:
                 break;
@@ -275,7 +295,10 @@ public class Enemy : MonoBehaviour
         isWalkPointSet = false;
         enemy.SetDestination(this.transform.position);
     }
-
+    public int GetDamage()
+    {
+        return damage;
+    }
     //for debugging
     void OnDrawGizmosSelected()
     {

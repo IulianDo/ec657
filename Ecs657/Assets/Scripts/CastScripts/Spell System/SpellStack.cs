@@ -23,17 +23,13 @@ public class SpellStack : MonoBehaviour
 
     public void addSpell(Spell spell)
     {
-        //if spell is added twice, it'll cancel out
-        if (!checkDuplicates(spell))
-        {
-            //reloads the spell, making it have maximum amunition
-            spell.Reload();
-            //otherwise, its added to the stack
-            XspellStack.Add(spell);
-            XstackSlots.Add(Instantiate(slotFab, grid.transform).gameObject);
-            XstackSlots[XstackSlots.Count - 1].GetComponent<SlotController>().SetSpellInit(spell,spell.GetMaxAmmo());
-            Debug.Log(XspellStack[XspellStack.Count-1].spellName);
-        }
+        //reloads the spell, making it have maximum amunition
+        spell.Reload();
+        //otherwise, its added to the stack
+        XspellStack.Add(spell);
+        XstackSlots.Add(Instantiate(slotFab, grid.transform).gameObject);
+        XstackSlots[XstackSlots.Count - 1].GetComponent<SlotController>().SetSpellInit(spell,spell.GetMaxAmmo());
+        Debug.Log(XspellStack[XspellStack.Count-1].spellName);
         //check if any new combos are possible
         checkCombos();
     }
@@ -53,19 +49,6 @@ public class SpellStack : MonoBehaviour
                 }
                 addSpell(newSpell);
             }
-        }
-    }
-
-    bool checkDuplicates(Spell spell)
-    {
-        if (XspellStack.Contains(spell))
-        {
-            removeSpell(spell);
-            return true;
-        }
-        else
-        {
-            return false;
         }
     }
 

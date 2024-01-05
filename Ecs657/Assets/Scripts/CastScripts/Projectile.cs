@@ -12,6 +12,11 @@ public class Projectile : MonoBehaviour
         damage = amount;
     }
 
+    public int GetDamage()
+    {
+        return damage;
+    }
+
 	private void Start()
 	{
         Invoke(nameof(DestroyProjectile), expiration);

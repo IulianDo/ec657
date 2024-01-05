@@ -24,7 +24,7 @@ MonoBehaviour:
       type: {class: NewScriptableSpell/Item, ns: , asm: Assembly-CSharp}
       data:
         component: 
-        description: '[WIP] Summon clay golem to fight for you'
+        description: Summon a temporary wall of earth.
         cooldown: 0
         damage: 0
         duration: 0

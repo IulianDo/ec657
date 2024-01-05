@@ -84,13 +84,13 @@ public class NewScriptableSpell : ScriptableObject
                 }
                 break;
             case spellClasses.AoE:
-                if (subdata == null || subdata.GetType() != typeof(ParticleItem))
+                if (subdata == null || subdata.GetType() != typeof(AOEItem))
                 {
                     subdata = new AOEItem();
                 }
                 break;
             case spellClasses.Self:
-                if (subdata == null || subdata.GetType() != typeof(ParticleItem))
+                if (subdata == null || subdata.GetType() != typeof(SelfItem))
                 {
                     subdata = new SelfItem();
                 }
