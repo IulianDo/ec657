@@ -47,14 +47,21 @@ public class UpgradeChoice : MonoBehaviour
 				playerStats.pSpdMul += currentVariable.incrementBy;
 				break;
 			case "Total Cooldown":
-				playerStats.cdMul -= currentVariable.incrementBy;
+				playerStats.cdMul += currentVariable.incrementBy;
+				if(currentVariable.initialValue <= currentVariable.maxValue)
+				{
+					playerStats.upgradeList.Remove(currentVariable);
+				}
 				break;
 		}
-		if(currentVariable.initialValue <= currentVariable.maxValue)
+		if(currentVariable.initialValue >= currentVariable.maxValue && currentVariable.name != "Total Cooldown")
 		{
 			playerStats.upgradeList.Remove(currentVariable);
 		}
 		playerStats.upgradeChoices.SetActive(false);
+		
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
 	}
 
 	private void OnDisable()
