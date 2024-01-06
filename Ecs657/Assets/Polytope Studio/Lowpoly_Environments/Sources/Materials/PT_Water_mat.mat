@@ -51,7 +51,7 @@ Material:
     - _FoamPower: 2.82
     - _FoamSpeed: 0.5
     - _GlossyReflections: 1
-    - _Mettalic: 0.755
+    - _Mettalic: 0
     - _NormalMapWavesSpeed: 0.223
     - _NormalMapsWavesSize: 6.14
     - _SMOOTHNESS: 1
@@ -59,7 +59,7 @@ Material:
     - _SmallWavesSize1: 3
     - _SmallWavesSpeed: 0.5
     - _Smoothness: 0.702
-    - _Smootness: 0.837
+    - _Smootness: 0.6
     - _Strenght: 0.5
     - _TRANSPARENCY: 0.73
     - _TessMax: 10

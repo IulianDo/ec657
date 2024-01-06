@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2516009374774775127, guid: 2f39d646be71e0c48853db002e3d1742, type: 3}
+      propertyPath: m_Color.b
+      value: 0.18823531
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516009374774775127, guid: 2f39d646be71e0c48853db002e3d1742, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3151259942717654480, guid: 2f39d646be71e0c48853db002e3d1742, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -54,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6689170274625472767, guid: 2f39d646be71e0c48853db002e3d1742, type: 3}
       propertyPath: m_Name
-      value: lightningProj Variant
+      value: lightningProj
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1260763966058380648, guid: 2f39d646be71e0c48853db002e3d1742, type: 3}
