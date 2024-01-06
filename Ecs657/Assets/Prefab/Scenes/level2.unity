@@ -884,7 +884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 256bbc495a4359743a37dea95d23fffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossPrefab: {fileID: 5037515339776811371, guid: a90938aa53e4aaa478ac664e1e86f576, type: 3}
+  bossPrefab: {fileID: 882717448749368197, guid: 54fdbd8a313c69249a474858b552ee20, type: 3}
   bossSpawnTime: 120
   timer: {fileID: 630820159}
   spawnPoint: {fileID: 1095532945}
@@ -8515,6 +8515,7 @@ MonoBehaviour:
   shield: {fileID: 2704872479946401842, guid: 19ce35daf120b374ca6241494ffe47e8, type: 3}
   fShield: {fileID: 6096503087494882613, guid: 7abd6af77d414b54489d95597784d067, type: 3}
   wShield: {fileID: 2737641043303382748, guid: a4734b2cf587708489bd28db12f30cb1, type: 3}
+  wall: {fileID: 0}
 --- !u!1001 &6502264723551665200
 PrefabInstance:
   m_ObjectHideFlags: 0
