@@ -9,7 +9,8 @@ public class SelfEffects : MonoBehaviour
     [SerializeField] private GameObject camera;
     [SerializeField] private Transform shield;
     [SerializeField] private Transform fShield;
-    [SerializeField] private Transform wShield; 
+    [SerializeField] private Transform wShield;
+    [SerializeField] private Transform wall;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +38,9 @@ public class SelfEffects : MonoBehaviour
                 break;
             case "Earth Armor":
                 StartCoroutine(EarthArmor(duration, factor));
+                break;
+            case "Clay":
+                Wall();
                 break;
             default:
                 break;
@@ -67,6 +71,17 @@ public class SelfEffects : MonoBehaviour
         playerMovement.speed *= 2;
         stats.defMul*= factor;
 
+    }
+
+    void Wall()
+    {
+        Vector3 relativeSpawnPosition = new Vector3(0, -9, 4);
+        Vector3 spawnPosition = transform.TransformPoint(relativeSpawnPosition);
+        GameObject wallObj = Instantiate(wall, spawnPosition, player.transform.rotation).gameObject;
+        wallObj.transform.Rotate(new Vector3(0,90,0));
+        wallObj.transform.SetParent(player.transform);
+        wallObj.transform.localPosition = relativeSpawnPosition;
+        wallObj.transform.SetParent(null);
     }
 
     void Shield(float duration, float factor, float interval)

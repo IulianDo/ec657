@@ -23,6 +23,10 @@ public class SpellStack : MonoBehaviour
 
     public void addSpell(Spell spell)
     {
+        if(XspellStack.Count > 3)
+        {
+            return;
+        }
         //reloads the spell, making it have maximum amunition
         spell.Reload();
         //otherwise, its added to the stack
