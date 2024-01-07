@@ -68,7 +68,6 @@ public class Enemy : MonoBehaviour
 
         projSpeed = (int)(baseProjSpeed * SetStat(60f, 0.1f, 0f, 0.3f));
         damage = (int)(baseDamage * SetStat(30f, 1f, 0f, 5f));
-
     }
 
     // Update is called once per frame
@@ -187,8 +186,10 @@ public class Enemy : MonoBehaviour
     {
         DropXP(xpValue);
         Destroy(gameObject);
-        Debug.Log("This is a simple log message.");
-        SceneManager.LoadScene(nextLevel);
+        if(isBoss)
+		{
+            BossEvents();
+        }
     }
     //Drops x number of orbs which gives you xpValue worth of xp in total
     //orbs drop randomly when enemy dies within a certain range
@@ -209,6 +210,24 @@ public class Enemy : MonoBehaviour
             XPDrop.GetComponent<ExperienceController>().SetXp(value / numberOfXP);
 		}
 	}
+
+    private void BossEvents()
+	{
+        timer.timeValue = 120f;
+        timer.totalTimePassed = 0f;
+
+        MainSpawner spawner = GameObject.Find("Player for eecs").GetComponent<MainSpawner>();
+        switch(nextLevel)
+		{
+            case "level1":
+                break;
+            case "level2":
+                break;
+            case "level3":
+                break;
+		}
+        SceneManager.LoadScene(nextLevel);
+    }
 	#endregion
 	//--------------------------------------------------------//
 	#region StatusEffects

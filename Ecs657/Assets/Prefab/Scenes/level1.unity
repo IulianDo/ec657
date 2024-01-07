@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1882635636}
-  m_IndirectSpecularColor: {r: 0.10827438, g: 0.2680344, b: 0.42701596, a: 1}
+  m_IndirectSpecularColor: {r: 0.10826455, g: 0.268006, b: 0.427005, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -652,7 +652,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh63872
+  m_Name: pb_Mesh66160
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -1075,6 +1075,30 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 688925177744321744, guid: 114166dd291bbf54c8f89e243cfa596b, type: 3}
       propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072603593399891485, guid: 114166dd291bbf54c8f89e243cfa596b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072603593399891485, guid: 114166dd291bbf54c8f89e243cfa596b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072603593399891485, guid: 114166dd291bbf54c8f89e243cfa596b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 4250900171998500305}
+    - target: {fileID: 1072603593399891485, guid: 114166dd291bbf54c8f89e243cfa596b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072603593399891485, guid: 114166dd291bbf54c8f89e243cfa596b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PauseMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6504795497017421492, guid: 114166dd291bbf54c8f89e243cfa596b, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7007530972643344962, guid: 114166dd291bbf54c8f89e243cfa596b, type: 3}
@@ -5532,6 +5556,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1607317888}
     - target: {fileID: 1027979671246204725, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
+      propertyPath: maxHitPoints
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1027979671246204725, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
       propertyPath: upgradeChoices
       value: 
       objectReference: {fileID: 1171145046}
@@ -5835,10 +5863,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EntityList:
   - enemyPrefab: {fileID: 7488566857388697443, guid: aca80fe3a9288d14fbdefdf03828a4e1, type: 3}
-    numberPerSpawn: 1
+    numberPerSpawn: 100
     timeBetweenSpawns: 5
     whenToStartSpawning: 4
-    whenToStopSpawning: 125
+    whenToStopSpawning: 12
     offset: {x: 0, y: 0, z: 0}
     canSpawn: 1
     waveSpawn: 0

@@ -256,21 +256,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   timer: {fileID: 0}
-  waitAtPoint: 10
-  walkRange: 100
+  projectile: {fileID: 6286544650548570055, guid: c597dc62d8e5923468dc27a52e1d259d, type: 3}
   attackRange: 70
   sightRange: 100
-  projectile: {fileID: 6286544650548570055, guid: c597dc62d8e5923468dc27a52e1d259d, type: 3}
   baseProjSpeed: 500
   attackTiming: 0.2
   baseDamage: 5
-  healthbar: {fileID: 5092992979310116630}
-  baseMaxHp: 0
-  isDead: 0
-  isBoss: 0
-  menus: {fileID: 0}
-  xpValue: 1000
-  EXP: {fileID: 6017612084703524904, guid: 7b624846e73c0fb44ba5d561e5d49897, type: 3}
   bigProjectile: {fileID: 4843699212583041674, guid: e1d6b8a764c37b84cbd633cb0ffdf333, type: 3}
   bigProjSpeed: 100
   bigProjectileTiming: 5
@@ -309,7 +300,8 @@ MonoBehaviour:
   xpValue: 0
   EXP: {fileID: 6017612084703524904, guid: 7b624846e73c0fb44ba5d561e5d49897, type: 3}
   nextLevel: level2
-  isBoss: 0
+  isBoss: 1
+  wet: 0
 --- !u!1001 &3738477625587041530
 PrefabInstance:
   m_ObjectHideFlags: 0

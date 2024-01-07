@@ -24,7 +24,7 @@ public class PlayerStats : MonoBehaviour
     public float valueChange = 0.1f;
     public UpgradeList upgradeList;
     public GameObject upgradeChoices;
-	#endregion
+	#endregion 
 	//_______________________________________________________//
 	#region XP variables
 	// XP variables
@@ -46,7 +46,9 @@ public class PlayerStats : MonoBehaviour
 	// Start is called before the first frame update
 
 	void Start()
-    {
+	{
+		DontDestroyOnLoad(this);
+
         hitPoints = maxHitPoints;
         level = 0;
         healthbar.setMaxHealth(maxHitPoints);

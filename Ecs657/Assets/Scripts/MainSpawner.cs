@@ -38,10 +38,15 @@ public class MainSpawner : MonoBehaviour
 	{
         foreach (EntityToSpawn currentEnemy in EntityList)
 		{
-            Coroutine spawnEnemy = StartCoroutine(SpawnEnemy(currentEnemy));
-            StartCoroutine(StopSpawning(currentEnemy, spawnEnemy));
+            StartSpawningEnemy(currentEnemy);
         }
 	}
+    
+    public void StartSpawningEnemy(EntityToSpawn enemy)
+    {
+        Coroutine spawnEnemy = StartCoroutine(SpawnEnemy(enemy));
+        StartCoroutine(StopSpawning(enemy, spawnEnemy));
+    }
 
     IEnumerator StopSpawning(EntityToSpawn currentEnemy, Coroutine spawnEnemy)
 	{
@@ -111,6 +116,26 @@ public class MainSpawner : MonoBehaviour
         } while (hit.distance == 0 && repeats < 100); // repeat check for failsafe precaution
         return offset; //returns x,y,z position of where the enemy is going to spawn.
     }
+
+    public void addEntity(GameObject enemyPrefab,
+                            int numberPerSpawn,
+                            float timeBetweenSpawns,
+                            float whenToStartSpawning,
+                            float whenToStopSpawning,
+                            Vector3 offset,
+                            bool waveSpawn)
+	{
+        EntityToSpawn newEnemy = new EntityToSpawn(enemyPrefab,
+                             numberPerSpawn,
+                             timeBetweenSpawns,
+                             whenToStartSpawning,
+                             whenToStopSpawning,
+                             offset,
+                             waveSpawn);
+
+        EntityList.Add(newEnemy);
+        
+	}
 
     //Enemy variables in order to spawn them How I want them too
     [System.Serializable]

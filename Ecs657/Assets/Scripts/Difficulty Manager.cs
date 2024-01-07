@@ -6,10 +6,25 @@ public class DifficultyManager: MonoBehaviour
 {
 	public string difficulty;
 	public TextMeshProUGUI text;
+	public static DifficultyManager instance;
 	private int value;
+
+	void Awake()
+	{
+		if (instance == null)
+		{
+			instance = this;
+			DontDestroyOnLoad(gameObject);
+		}
+		else
+		{
+			Destroy(gameObject);
+		}
+	}
+
 	void Start()
 	{
-		value = 0;
+		value = 1;
 		DontDestroyOnLoad(this);
 	}
 
