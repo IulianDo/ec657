@@ -964,10 +964,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossPrefab: {fileID: 882717448749368197, guid: 54fdbd8a313c69249a474858b552ee20, type: 3}
+  bossCamera: {fileID: 0}
+  playerCamera: {fileID: 0}
   bossSpawnTime: 120
   timer: {fileID: 0}
   spawnPoint: {fileID: 1095532945}
-  bossSpawned: 0
 --- !u!4 &1095532945
 Transform:
   m_ObjectHideFlags: 0
