@@ -11,14 +11,9 @@ public class Boss1 : MonoBehaviour
     [SerializeField] private LayerMask groundLayer, playerLayer;
     [SerializeField] private Timer timer;
     //_________________________________________________________//
-    //Movement variables
-    [SerializeField] private float waitAtPoint;
-    [SerializeField] private float walkRange, attackRange, sightRange;
-    bool isWalkPointSet = false;
-    Vector3 walkPoint;
-    //_________________________________________________________//
     //Attack variables
     [SerializeField] private GameObject projectile;
+    [SerializeField] private float attackRange, sightRange;
     [SerializeField] private int baseProjSpeed;
     [SerializeField] private float attackTiming;
     [SerializeField] private int baseDamage;
@@ -27,23 +22,6 @@ public class Boss1 : MonoBehaviour
     private bool hasAttacked = false;
     private bool canSeePlayer = false;
     private bool canAttackPlayer = false;
-    //_________________________________________________________//
-    //HP variables
-    [SerializeField] private HealthBar healthbar;
-    [SerializeField] private int baseMaxHp;
-    [SerializeField] private bool isDead;
-    private int maxHP;
-    private int currentHP;
-    //_________________________________________________________//
-    //Boss decleration variable
-    [SerializeField] bool isBoss;
-    //_________________________________________________________//
-    //will be used for win screen
-    [SerializeField] private Menus menus;
-    //_________________________________________________________//
-    //xpVariables
-    [SerializeField] private float xpValue;
-    [SerializeField] private GameObject EXP;
     //_________________________________________________________//
     //Boss variables
     [SerializeField] private GameObject bigProjectile;
@@ -58,7 +36,6 @@ public class Boss1 : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         timer = GameObject.Find("Timer").GetComponent<Timer>();
-        isDead = false;
         SetStats();
     }
 
@@ -77,14 +54,7 @@ public class Boss1 : MonoBehaviour
                 SpecialAttackPlayer();
                 AttackPlayer();
             }
-            else
-            {
-                ChasePlayer();
-            }
-        }
-        else
-        {
-            Wonder();
+           
         }
     }
     //--------------------------------------------------------//
@@ -142,127 +112,12 @@ public class Boss1 : MonoBehaviour
         currentprojectile.GetComponent<Projectile>().SetDamage(baseDamage*3);
 
     }
-	#endregion
-    //--------------------------------------------------------//
-	#region movement code
-    //go towards player
-	private void ChasePlayer()
-    {
-        enemy.SetDestination(player.position);
-    }
 
-    // Controls enemy movement by setting and guiding them to walk points.
-    private void Wonder()
-    {
-        if(isWalkPointSet)
-        {
-           enemy.SetDestination(walkPoint);
-           Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
-           if (distanceToWalkPoint.magnitude < 1f)
-           {
-            isWalkPointSet = false;
-           }
-        }
-        else
-        {
-            Invoke(nameof(SetWalkingPoint), Random.Range(0f, waitAtPoint));
-        }
-    }
-
-    // Sets location to head to
-    private void SetWalkingPoint()
-    {
-        float randomZ = Random.Range(-walkRange, walkRange);
-        float randomX = Random.Range(-walkRange, walkRange);
-
-        walkPoint = new Vector3(transform.position.x + randomX,
-                                transform.position.y,
-                                transform.position.z + randomZ);
-
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, groundLayer))
-        {
-            isWalkPointSet = true;
-        }
-    }
-    #endregion
-    //--------------------------------------------------------//
-    #region takeDamage code
-    //reduce current hp by x
-    public void TakeDamage(int amount)
-    {
-        currentHP -= amount;
-        healthbar.setHealth(currentHP);
-        if (currentHP <= 0 && !isDead)
-        {
-            isDead = true;
-            Die();
-        }
-    }
-
-    //functions needed when dying
-    private void Die()
-    {
-        //cheaks if the enemy is the final boss
-        if (isBoss)
-        {
-            menus.Win();
-            Destroy(gameObject);
-            return;
-        }
-        TempEnemy();
-        DropXP(xpValue);
-        Destroy(gameObject);
-        Debug.Log("This is a simple log message.");
-        SceneManager.LoadScene("level2");
-    }
-    //Drops x number of orbs which gives you xpValue worth of xp in total
-    //orbs drop randomly when enemy dies within a certain range
-    private void DropXP(float value)
-	{
-        int numberOfXP = Random.Range(1, 5);
-        for(int i = 0; i < numberOfXP; i++)
-		{
-            float randomRangeX = Random.Range(0.5f,-0.5f);
-            float randomRangeY = Random.Range(0.5f, -0.5f);
-            float randomRangeZ = Random.Range(0.5f, -0.5f);
-            Vector3 randomPosition = new Vector3(transform.position.x + randomRangeX,
-                                                 transform.position.y + randomRangeY,
-                                                 transform.position.z + randomRangeZ);
-
-            GameObject XPDrop = Instantiate(EXP, randomPosition, Quaternion.identity);
-            XPDrop.GetComponent<ExperienceController>().SetXp(value / numberOfXP);
-		}
-	}
-
-    #endregion
-    //--------------------------------------------------------//
-    #region misc code
-    //spawn 2 enemies every time an enemy dies
-    private void TempEnemy()
-    {
-        float randomZ = Random.Range(-walkRange, walkRange);
-        float randomX = Random.Range(-walkRange, walkRange);
-
-        Vector3 spawnLocation = new Vector3(200f + randomX,
-                                            5f,
-                                            200f + randomZ);
-        Instantiate(gameObject, spawnLocation, Quaternion.identity);
-        Instantiate(gameObject, spawnLocation + Vector3.one * 2, Quaternion.identity);
-    }
 
     //For ramping the difficulty of the enemy over time
     private void SetStats()
 	{
         float currentTime = timer.timeValue;
-
-        //increase hp every 15 seconds by 10% up to 200% original hp, linear
-        float HPIncrementer = Mathf.FloorToInt(currentTime / 15);
-        HPIncrementer = HPIncrementer / 10;
-        float HPMultiplier = Mathf.Clamp(HPIncrementer, 0f, 2f);
-        maxHP = baseMaxHp + Mathf.CeilToInt(baseMaxHp * HPMultiplier);
-        currentHP = maxHP;
-        healthbar.setMaxHealth(maxHP);
 
         //increase projectile speed ever 60 seconds by 10% up to 30% increase, linear
         float projectileSpeedIncrementer = Mathf.FloorToInt(currentTime / 60);
@@ -275,17 +130,6 @@ public class Boss1 : MonoBehaviour
         DamageIncrementer = (int) Mathf.Clamp(DamageIncrementer, 0f, 5f);
         damage = baseDamage + DamageIncrementer;
     }
-    //for debugging
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, walkRange);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, sightRange);
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
-    }
-
     #endregion
     //--------------------------------------------------------//
 }

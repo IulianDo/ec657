@@ -275,21 +275,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   timer: {fileID: 0}
-  waitAtPoint: 10
-  walkRange: 70
-  attackRange: 30
-  sightRange: 60
   projectile: {fileID: 6286544650548570055, guid: 73d43f42a3b9f2f43aa8baf444b09565, type: 3}
+  attackRange: 35
+  sightRange: 80
   baseProjSpeed: 600
   attackTiming: 0.2
   baseDamage: 10
-  healthbar: {fileID: 6611776253935356223}
-  baseMaxHp: 100
-  isDead: 0
-  isBoss: 0
-  menus: {fileID: 0}
-  xpValue: 0
-  EXP: {fileID: 0}
   bigProjectile: {fileID: 6286544650548570055, guid: ca7472dd251c19b479aa9a7da0ec9a27, type: 3}
   bigProjSpeed: 300
   bigProjectileTiming: 5
@@ -307,19 +298,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bdf30bfd3a438742807e69c0808b2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
+  enemy: {fileID: 2843991200608796063}
   player: {fileID: 0}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   timer: {fileID: 0}
-  waitAtPoint: 0
-  walkRange: 0
+  waitAtPoint: 15
+  walkRange: 80
   attackRange: 0
-  sightRange: 0
+  sightRange: 80
   projectile: {fileID: 0}
   baseProjSpeed: 0
   attackTiming: 0

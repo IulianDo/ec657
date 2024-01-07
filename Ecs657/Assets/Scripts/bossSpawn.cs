@@ -20,7 +20,7 @@ public class BossSpawner : MonoBehaviour
     void Update()
     {
         // Check if the timer has reached the specified time and the boss has not been spawned yet
-        if (timer != null && timer.timeValue <= bossSpawnTime && !bossSpawned)
+        if (timer != null && timer.totalTimePassed <= bossSpawnTime && !bossSpawned)
         {
             // Set a flag to prevent spawning more than once
             bossSpawned = true;
