@@ -263,8 +263,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1595631496}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.57894737, y: 0}
+  m_AnchorMax: {x: 0.57894737, y: 1}
   m_AnchoredPosition: {x: -0.00012207031, y: 0}
   m_SizeDelta: {x: 83.10602, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1044,7 +1044,6 @@ GameObject:
   m_Component:
   - component: {fileID: 642080960}
   - component: {fileID: 642080961}
-  - component: {fileID: 642080962}
   m_Layer: 5
   m_Name: Volume
   m_TagString: Untagged
@@ -1138,7 +1137,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 642080962}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ShowSliderValue, Assembly-CSharp
         m_MethodName: updateText
         m_Mode: 1
@@ -1150,18 +1149,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &642080962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 642080959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edb8f3372cd67a9448a8a07f4d02db6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &642567323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1360,7 +1347,7 @@ RectTransform:
   m_Father: {fileID: 1945629412}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.57894737, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2955,7 +2942,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1221990389
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3032,7 +3019,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: b962262dc0acb584aba44e0b15d6112d, type: 2}
-  masterSlider: {fileID: 642080961}
+  volumeSlider: {fileID: 642080961}
+  sensetivitySlider: {fileID: 1413330809}
   resolutionDropdown: {fileID: 1670286673}
 --- !u!1 &1338014889
 GameObject:
@@ -3067,7 +3055,7 @@ RectTransform:
   m_Father: {fileID: 2085898112}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3328,7 +3316,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1413330807}
   - component: {fileID: 1413330809}
-  - component: {fileID: 1413330808}
   m_Layer: 5
   m_Name: Sensetiviy
   m_TagString: Untagged
@@ -3359,18 +3346,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -30}
   m_SizeDelta: {x: 300, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1413330808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1413330806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edb8f3372cd67a9448a8a07f4d02db6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1413330809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3424,20 +3399,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1221990392}
         m_TargetAssemblyTypeName: Settings, Assembly-CSharp
-        m_MethodName: SetVolume
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1413330808}
-        m_TargetAssemblyTypeName: ShowSliderValue, Assembly-CSharp
-        m_MethodName: updateText
-        m_Mode: 1
+        m_MethodName: SetSensetivity
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4070,8 +4033,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 61144013}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.00012207031, y: 0}
   m_SizeDelta: {x: 83.10602, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

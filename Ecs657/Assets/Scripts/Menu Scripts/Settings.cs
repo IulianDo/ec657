@@ -9,7 +9,8 @@ using UnityEngine.UI;
 public class Settings : MonoBehaviour
 {
     public AudioMixer audioMixer;
-    public Slider masterSlider;
+    public Slider volumeSlider;
+    public Slider sensetivitySlider;
     public TMP_Dropdown resolutionDropdown;
     Resolution[] resolutions;
     string master = "MasterVolume";
@@ -17,7 +18,8 @@ public class Settings : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        masterSlider.value = PlayerPrefs.GetFloat(AudioManager.master,0f);
+        volumeSlider.value = PlayerPrefs.GetFloat(AudioManager.master,0f);
+        sensetivitySlider.value = PlayerPrefs.GetFloat("Sensitivity:");
 
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
@@ -42,7 +44,8 @@ public class Settings : MonoBehaviour
     }
 
     void OnDisable(){
-        PlayerPrefs.SetFloat(AudioManager.master,masterSlider.value);
+        PlayerPrefs.SetFloat(AudioManager.master,volumeSlider.value);
+        PlayerPrefs.SetFloat("Sensitivity:",sensetivitySlider.value);
     }
     
     public void SetVolume(float volume)
@@ -62,4 +65,8 @@ public class Settings : MonoBehaviour
     }
 
 
+    public void SetSensetivity(float sensitivity)
+    {
+        PlayerPrefs.SetFloat("Sensitivity:",sensitivity);
+    }
 }

@@ -13,6 +13,7 @@ public class CameraControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mouseSensitivity = PlayerPrefs.GetFloat("Sensitivity:");
         Cursor.lockState = CursorLockMode.Locked;
     }
 
