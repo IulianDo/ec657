@@ -23,7 +23,7 @@ public class SpellStack : MonoBehaviour
 
     public void addSpell(Spell spell)
     {
-        if(XspellStack.Count > 3)
+        if(XspellStack.Count >= 3)
         {
             return;
         }
