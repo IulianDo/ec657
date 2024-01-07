@@ -2328,7 +2328,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh91548
+  m_Name: pb_Mesh130624
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -2654,8 +2654,100 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 426438524}
   serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -18.194092, y: -325.8753, z: 875.8634}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1095532945}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &431473391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 431473394}
+  - component: {fileID: 431473393}
+  - component: {fileID: 431473392}
+  m_Layer: 0
+  m_Name: Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &431473392
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431473391}
+  m_Enabled: 1
+--- !u!20 &431473393
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431473391}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: -1.1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &431473394
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431473391}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 305.70148, y: -311.60532, z: 1193.8809}
+  m_LocalPosition: {x: 323.6339, y: 21.77, z: 283.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5501,10 +5593,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossPrefab: {fileID: 5758312535172263517, guid: dcbf64f06a0037047a0c3c10c78add37, type: 3}
-  bossSpawnTime: 1
+  bossCamera: {fileID: 431473391}
+  playerCamera: {fileID: 1318704288}
+  bossSpawnTime: 10
   timer: {fileID: 630820159}
   spawnPoint: {fileID: 1095532945}
-  bossSpawned: 0
 --- !u!4 &1095532945
 Transform:
   m_ObjectHideFlags: 0
@@ -5517,7 +5610,8 @@ Transform:
   m_LocalPosition: {x: 323.89557, y: 14.27, z: 318.01746}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 426438526}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1164131141
@@ -13528,18 +13622,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityList:
-  - enemyPrefab: {fileID: 7488566857388697443, guid: aca80fe3a9288d14fbdefdf03828a4e1, type: 3}
-    numberPerSpawn: 100
-    timeBetweenSpawns: 5
-    whenToStartSpawning: 4
-    whenToStopSpawning: 12
-    offset: {x: 0, y: 0, z: 0}
-    canSpawn: 1
-    waveSpawn: 0
   - enemyPrefab: {fileID: 515251138606854836, guid: 2ad5b82c2a05132499d92679e0d31eb2, type: 3}
     numberPerSpawn: 1
-    timeBetweenSpawns: 60
-    whenToStartSpawning: 59
+    timeBetweenSpawns: 30
+    whenToStartSpawning: 30
     whenToStopSpawning: 10000
     offset: {x: 0, y: 0.5, z: 0}
     canSpawn: 1
@@ -18487,9 +18573,9 @@ SceneRoots:
   - {fileID: 254404197}
   - {fileID: 1758842694}
   - {fileID: 1095532945}
-  - {fileID: 426438526}
   - {fileID: 1824482225}
   - {fileID: 1493621499}
   - {fileID: 1574084805}
   - {fileID: 1776123575}
   - {fileID: 192507518}
+  - {fileID: 431473394}
