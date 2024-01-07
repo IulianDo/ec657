@@ -8,11 +8,13 @@ public class Menus : MonoBehaviour
 
     private bool gameIsPaused = false;
     private bool gameIsOver = false;
+    private bool upgrading = false;
     private bool hasWon = false;
     public GameObject gameOverUI;
     public GameObject victoryUI;
     public GameObject pauseMenuUI;
     public GameObject crosshair;
+    public GameObject player;
 
     void Update()
     {
@@ -32,10 +34,18 @@ public class Menus : MonoBehaviour
     //freezes gameplay
     void Pause()
     {
-        Cursor.lockState = CursorLockMode.None;
+        if (Time.timeScale == 0f)
+        {
+            upgrading = true;
+        }
+        else
+        {
+            upgrading = false;
+            crosshair.SetActive(false);
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
+        }
         pauseMenuUI.SetActive(true);
-        crosshair.SetActive(false);
-        Time.timeScale = 0f;
         gameIsPaused = true;
     }
 
@@ -47,6 +57,7 @@ public class Menus : MonoBehaviour
         crosshair.SetActive(true);
         Time.timeScale = 1f;
         gameIsPaused = false;
+        Destroy(player);
         SceneManager.LoadScene(0);
     }
 
@@ -85,10 +96,14 @@ public class Menus : MonoBehaviour
     //resumes gameplay
     public void Resume()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        
+        if(!upgrading)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            crosshair.SetActive(true);
+            Time.timeScale = 1f;
+        }
         pauseMenuUI.SetActive(false);
-        crosshair.SetActive(true);
-        Time.timeScale = 1f;
         gameIsPaused = false;
 
     }

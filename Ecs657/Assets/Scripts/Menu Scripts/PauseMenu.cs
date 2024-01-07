@@ -10,6 +10,7 @@ public class PauseMenu : MonoBehaviour
     private bool upgrading = false;
     public GameObject pauseMenuUI;
     public GameObject crosshair;
+    public GameObject player;
 
     void Update()
     {
@@ -52,6 +53,7 @@ public class PauseMenu : MonoBehaviour
         crosshair.SetActive(true);
         Time.timeScale = 1f;
         gameIsPaused = false;
+        Destroy(player);
         SceneManager.LoadScene(0);
     }
 
