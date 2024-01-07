@@ -7,12 +7,14 @@ public class UpgradeList
 	public static List<UpgradeableVariable> upgradeableList;
 	public static int totalWeight;
 
+	//removes 
 	public UpgradeList(List<UpgradeableVariable> list)
 	{
 		upgradeableList = list;
 		CalculateWeight();
 	}
 
+	//adds variable to list
 	public void Add(UpgradeableVariable variable)
 	{
 		upgradeableList.Add(variable);
@@ -20,6 +22,7 @@ public class UpgradeList
 		variable.actualWeight = totalWeight;
 	}
 
+	//removes variable from list
 	public void Remove(UpgradeableVariable variable)
 	{
 		for(int i = 0; i < upgradeableList.Count; i++)
@@ -33,6 +36,7 @@ public class UpgradeList
 		CalculateWeight();
 	}
 
+	//calculates actualweighting variable of each variable in list
 	public void CalculateWeight()
 	{
 		totalWeight = 0;
@@ -47,6 +51,7 @@ public class UpgradeList
 		}
 	}
 
+	//grabs upgradeableVariable at weighted random
 	public UpgradeableVariable GetUpgradeableVariable()
 	{
 		UpgradeableVariable value = upgradeableList[0];
@@ -65,6 +70,7 @@ public class UpgradeList
 		return value;
 	}
 
+	//resets all variables which are set to true;
 	public void resetChosen()
 	{
 		foreach(UpgradeableVariable currentVariable in upgradeableList)
@@ -73,6 +79,7 @@ public class UpgradeList
 		}
 	}
 
+	//for debugging
 	public void printVariable(UpgradeableVariable currentVariable)
 	{
 		Debug.Log(currentVariable.name + " " + currentVariable.chosen + " " + currentVariable.actualWeight);

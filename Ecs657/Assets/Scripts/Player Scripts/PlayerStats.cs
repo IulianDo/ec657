@@ -21,6 +21,7 @@ public class PlayerStats : MonoBehaviour
     public float spdMul = 1;
     public float pSpdMul = 1;
     public float cdMul = 1;
+    public float valueChange = 0.1f;
     public UpgradeList upgradeList;
     public GameObject upgradeChoices;
 	#endregion
@@ -43,6 +44,7 @@ public class PlayerStats : MonoBehaviour
 	#endregion
 	//_______________________________________________________//
 	// Start is called before the first frame update
+
 	void Start()
     {
         hitPoints = maxHitPoints;
@@ -50,18 +52,18 @@ public class PlayerStats : MonoBehaviour
         healthbar.setMaxHealth(maxHitPoints);
         LevelUI.text = "Level " + level + ": (" + Mathf.Round(currentExperience) + "/" + Mathf.Round(experienceTillNextLevel) + ")";
 
-        //List of Upgrade Variables with weighted values for getting a random one
-        List<UpgradeableVariable> list = new List<UpgradeableVariable>();
-        list.Add(new UpgradeableVariable("HP per level", ref hpMul, 2, 0.1f, 10));
-        list.Add(new UpgradeableVariable("Damage", ref dmgMul, 2, 0.1f, 10));
-        list.Add(new UpgradeableVariable("Defence", ref defMul, 2, 0.1f, 10));
-        list.Add(new UpgradeableVariable("Movement Speed", ref spdMul, 2, 0.1f, 10));
-        list.Add(new UpgradeableVariable("Projectile Speed", ref spdMul, 2, 0.1f, 10));
-        list.Add(new UpgradeableVariable("Total Cooldown", ref cdMul, 0.1f, -0.1f, 100));
-        upgradeList = new UpgradeList(list);
-
-        print(upgradeList);
-    }
+        //set difficulty, default to easy if it cannot find one
+        GameObject DifficultyManager = GameObject.Find("DifficultyManager");
+        if(DifficultyManager != null)
+		{
+			string difficulty = DifficultyManager.GetComponent<DifficultyManager>().difficulty;
+            SetDifficulty(difficulty);
+        }
+        else
+		{
+            SetDifficulty("Medium");
+        }
+	}
 
     void Update()
     {
@@ -132,6 +134,35 @@ public class PlayerStats : MonoBehaviour
 	{
 
 	}
-	#endregion
-	//------------------------------------------------------------------//
+    #endregion
+    //------------------------------------------------------------------//
+    #region DifficultySetting Code
+    public void SetDifficulty(string difficulty)
+	{
+        switch(difficulty)
+		{
+            case "Easy":
+                valueChange = 0.2f;
+                break;
+            case "Medium":
+                valueChange = 0.1f;
+                break;
+            case "Hard":
+                valueChange = 0.05f;
+                break;
+		}
+        print(difficulty);
+
+        //List of Upgrade Variables with weighted values for getting a random one
+        List<UpgradeableVariable> list = new List<UpgradeableVariable>();
+        list.Add(new UpgradeableVariable("HP per level", ref hpMul,     2f, valueChange, 10));
+        list.Add(new UpgradeableVariable("Damage", ref dmgMul,          2f, valueChange, 10));
+        list.Add(new UpgradeableVariable("Defence", ref defMul,         2f, valueChange, 10));
+        list.Add(new UpgradeableVariable("Movement Speed", ref spdMul,  2f, valueChange, 10));
+        list.Add(new UpgradeableVariable("Projectile Speed", ref spdMul,2f, valueChange, 10));
+        list.Add(new UpgradeableVariable("Total Cooldown", ref cdMul,   0.1f, -valueChange, 100));
+        upgradeList = new UpgradeList(list);
+    }
+    #endregion
+    //------------------------------------------------------------------//
 }
