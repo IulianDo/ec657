@@ -10,3 +10,6 @@ HealthBar implementation
 
 Timer implementation
 - https://www.youtube.com/watch?v=POq1i8FyRyQ&t=2s
+
+book asset from:
+- https://www.freepik.com/author/freepik

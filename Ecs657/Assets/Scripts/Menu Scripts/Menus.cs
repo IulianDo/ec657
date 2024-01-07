@@ -13,6 +13,7 @@ public class Menus : MonoBehaviour
     public GameObject gameOverUI;
     public GameObject victoryUI;
     public GameObject pauseMenuUI;
+    public GameObject spellMenuUI;
     public GameObject crosshair;
     public GameObject player;
 
@@ -70,7 +71,7 @@ public class Menus : MonoBehaviour
         Time.timeScale = 1f;
         hasWon = false;
         gameIsOver = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(1);   //SceneManager.GetActiveScene().buildIndex);
     }
 
     //displays gameOver when player dies
@@ -79,6 +80,7 @@ public class Menus : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         crosshair.SetActive(false);
         gameOverUI.SetActive(true);
+        Destroy(player);
         Time.timeScale = 0f;
         gameIsOver = true;
     }
@@ -103,6 +105,7 @@ public class Menus : MonoBehaviour
             crosshair.SetActive(true);
             Time.timeScale = 1f;
         }
+        spellMenuUI.SetActive(false);
         pauseMenuUI.SetActive(false);
         gameIsPaused = false;
 
