@@ -23,5 +23,8 @@ shield and hourglass
 fire ball
 - https://png.toolxox.com/vhv?p=hbwbbib_pixel-art-fire-ball-hd-png-download/
 
-Museum:
+Museum paintings:
  - https://www.bing.com/images/create
+
+spells and museum textures:
+ - https://assetstore.unity.com/packages/2d/textures-materials/free-stylized-textures-204742
