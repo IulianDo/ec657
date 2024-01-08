@@ -34,4 +34,14 @@ Skybox assets
 - https://assetstore.unity.com/packages/3d/environments/lowpoly-environment-nature-free-medieval-fantasy-series-187052
 - https://assetstore.unity.com/packages/2d/textures-materials/sky/customizable-skybox-174576
 
+Enemy Assets:
+- https://assetstore.unity.com/packages/3d/characters/creatures/ghost-character-free-267003
+- https://assetstore.unity.com/packages/3d/characters/animals/dog-knight-pbr-polyart-135227
+- https://assetstore.unity.com/packages/3d/characters/little-ghost-lowpoly-free-271926
+- https://assetstore.unity.com/packages/3d/characters/animals/free-stylized-bear-rpg-forest-animal-228910
+- https://assetstore.unity.com/packages/3d/characters/humanoids/fantasy/mini-legion-rock-golem-pbr-hp-polyart-94707
+- https://assetstore.unity.com/packages/3d/characters/humanoids/fantasy/mini-legion-lich-pbr-hp-polyart-91497
+- https://assetstore.unity.com/packages/3d/characters/creatures/monster-minion-survivor-pbr-polyart-269515
+
+
 
