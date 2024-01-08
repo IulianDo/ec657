@@ -16,7 +16,7 @@ EditorBuildSettings:
     guid: ec6008bf9cb0d464296573cbf450e9cd
   - enabled: 1
     path: Assets/Prefab/Scenes/level2.unity
-    guid: 6dc712c00121a13499b965f76456bbd4
+    guid: 78078b5253d768e4f8980b49a5c7fea0
   - enabled: 1
     path: Assets/Prefab/Scenes/level3.unity
     guid: b26d9d9ebe48582499a70290cdb9216c
