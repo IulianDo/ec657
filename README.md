@@ -1,5 +1,5 @@
 # ec657
-terain textures from:
+Terrain textures from:
 - www.artstation.com/yughues
 - https://assetstore.unity.com/packages/3d/environments/lowpoly-environment-nature-free-medieval-fantasy-series-187052
 
@@ -43,5 +43,6 @@ Enemy Assets:
 - https://assetstore.unity.com/packages/3d/characters/humanoids/fantasy/mini-legion-lich-pbr-hp-polyart-91497
 - https://assetstore.unity.com/packages/3d/characters/creatures/monster-minion-survivor-pbr-polyart-269515
 
-
+Tutorial textures from
+- https://assetstore.unity.com/packages/2d/textures-materials/free-stylized-textures-204742
 
