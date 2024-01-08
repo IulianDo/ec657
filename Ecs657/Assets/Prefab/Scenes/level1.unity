@@ -2259,7 +2259,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh201010
+  m_Name: pb_Mesh38026
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -12184,7 +12184,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3521217219517770200, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8169690085890402992, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
       insertIndex: 0
