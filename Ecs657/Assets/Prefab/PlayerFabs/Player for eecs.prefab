@@ -18045,6 +18045,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeValue: 120
   totalTimePassed: 0
+  statProgressionTime: 0
   label: {fileID: 3414416658943453972}
 --- !u!1 &6923052933840546064
 GameObject:
@@ -19097,11 +19098,11 @@ MonoBehaviour:
   hitPoints: 0
   baseHitPoints: 0
   hpMul: 1.1
-  dmgMul: 3
+  dmgMul: 1
   defMul: 1
   spdMul: 1
   pSpdMul: 1
-  cdMul: 0.1
+  cdMul: 1
   valueChange: 0.1
   upgradeChoices: {fileID: 4656217145481795117}
   experienceTillNextLevel: 50
@@ -19130,7 +19131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EntityList:
   - enemyPrefab: {fileID: 7473083428368623506, guid: 410e14c8526625144acb7241d2a15ef1, type: 3}
-    numberPerSpawn: 1
+    numberPerSpawn: 2
     timeBetweenSpawns: 5
     whenToStartSpawning: 4
     whenToStopSpawning: 10000
@@ -19146,7 +19147,7 @@ MonoBehaviour:
     canSpawn: 1
     waveSpawn: 0
   - enemyPrefab: {fileID: 3479879832794707640, guid: 02b1bf5b40e311243aeb4aec6fa966da, type: 3}
-    numberPerSpawn: 5
+    numberPerSpawn: 7
     timeBetweenSpawns: 20
     whenToStartSpawning: 59
     whenToStopSpawning: 10000
@@ -19162,7 +19163,7 @@ MonoBehaviour:
     canSpawn: 1
     waveSpawn: 0
   - enemyPrefab: {fileID: 5084405194928308222, guid: 5cbc6aa7e8ef5ff4a8f0ab3b2c77f84e, type: 3}
-    numberPerSpawn: 1
+    numberPerSpawn: 2
     timeBetweenSpawns: 30
     whenToStartSpawning: 239
     whenToStopSpawning: 10000
@@ -19170,7 +19171,7 @@ MonoBehaviour:
     canSpawn: 1
     waveSpawn: 0
   - enemyPrefab: {fileID: 4923224242422025650, guid: 19d9c5f004aee364c8f8a7f0d81f4164, type: 3}
-    numberPerSpawn: 4
+    numberPerSpawn: 6
     timeBetweenSpawns: 30
     whenToStartSpawning: 299
     whenToStopSpawning: 10000
