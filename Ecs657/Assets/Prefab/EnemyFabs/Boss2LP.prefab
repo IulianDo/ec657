@@ -316,7 +316,7 @@ MonoBehaviour:
   attackTiming: 0
   baseDamage: 0
   healthbar: {fileID: 6611776253935356223}
-  baseMaxHp: 150
+  baseMaxHp: 200
   isDead: 0
   xpValue: 100
   EXP: {fileID: 6017612084703524904, guid: 7b624846e73c0fb44ba5d561e5d49897, type: 3}
