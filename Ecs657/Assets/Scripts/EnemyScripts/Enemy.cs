@@ -185,11 +185,15 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         DropXP(xpValue);
-        Destroy(gameObject);
         if(isBoss)
 		{
+            if(SceneManager.GetActiveScene().name == "level3")
+		    {
+                player.Find("PauseMenu").GetComponent<Menus>().Win();
+            }
             BossEvents();
         }
+        Destroy(gameObject);
     }
     //Drops x number of orbs which gives you xpValue worth of xp in total
     //orbs drop randomly when enemy dies within a certain range
