@@ -14,6 +14,7 @@ public class SpellStack : MonoBehaviour
 
     [SerializeField] public List<Spell> XspellStack;
     [SerializeField] public List<GameObject> XstackSlots;
+    [SerializeField] private List<int> ammoStack;
 
     // Start is called before the first frame update
     public void WhenToStart()
@@ -23,17 +24,16 @@ public class SpellStack : MonoBehaviour
 
     public void addSpell(Spell spell)
     {
+        //check if the spell stack is full
         if(XspellStack.Count >= 3)
         {
             return;
         }
-        //reloads the spell, making it have maximum amunition
-        spell.Reload();
         //otherwise, its added to the stack
         XspellStack.Add(spell);
+        ammoStack.Add(spell.GetMaxAmmo());
         XstackSlots.Add(Instantiate(slotFab, grid.transform).gameObject);
         XstackSlots[XstackSlots.Count - 1].GetComponent<SlotController>().SetSpellInit(spell,spell.GetMaxAmmo());
-        Debug.Log(XspellStack[XspellStack.Count-1].spellName);
         //check if any new combos are possible
         checkCombos();
     }
@@ -62,18 +62,21 @@ public class SpellStack : MonoBehaviour
         XspellStack.RemoveAt(index);
         Destroy(XstackSlots[index]);
         XstackSlots.RemoveAt(index);
+        ammoStack.RemoveAt(index);
     }
 
     void removeSpell(Spell spell)
     {
         Destroy(XstackSlots[XspellStack.IndexOf(spell)]);
         XstackSlots.RemoveAt(XspellStack.IndexOf(spell));
+        ammoStack.RemoveAt(XspellStack.IndexOf(spell));
         XspellStack.Remove(spell);
     }
 
     public void ClearQueue()
     {
         XspellStack.Clear();
+        ammoStack.Clear();
         for(int i = 0; i < XstackSlots.Count; i++)
         {
             Destroy(XstackSlots[i]);
@@ -89,8 +92,9 @@ public class SpellStack : MonoBehaviour
             if (XspellStack.Count>0)
             {
                 float cooldown = XspellStack[0].GetCooldown();
+                XspellStack[0].Cast();
                 //checks to see if there is any ammunition left
-                if (XspellStack[0].Cast() <= 0)
+                if (--ammoStack[0] <= 0)
                 {
                     removeSpell(0);
                 }

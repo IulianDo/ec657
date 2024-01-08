@@ -53,11 +53,10 @@ public class Spell : MonoBehaviour
     }
 
     //overrides the abstract cast method in spell for this specific spell's behaviour
-    public int Cast()
+    public void Cast()
     {
         float dmgMul = playerStats.dmgMul;
         int dmg = Mathf.RoundToInt(spellType.data.damage*dmgMul);
-        ammo --;
         //for example, here Fire creates a new fireball from the prefab in fireProj, then adds forward force to it, and initialise its stats
         switch (spellType.spellClass)
         {
@@ -78,7 +77,6 @@ public class Spell : MonoBehaviour
             default:
                 break;
         }
-        return ammo;
     }
 
     private void Projectile()
