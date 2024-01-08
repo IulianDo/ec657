@@ -8,6 +8,7 @@ public class UpgradeChoice : MonoBehaviour
 	public TextMeshProUGUI text;
 	public PlayerStats playerStats;
 	public UpgradeableVariable currentVariable;
+	public Image image;
 	public Button UpgradeButton;
     // Start is called before the first frame update
     void OnEnable()
@@ -24,6 +25,7 @@ public class UpgradeChoice : MonoBehaviour
 			modifier = "Decrease";
 		}
 		text.text = modifier + " " + currentVariable.name + " (" + string.Format("{0:0%}", currentVariable.initialValue) + " to " + string.Format("{0:0%}", nextValue) + ")";
+		image.sprite = currentVariable.sprite;
     }
 
 	public void Upgrade()

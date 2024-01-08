@@ -33,14 +33,26 @@ public class PlayerMovement : MonoBehaviour
         Debug.DrawLine(transform.position, transform.position + transform.forward * 5, Color.red);
 	}
 
-    //initialise variables
-    void Awake()
-    {
-        playerControls = new PlayerInput();
-        actions = playerControls.Player;
-    }
+	//initialise variables
+	void Awake()
+	{
+		playerControls = new PlayerInput();
+		actions = playerControls.Player;
 
-    void OnEnable()
+        GameObject DifficultyManager = GameObject.Find("DifficultyManager");
+		if (DifficultyManager != null)
+		{
+			string difficulty = DifficultyManager.GetComponent<DifficultyManager>().difficulty;
+			SetDifficulty(difficulty);
+		}
+		else
+		{
+            SetDifficulty("Medium");
+        }
+
+	}
+
+	void OnEnable()
     {
         playerControls.Enable();
     }
@@ -94,6 +106,24 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckDimension);
     }
 
+    private void SetDifficulty(string difficulty)
+	{
+        switch (difficulty)
+        {
+            case "Easy":
+                speed = 12f;
+                sprintSpeed = 18f;
+                break;
+            case "Medium":
+                speed = 10f;
+                sprintSpeed = 15f;
+                break;
+            case "Hard":
+                speed = 8f;
+                sprintSpeed = 12f;
+                break;
+        }
+    }
     //--------------------------------------------------------//
 
 }

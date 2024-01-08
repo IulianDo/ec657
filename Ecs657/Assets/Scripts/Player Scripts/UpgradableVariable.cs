@@ -11,18 +11,21 @@ public class UpgradeableVariable
     public int weight;
     public int actualWeight;
     public bool chosen;
+    public Sprite sprite;
 
     public UpgradeableVariable(string name,
                                ref float initialValue,
                                float maxValue,
                                float incrementBy,
-                               int weight)
+                               int weight,
+                               Sprite sprite)
     {
         this.name = name;
         this.initialValue = initialValue;
         this.maxValue = maxValue;
         this.incrementBy = incrementBy;
         this.weight = weight;
+        this.sprite = sprite;
         actualWeight = 0;
         chosen = false;
     }

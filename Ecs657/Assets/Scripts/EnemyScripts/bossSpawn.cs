@@ -16,7 +16,8 @@ public class BossSpawner : MonoBehaviour
     {
         // Find the Timer component and assign it to the 'timer' variable
         timer = GameObject.Find("Timer").GetComponent<Timer>();
-
+        player = GameObject.Find("Player for eecs");
+        playerCamera = GameObject.Find("Main Camera");
         // Ensure the initial camera state is correct
         SwitchCamera(playerCamera);
     }
@@ -28,7 +29,7 @@ public class BossSpawner : MonoBehaviour
         {
             // Set a flag to prevent spawning more than once
             bossSpawned = true;
-
+            bossCamera.SetActive(true);
             // Switch to the boss camera
             SwitchCamera(bossCamera);
 
@@ -57,6 +58,7 @@ public class BossSpawner : MonoBehaviour
 
         // Switch back to the player camera
         SwitchCamera(playerCamera);
+        bossCamera.SetActive(false);
     }
 
     void ChangeLayer(GameObject obj, string newLayerName)

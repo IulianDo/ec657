@@ -13,6 +13,7 @@ public class PlayerStats : MonoBehaviour
     [Header("Health Settings")]
     [SerializeField] private int maxHitPoints;
     [SerializeField] private int hitPoints;
+    [SerializeField] private int baseHitPoints;
     #endregion
     //_______________________________________________________//
     #region playerMultipliers
@@ -43,6 +44,12 @@ public class PlayerStats : MonoBehaviour
 	[Header("UI Variables")]
     [SerializeField] private TMP_Text LevelUI;
     [SerializeField] private HealthBar healthbar;
+    [SerializeField] private Sprite health;
+    [SerializeField] private Sprite damage;
+    [SerializeField] private Sprite defence;
+    [SerializeField] private Sprite speed;
+    [SerializeField] private Sprite projectileSpeed;
+    [SerializeField] private Sprite cooldown;
 	#endregion
 	//_______________________________________________________//
 	// Start is called before the first frame update
@@ -114,7 +121,7 @@ public class PlayerStats : MonoBehaviour
         currentExperience += value;
         while(currentExperience >= experienceTillNextLevel)
 		{
-            maxHitPoints = (int) (maxHitPoints * hpMul);
+            maxHitPoints += (int) (baseHitPoints * hpMul);
             //increase hp by x amount and full heal
             healthbar.setMaxHealth(maxHitPoints);
             Heal(maxHitPoints);
@@ -147,6 +154,7 @@ public class PlayerStats : MonoBehaviour
 		{
             case "Easy":
                 valueChange = 0.2f;
+                hpMul = 1.2f;
                 break;
             case "Medium":
                 valueChange = 0.1f;
@@ -155,16 +163,15 @@ public class PlayerStats : MonoBehaviour
                 valueChange = 0.05f;
                 break;
 		}
-        print(difficulty);
 
         //List of Upgrade Variables with weighted values for getting a random one
         List<UpgradeableVariable> list = new List<UpgradeableVariable>();
-        list.Add(new UpgradeableVariable("HP per level", ref hpMul,     2f, valueChange, 10));
-        list.Add(new UpgradeableVariable("Damage", ref dmgMul,          2f, valueChange, 10));
-        list.Add(new UpgradeableVariable("Defence", ref defMul,         2f, valueChange, 10));
-        list.Add(new UpgradeableVariable("Movement Speed", ref spdMul,  2f, valueChange, 10));
-        list.Add(new UpgradeableVariable("Projectile Speed", ref spdMul,2f, valueChange, 10));
-        list.Add(new UpgradeableVariable("Total Cooldown", ref cdMul,   0.1f, -valueChange, 100));
+        list.Add(new UpgradeableVariable("HP per level", ref hpMul, 3f, valueChange, 5, health));
+        list.Add(new UpgradeableVariable("Damage", ref dmgMul, 4f, valueChange, 10, damage));
+        list.Add(new UpgradeableVariable("Defence", ref defMul, 4f, valueChange, 10, defence));
+        list.Add(new UpgradeableVariable("Movement Speed", ref spdMul, 4f, valueChange, 5, speed));
+        list.Add(new UpgradeableVariable("Projectile Speed", ref spdMul, 4f, valueChange, 20, projectileSpeed));
+        list.Add(new UpgradeableVariable("Total Cooldown", ref cdMul,   0.1f, -valueChange, 5, cooldown));
         upgradeList = new UpgradeList(list);
     }
     #endregion

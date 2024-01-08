@@ -70,23 +70,23 @@ public class Menus : MonoBehaviour
 
     //make player start from beggining of the game
     public void Restart()
-    {  
+    {
         Cursor.lockState = CursorLockMode.Locked;
         gameOverUI.SetActive(false);
         crosshair.SetActive(true);
         Time.timeScale = 1f;
         hasWon = false;
         gameIsOver = false;
+        Destroy(player);
         SceneManager.LoadScene(1);   //SceneManager.GetActiveScene().buildIndex);
     }
 
     //displays gameOver when player dies
     public void GameOver()
-    {  
+    {
         Cursor.lockState = CursorLockMode.None;
         crosshair.SetActive(false);
         gameOverUI.SetActive(true);
-        Destroy(player);
         Time.timeScale = 0f;
         gameIsOver = true;
     }
