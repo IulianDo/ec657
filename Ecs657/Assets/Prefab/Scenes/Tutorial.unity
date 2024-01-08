@@ -207,10 +207,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3987750196974045176, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
       propertyPath: m_text
-      value: Compound spells were discovered by Rotias the Kegmaster at a party in
-        1853. Legends say he was attempting to make his own spell to produce more
-        beer. That spell is still unknown, sadly, but his discovery was a huge leap
-        forward for wizards everywhere.
+      value: '
+
+
+        Compound spells were discovered by Rotias the Kegmaster
+        at a party in 1853. Legends say he was attempting to make his own spell to
+        produce more beer. That spell is still unknown, sadly, but his discovery
+        was a huge leap forward for wizards everywhere.'
       objectReference: {fileID: 0}
     - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
       propertyPath: m_LocalScale.x
@@ -444,6 +447,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: picture frame
       objectReference: {fileID: 0}
+    - target: {fileID: 3430755223543123256, guid: 0cda5992f5d84ef418150222ecd8d07f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3d5d75a333ab35f4b90af6fc5d696321, type: 2}
     - target: {fileID: 5738345948186222034, guid: 0cda5992f5d84ef418150222ecd8d07f, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.20959775
@@ -660,7 +667,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3.4125
+      value: 4.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.450293
       objectReference: {fileID: 0}
     - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
       propertyPath: m_LocalScale.z
@@ -672,7 +683,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.9698273
+      value: -1.842
       objectReference: {fileID: 0}
     - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
       propertyPath: m_LocalPosition.z
@@ -704,6 +715,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -819,7 +834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5738345948186222034, guid: 0cda5992f5d84ef418150222ecd8d07f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.64
+      value: 1.596
       objectReference: {fileID: 0}
     - target: {fileID: 5738345948186222034, guid: 0cda5992f5d84ef418150222ecd8d07f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -878,6 +893,17 @@ PrefabInstance:
     - target: {fileID: 2159540017714198879, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
       propertyPath: m_Name
       value: Sign
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987750196974045176, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
+      propertyPath: m_text
+      value: '
+
+        But only a year ago, the newest iSpell was revealed with
+        a new feature. It collects the mana or creatures within the tower and converts
+        it into permanent effects for the user. Essentially, killing enemies will
+        allows one to grow stronger, increasing the chances of success, to the point
+        where many say that a brave and skilled wizard could ascend the tower any
+        day now.'
       objectReference: {fileID: 0}
     - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
       propertyPath: m_LocalScale.x
@@ -1448,7 +1474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5738345948186222034, guid: 0cda5992f5d84ef418150222ecd8d07f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2021728
+      value: 1.43
       objectReference: {fileID: 0}
     - target: {fileID: 5738345948186222034, guid: 0cda5992f5d84ef418150222ecd8d07f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1508,6 +1534,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: picture frame
       objectReference: {fileID: 0}
+    - target: {fileID: 3430755223543123256, guid: 0cda5992f5d84ef418150222ecd8d07f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8db98b2f6ece73f48a397e94748a394e, type: 2}
     - target: {fileID: 5738345948186222034, guid: 0cda5992f5d84ef418150222ecd8d07f, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.20959775
@@ -1526,7 +1556,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5738345948186222034, guid: 0cda5992f5d84ef418150222ecd8d07f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2021728
+      value: 1.473
       objectReference: {fileID: 0}
     - target: {fileID: 5738345948186222034, guid: 0cda5992f5d84ef418150222ecd8d07f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1619,6 +1649,28 @@ PrefabInstance:
     - target: {fileID: 2159540017714198879, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
       propertyPath: m_Name
       value: Sign
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987750196974045176, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
+      propertyPath: m_text
+      value: 'In ancient eras lost to time, such as The Age of Druids or the 1990s,
+        wizards did all spellcasting mentally, requiring great skill and willpower
+        to produce even the most basic spell. In 2007, however, wizard extraordinaire
+        Stevens Career revealed his latest invention to the world, the iSpell, making
+        spellcasting easy and accessible to the whole world.
+
+
+        Today, manual
+        casting is a thing of the past, and iSpells are the most common magic item
+        for wizards, being named #2 most influential creation in history by Orbes,
+        runner-up to the 1989 Belgium techno-anthem "Pump Up the Jam".'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987750196974045176, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
+      propertyPath: m_fontSize
+      value: 29.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987750196974045176, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 29.62
       objectReference: {fileID: 0}
     - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
       propertyPath: m_LocalScale.x
@@ -1819,8 +1871,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3987750196974045176, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
       propertyPath: m_text
-      value: On the iSpell, if multiple spells with a valid combination are inputted,
-        they will merge into a compound spell.
+      value: If you're reading this, the sign is incomplete. Go add the spellchart
+        you twat
       objectReference: {fileID: 0}
     - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
       propertyPath: m_LocalScale.x
@@ -2053,9 +2105,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sign
       objectReference: {fileID: 0}
+    - target: {fileID: 3987750196974045176, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
+      propertyPath: m_text
+      value: 'Since time immemorial, the Ultimate Wizard Tower of Ultimate Wizards
+        has stood here, inviting daring wizards to enter its depths. Each floor is
+        a unique pocket dimension, populated by various magical creatures unique
+        to the tower.
+
+
+        In order to advance, a wizard must fight off these
+        enemies, surviving for 2 minutes, till the boss of the floor is summoned
+        to slay them. In fact, the iSpell can predict when a boss will spawn, indicated
+        by the countdown timer on the top of the screen. Slaying the boss allows
+        them to move up and on to the next level.
+
+
+        If one completes every
+        level of the tower, they are rewarded with The Really Cool Hat, the mark
+        of a master caster. Though we know much about the tower, the entities inside
+        still remain a mystery to us, and till date none have ascended the tower.
+        Those who go in either run out later, or are never seen again.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987750196974045176, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
+      propertyPath: m_fontSize
+      value: 23.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987750196974045176, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 23.8
+      objectReference: {fileID: 0}
     - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3.4125
+      value: 4.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.7157874
       objectReference: {fileID: 0}
     - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
       propertyPath: m_LocalScale.z
@@ -2067,7 +2152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.9698273
+      value: -1.836
       objectReference: {fileID: 0}
     - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2099,6 +2184,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2238,6 +2327,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sign
       objectReference: {fileID: 0}
+    - target: {fileID: 3987750196974045176, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
+      propertyPath: m_text
+      value: Ran out of paragraphs, put something else here
+      objectReference: {fileID: 0}
     - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.4125
@@ -2341,6 +2434,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: picture frame
       objectReference: {fileID: 0}
+    - target: {fileID: 3430755223543123256, guid: 0cda5992f5d84ef418150222ecd8d07f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5ed8bc8fa0c3bbf419d83ba34200e9d1, type: 2}
     - target: {fileID: 5738345948186222034, guid: 0cda5992f5d84ef418150222ecd8d07f, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.20959775
@@ -2419,6 +2516,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: picture frame
       objectReference: {fileID: 0}
+    - target: {fileID: 3430755223543123256, guid: 0cda5992f5d84ef418150222ecd8d07f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 380128183ba67f348a08062254725463, type: 2}
     - target: {fileID: 5738345948186222034, guid: 0cda5992f5d84ef418150222ecd8d07f, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.20959775
@@ -2437,7 +2538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5738345948186222034, guid: 0cda5992f5d84ef418150222ecd8d07f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2021728
+      value: 1.482
       objectReference: {fileID: 0}
     - target: {fileID: 5738345948186222034, guid: 0cda5992f5d84ef418150222ecd8d07f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2579,76 +2680,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1001 &1910843391
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1918943036}
-    m_Modifications:
-    - target: {fileID: 2159540017714198879, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
-      propertyPath: m_Name
-      value: Sign
-      objectReference: {fileID: 0}
-    - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3.4125
-      objectReference: {fileID: 0}
-    - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.08447099
-      objectReference: {fileID: 0}
-    - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.608774
-      objectReference: {fileID: 0}
-    - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.9698273
-      objectReference: {fileID: 0}
-    - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.759056
-      objectReference: {fileID: 0}
-    - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
---- !u!4 &1910843392 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
-  m_PrefabInstance: {fileID: 1910843391}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1918943035
 GameObject:
   m_ObjectHideFlags: 0
@@ -2678,8 +2709,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1910843392}
   - {fileID: 1811883517}
+  - {fileID: 4456836480605766484}
   m_Father: {fileID: 1539137535}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2001415062
@@ -2850,6 +2881,14 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5205150731551520556}
   m_CullTransparentMesh: 1
+--- !u!222 &458991403468189446
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5205150731027976839}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1310459763315837958
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2864,10 +2903,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3987750196974045176, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
       propertyPath: m_text
-      value: Magic is a force of nature, as fundamental as gravity or Gregg's sausage
-        rolls. Wizards use spells in everday life or, more frequently, in combat.
-        The four basic spells are Fire, Water, Earth, and Air, and each has their
-        own unique attributes.
+      value: '
+
+
+        Magic is a force of nature, as fundamental as gravity or
+        Gregg''s sausage rolls. Wizards use spells in everday life or, more frequently,
+        in combat. The four basic spells are Fire, Water, Earth, and Air, and each
+        has their own unique attributes.'
       objectReference: {fileID: 0}
     - target: {fileID: 4456836478741734571, guid: dd24f652081eb6c47974c63482bb4752, type: 3}
       propertyPath: m_LocalScale.x
@@ -2946,6 +2988,44 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &2159540016940670624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4456836480605766484}
+  - component: {fileID: 6706659369384454314}
+  - component: {fileID: 4580771567332455906}
+  - component: {fileID: 5659448130698237002}
+  m_Layer: 0
+  m_Name: Sign
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &2343632098684740530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7677764868343102392}
+  - component: {fileID: 9072009706312109345}
+  - component: {fileID: 6590658825467033338}
+  - component: {fileID: 5876047812563242896}
+  m_Layer: 5
+  m_Name: Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &2343632099241166361
 GameObject:
   m_ObjectHideFlags: 0
@@ -2988,7 +3068,7 @@ MonoBehaviour:
   m_text: 'Water is the default spell, completely average in all ways. It does, however,
     drench them in water too, making it a common spell for prankster wizards.
 
-    
+
 
     Fire
     is slightly slower than Water, but also slightly more powerful. In addition,
@@ -2996,12 +3076,12 @@ MonoBehaviour:
     as discovered in the Well-Done Tragedy of 1457 by Laszlo the Grillmaster in a
     magical cooking experiment.
 
-    
 
-    Earth is the slowest basic spell, but
-    is also the most powerful. This is due to the destructive power of flying rocks.
 
-    
+    Earth is the slowest basic spell, but is also
+    the most powerful. This is due to the destructive power of flying rocks.
+
+
 
     Air
     is the weakest of the basic spells, but is also the easiest to cast, so one can
@@ -3074,6 +3154,104 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3987750198293356551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5205150731027976839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "On a modern iSpell, with many new features since the original's release,
+    the user will have two bars on the bottom, one depicting their Health, and the
+    other storing basic spells they can cast. \n\nPressing the numkey for the appropriate
+    slot (1-4, starting from the left) queues up the spell in the spellstack, the
+    bar in the upper-right of the screen. Users can also directly modify their stack.
+    Pressing 'q' removes the leftmost spell from the stack, and pressing 'r' completely
+    clears the stack. \n\nAll spells have ammo counter, displayed in their respective
+    spellstack slot. Pressing left click casts the leftmost spell, using one ammo.
+    Afterwards, the iSpell will enter cooldown before another spell can be cast,
+    visible to the user as the slot's bar gradually fills up."
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 28
+  m_fontSizeBase: 28
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!4 &4456836480089057023
 Transform:
   m_ObjectHideFlags: 0
@@ -3083,12 +3261,28 @@ Transform:
   m_GameObject: {fileID: 2159540016383720203}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 3.608774, y: -1.84, z: -2.759056}
-  m_LocalScale: {x: 4.62, y: 2.5553844, z: 0.08447099}
+  m_LocalPosition: {x: 3.608774, y: -1.746, z: -2.759056}
+  m_LocalScale: {x: 4.92, y: 2.7213185, z: 0.08447099}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7677764868898283027}
   m_Father: {fileID: 1693475665}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!4 &4456836480605766484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2159540016940670624}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 3.6087737, y: -1.797, z: -2.759056}
+  m_LocalScale: {x: 5.709999, y: 2.6549454, z: 0.08447097}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7677764868343102392}
+  m_Father: {fileID: 1918943036}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!23 &4580771566815072329
 MeshRenderer:
@@ -3132,6 +3326,66 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!23 &4580771567332455906
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2159540016940670624}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 1bec97ed19efe9740a5fb5b2f864a607, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5205150731027976839
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8825745258926345474}
+  - component: {fileID: 458991403468189446}
+  - component: {fileID: 3987750198293356551}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &5205150731551520556
 GameObject:
   m_ObjectHideFlags: 0
@@ -3171,6 +3425,44 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &5659448130698237002
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2159540016940670624}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5876047812563242896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2343632098684740530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!114 &5876047813086587451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3211,6 +3503,29 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 1
+--- !u!114 &6590658825467033338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2343632098684740530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
 --- !u!33 &6706659368827555073
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3219,6 +3534,34 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2159540016383720203}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &6706659369384454314
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2159540016940670624}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!224 &7677764868343102392
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2343632098684740530}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.5208879}
+  m_LocalScale: {x: 0.0004012652, y: 0.0008630024, z: 0.019283745}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 8825745258926345474}
+  m_Father: {fileID: 4456836480605766484}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.0008409023, y: 0.0029999018}
+  m_SizeDelta: {x: 2072.66, y: 1120}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &7677764868898283027
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3236,8 +3579,27 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.000739336, y: 0.051264286}
+  m_AnchoredPosition: {x: -0.000739336, y: 0.122}
   m_SizeDelta: {x: 2762.42, y: 1120}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &8825745258926345474
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5205150731027976839}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 7677764868343102392}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 3, y: 2}
+  m_SizeDelta: {x: 932.64, y: 430}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &8825745259478853801
 RectTransform:
@@ -3265,6 +3627,29 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2343632099241166361}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!223 &9072009706312109345
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2343632098684740530}
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
