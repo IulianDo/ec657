@@ -29,6 +29,7 @@ public abstract class GenericParticles : MonoBehaviour
         particles.Play();
         yield return new WaitForSeconds(time);
         particles.Stop();
+        Destroy(gameObject);
     }
 
     private void OnParticleCollision(GameObject other)
