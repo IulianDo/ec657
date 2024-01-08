@@ -463,7 +463,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh40636
+  m_Name: pb_Mesh62534
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -953,7 +953,7 @@ MonoBehaviour:
   bossPrefab: {fileID: 882717448749368197, guid: 54fdbd8a313c69249a474858b552ee20, type: 3}
   bossCamera: {fileID: 134503231}
   playerCamera: {fileID: 0}
-  bossSpawnTime: 10
+  bossSpawnTime: 119
   timer: {fileID: 0}
   spawnPoint: {fileID: 1095532945}
   player: {fileID: 0}

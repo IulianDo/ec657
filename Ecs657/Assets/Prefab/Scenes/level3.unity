@@ -568,7 +568,7 @@ MonoBehaviour:
   bossPrefab: {fileID: 1328675281891540026, guid: a326f3fac9c3f7c4d8d5d33701c2e046, type: 3}
   bossCamera: {fileID: 2108704269}
   playerCamera: {fileID: 0}
-  bossSpawnTime: 10
+  bossSpawnTime: 119
   timer: {fileID: 0}
   spawnPoint: {fileID: 1095532945}
   player: {fileID: 0}
