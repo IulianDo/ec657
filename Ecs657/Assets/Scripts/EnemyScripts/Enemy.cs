@@ -322,16 +322,6 @@ public class Enemy : MonoBehaviour
     {
         return damage;
     }
-    //for debugging
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, walkRange);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, sightRange);
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
-    }
     #endregion
 //--------------------------------------------------------//
 }

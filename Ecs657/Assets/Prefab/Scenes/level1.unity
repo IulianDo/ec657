@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1882635636}
-  m_IndirectSpecularColor: {r: 0.10826455, g: 0.268006, b: 0.427005, a: 1}
+  m_IndirectSpecularColor: {r: 0.10828449, g: 0.2680511, b: 0.4269414, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12017,7 +12017,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1027979671246204725, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
       propertyPath: cdMul
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1027979671246204725, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
       propertyPath: menus
@@ -12025,7 +12025,7 @@ PrefabInstance:
       objectReference: {fileID: 1607317888}
     - target: {fileID: 1027979671246204725, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
       propertyPath: dmgMul
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4656217145481795117, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
       propertyPath: m_IsActive
@@ -12128,16 +12128,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4923224242422025650, guid: 19d9c5f004aee364c8f8a7f0d81f4164, type: 3}
     - target: {fileID: 8426940204466218781, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
+      propertyPath: EntityList.Array.data[0].numberPerSpawn
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8426940204466218781, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
+      propertyPath: EntityList.Array.data[2].numberPerSpawn
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8426940204466218781, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
       propertyPath: EntityList.Array.data[3].numberPerSpawn
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8426940204466218781, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
       propertyPath: EntityList.Array.data[4].numberPerSpawn
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8426940204466218781, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
       propertyPath: EntityList.Array.data[5].numberPerSpawn
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8426940204466218781, guid: c8797849e3c7e9d4cb0885c168623d38, type: 3}
       propertyPath: EntityList.Array.data[2].timeBetweenSpawns
