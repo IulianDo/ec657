@@ -19096,7 +19096,7 @@ MonoBehaviour:
   menus: {fileID: 1165458518390698574}
   maxHitPoints: 100
   hitPoints: 0
-  baseHitPoints: 0
+  baseHitPoints: 10
   hpMul: 1.1
   dmgMul: 1
   defMul: 1
