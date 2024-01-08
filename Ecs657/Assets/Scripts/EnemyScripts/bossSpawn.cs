@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class BossSpawner : MonoBehaviour
@@ -9,6 +8,7 @@ public class BossSpawner : MonoBehaviour
     public float bossSpawnTime = 300.0f; // 5 minutes in seconds
     [SerializeField] private Timer timer;
     [SerializeField] private Transform spawnPoint;
+    [SerializeField] private GameObject player;
 
     private bool bossSpawned = false;
 
@@ -32,14 +32,15 @@ public class BossSpawner : MonoBehaviour
             // Switch to the boss camera
             SwitchCamera(bossCamera);
 
+            // Change the player layer to the enemy layer
+            ChangeLayer(player, "Ground");
+
             // Spawn the boss GameObject
             SpawnBoss();
-            
 
-            // Delay for some time and switch back to the player camera
-            StartCoroutine(SwitchBackToPlayerCamera(3f)); // Adjust the time as needed
-            
-            //Destroy(gameObject);
+            // Delay for some time using Invoke
+            float delayTime = 3f; // Adjust the time as needed
+            Invoke("SwitchBackToPlayerLayer", delayTime);
         }
     }
 
@@ -49,12 +50,35 @@ public class BossSpawner : MonoBehaviour
         cameraToActivate.SetActive(true);
     }
 
-    IEnumerator SwitchBackToPlayerCamera(float delayTime)
+    void SwitchBackToPlayerLayer()
     {
-        yield return new WaitForSeconds(delayTime);
+        // Change the player layer back to the player layer
+        ChangeLayer(player, "Player");
 
         // Switch back to the player camera
         SwitchCamera(playerCamera);
+    }
+
+    void ChangeLayer(GameObject obj, string newLayerName)
+    {
+        // Find the layer by name
+        int newLayer = LayerMask.NameToLayer(newLayerName);
+
+        // Check if the layer exists
+        if (newLayer == -1)
+        {
+            Debug.LogError("Layer " + newLayerName + " not found!");
+            return;
+        }
+
+        // Change the layer of the GameObject
+        obj.layer = newLayer;
+
+        // If the GameObject has child objects, change their layers recursively
+        foreach (Transform child in obj.transform)
+        {
+            ChangeLayer(child.gameObject, newLayerName);
+        }
     }
 
     void SpawnBoss()

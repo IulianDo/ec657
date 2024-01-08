@@ -17,6 +17,12 @@ public class Menus : MonoBehaviour
     public GameObject crosshair;
     public GameObject player;
 
+    void start()
+    {
+        gameIsPaused = false;
+        gameIsOver = false;
+        hasWon = false;
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !gameIsOver && !hasWon)
