@@ -23,3 +23,5 @@ shield and hourglass
 fire ball
 - https://png.toolxox.com/vhv?p=hbwbbib_pixel-art-fire-ball-hd-png-download/
 
+Museum:
+ - https://www.bing.com/images/create
