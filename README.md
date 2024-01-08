@@ -1,6 +1,10 @@
 # ec657
 terain textures from:
 - www.artstation.com/yughues
+- https://assetstore.unity.com/packages/3d/environments/lowpoly-environment-nature-free-medieval-fantasy-series-187052
+
+Trees, stumps and rock assets
+- https://assetstore.unity.com/packages/3d/environments/lowpoly-environment-nature-free-medieval-fantasy-series-187052
 
 Brick assets from:
 https://assetstore.unity.com/publishers/25975
@@ -25,3 +29,9 @@ fire ball
 
 Museum:
  - https://www.bing.com/images/create
+
+Skybox assets
+- https://assetstore.unity.com/packages/3d/environments/lowpoly-environment-nature-free-medieval-fantasy-series-187052
+- https://assetstore.unity.com/packages/2d/textures-materials/sky/customizable-skybox-174576
+
+
